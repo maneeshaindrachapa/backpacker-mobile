@@ -1,3 +1,20 @@
 <ion-app>
+  <ion-menu side="start" menuId="home_menu" class="home_menu" content-id="content">
+    <ion-header>
+      <ion-toolbar class="toolbar">
+        <ion-title style="padding-right: 0px;" slot="start">Backpacker</ion-title>
+        <img src="../assets/img/logo.png" width="50px" slot="primary" class="menu-logo">
+      </ion-toolbar>
+    </ion-header>
+    <ion-content id="content">
+      <ion-list>
+        <ion-item>Menu Item</ion-item>
+        <ion-item>Menu Item</ion-item>
+        <ion-item>Menu Item</ion-item>
+        <ion-item>Menu Item</ion-item>
+        <ion-item class="sign-out"><ion-icon name="log-out" style="margin-right: 10%;"></ion-icon>sign out</ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
   <ion-router-outlet></ion-router-outlet>
 </ion-app>
