@@ -28,7 +28,8 @@ export class UserService {
      this.fireauth.auth.signInWithEmailAndPassword(email, password).then((data: any) => {
        this.firestore.collection('users').doc(data.user.uid).get().subscribe((userSubData) => {
          const user: any = userSubData.data();
-         user.email = data.user.email;
+         user.authData = data.user;
+         // console.log(user);
          resolve({status: true, data: user});
        });
      }).catch((err: any) => {
@@ -43,12 +44,12 @@ export class UserService {
 
   registerUser(user: any) {
     return new Promise( resolve => {
-      this.fireauth.auth.createUserWithEmailAndPassword(user.email, user.password).then((authuser: any) => {
+      this.fireauth.auth.createUserWithEmailAndPassword(user.email, user.password).then((authuser) => {
         const userSubData = {
           address: user.address,
           age: user.age,
-          displayName: user.name
         };
+        authuser.user.updateProfile({displayName: user.name});
         this.addSubUserData(authuser.user.uid, userSubData).then(() => {
           resolve({status: true, data: 'User added successfully!'});
         });
