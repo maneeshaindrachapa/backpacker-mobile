@@ -30,21 +30,24 @@ ion-card{
 ion-card-content{
   font-size: 13px !important;
   padding: 1px !important;
+  padding-bottom: 5px !important;
 }
 ion-item{
   --border-style:none;
+  padding-left:2px !important;
 }
 ion-label{
   margin:0px;
 }
-ion-avatar {
+ion-thumbnail {
   --border-radius: 5px !important;
-  width: 110px !important;
-  height: 110px !important;
+  width: 100px !important;
+  height: 100px !important;
   display: block;
-  margin:0 auto;
+  margin:0px;
+  padding:0 7px 0 0;
 }
-ion-label {
+.card-title {
   --ion-font-family: "kiona" !important;
   text-align: left;
   font-weight: 700;
@@ -62,9 +65,15 @@ ion-searchbar {
   margin-top:0px;
   margin-bottom: 0px;
   border-radius: 5px;
-  
 }
 ion-icon {
   color: #fff;
   font-size: 25px;
+}
+.card-details{
+  font-size: 10px !important;
+  font-family: 'kiona';
+  white-space: normal;
+  position: absolute;
+  top:0px;
 }
