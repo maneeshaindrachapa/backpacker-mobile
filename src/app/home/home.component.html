@@ -1,13 +1,17 @@
 <ion-content class="content">
   <div class="ion-padding">
-    <ion-toolbar class="toolbar">
-      <button class="bars">
-        <i class="fas fa-bars"></i>
-      </button>
-      <ion-searchbar searchIcon="none" showCancelButton="focus"></ion-searchbar>
-      <button class="search">
-        <i class="fas fa-search"></i>
-      </button>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button>
+          <ion-icon slot="icon-only" name="menu"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button *ngIf='!issearchbaropened' (click)='issearchbaropened=true'>
+          <ion-icon slot="icon-only" name="search"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-searchbar *ngIf="issearchbaropened" showCancelButton='true' (ionCancel)="issearchbaropened=false"></ion-searchbar>
     </ion-toolbar>
     <ion-card>
       <ion-item>
@@ -16,12 +20,12 @@
       </ion-item>
       <ion-card-content>
         <ion-row>
-          <ion-col size="5">
+          <ion-col size="4">
             <ion-avatar>
               <img src="../../assets/img/3.jpg" />
             </ion-avatar>
           </ion-col>
-          <ion-col size="7">
+          <ion-col size="8">
             This is content, without any paragraph or header tags, within an
             ion-card-content element.
           </ion-col>
@@ -35,12 +39,12 @@
       </ion-item>
       <ion-card-content>
         <ion-row>
-          <ion-col size="5">
+          <ion-col size="4">
             <ion-avatar>
-              <img src="../../assets/img/6.jpg" />
+              <img src="../../assets/img/5.jpg" />
             </ion-avatar>
           </ion-col>
-          <ion-col size="7">
+          <ion-col size="8">
             This is content, without any paragraph or header tags, within an
             ion-card-content element.
           </ion-col>

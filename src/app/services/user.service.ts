@@ -9,6 +9,7 @@ import {Md5} from 'ts-md5/dist/md5';
 export class UserService {
 
   constructor(private firestore: AngularFirestore) {
+   // tslint:disable-next-line:max-line-length
    // this.registerUser({firstName: 'Thilina', lastName: 'Prasad', email: 'tiina.prashad25@gmail.com', age: 24, address: '17B, Kadewaththa, Imbulagoda, Rathgama.', password: 'test'}).then((data) => {
    // });
   }
