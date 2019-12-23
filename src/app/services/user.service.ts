@@ -37,6 +37,10 @@ export class UserService {
     });
   }
 
+  logoutUser() {
+    return this.fireauth.auth.signOut();
+  }
+
   registerUser(user: any) {
     return new Promise( resolve => {
       this.fireauth.auth.createUserWithEmailAndPassword(user.email, user.password).then((authuser: any) => {
@@ -53,6 +57,8 @@ export class UserService {
       });
     });
   }
+
+  
 
   sendPasswordReset(email) {
     return this.fireauth.auth.sendPasswordResetEmail(email);

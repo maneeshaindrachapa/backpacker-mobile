@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import {AlertController, Platform} from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import {UserService} from './services/user.service';
 import { MenuController } from '@ionic/angular';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,9 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private userService: UserService,
-    private menu: MenuController
+    private menu: MenuController,
+    private router: Router,
+    public alertController: AlertController
   ) {
     this.initializeApp();
   }
@@ -32,5 +35,30 @@ export class AppComponent {
   openHome_menu() {
     this.menu.enable(true, 'home_menu');
     this.menu.open('home_menu');
+  }
+
+  login(param) {
+    this.router.navigate(['./login'], { queryParams: { email: param } });
+  }
+
+  async signOut() {
+    const alert = await this.alertController.create({
+      message: 'Do you want to log out ??',
+      buttons: [{
+        text: 'Logout',
+        handler: () => {
+          this.userService.logoutUser().then((data) => {
+            localStorage.removeItem('loggedUser');
+            this.login(null);
+          });
+        }
+      },
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        }
+      ]
+    });
+    await alert.present();
   }
 }

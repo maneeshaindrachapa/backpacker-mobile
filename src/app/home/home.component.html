@@ -7,11 +7,11 @@
         </ion-menu-button>
       </ion-buttons>
       <ion-buttons slot="end">
-        <ion-button *ngIf='!issearchbaropened' (click)='issearchbaropened=true'>
+        <ion-button *ngIf='!isSearchBarOpened' (click)='isSearchBarOpened=true'>
           <ion-icon slot="icon-only" name="search"></ion-icon>
         </ion-button>
       </ion-buttons>
-      <ion-searchbar *ngIf="issearchbaropened" showCancelButton='true' (ionCancel)="issearchbaropened=false"></ion-searchbar>
+      <ion-searchbar *ngIf="isSearchBarOpened" showCancelButton='true' (ionCancel)="isSearchBarOpened=false"></ion-searchbar>
     </ion-toolbar>
 
     <ion-card text-wrap>
@@ -47,4 +47,5 @@
       </ion-card-content>
     </ion-card>
   </div>
+  
 </ion-content>
