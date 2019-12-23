@@ -13,42 +13,37 @@
       </ion-buttons>
       <ion-searchbar *ngIf="issearchbaropened" showCancelButton='true' (ionCancel)="issearchbaropened=false"></ion-searchbar>
     </ion-toolbar>
-    <ion-card>
+
+    <ion-card text-wrap>
       <ion-item>
-        <ion-label>Lorem Ispum</ion-label>
+        <ion-label class='card-title'>Lorem Ispum</ion-label>
         <ion-button fill="outline" slot="end">View</ion-button>
       </ion-item>
       <ion-card-content>
-        <ion-row>
-          <ion-col size="4">
-            <ion-avatar>
-              <img src="../../assets/img/3.jpg" />
-            </ion-avatar>
-          </ion-col>
-          <ion-col size="8">
-            This is content, without any paragraph or header tags, within an
-            ion-card-content element.
-          </ion-col>
-        </ion-row>
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <img src="../../assets/img/3.jpg" />
+          </ion-thumbnail>
+          <ion-label class="card-details">This is content, without any paragraph or header tags, within an
+            ion-card-content element.This is content, without any paragraph or header tags, within an
+            ion-card-content element.</ion-label>
+        </ion-item>
       </ion-card-content>
     </ion-card>
-    <ion-card>
+    <ion-card text-wrap>
       <ion-item>
-        <ion-label>Lorem Ispum</ion-label>
+        <ion-label class='card-title'>Lorem Ispum</ion-label>
         <ion-button fill="outline" slot="end">View</ion-button>
       </ion-item>
       <ion-card-content>
-        <ion-row>
-          <ion-col size="4">
-            <ion-avatar>
-              <img src="../../assets/img/5.jpg" />
-            </ion-avatar>
-          </ion-col>
-          <ion-col size="8">
-            This is content, without any paragraph or header tags, within an
-            ion-card-content element.
-          </ion-col>
-        </ion-row>
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <img src="../../assets/img/5.jpg" />
+          </ion-thumbnail>
+          <ion-label class="card-details">This is content, without any paragraph or header tags, within an
+            ion-card-content element.This is content, without any paragraph or header tags, within an
+            ion-card-content element.</ion-label>
+        </ion-item>
       </ion-card-content>
     </ion-card>
   </div>
