@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Md5} from 'ts-md5/dist/md5';
+import {AngularFireAuth} from '@angular/fire/auth';
 
 
 @Injectable({
@@ -8,9 +9,10 @@ import {Md5} from 'ts-md5/dist/md5';
 })
 export class UserService {
 
-  constructor(private firestore: AngularFirestore) {
-   // this.registerUser({firstName: 'Thilina', lastName: 'Prasad', email: 'tiina.prashad25@gmail.com', age: 24, address: '17B, Kadewaththa, Imbulagoda, Rathgama.', password: 'test'}).then((data) => {
-   // });
+  constructor(private firestore: AngularFirestore, private fireauth: AngularFireAuth) {
+   // fireauth.auth.signInWithEmailAndPassword('thilina.prashad25@gmail.com', '123456').then((data => {
+   //     console.log(data);
+   // }));
   }
 
   // login authentication
