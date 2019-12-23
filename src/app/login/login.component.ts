@@ -16,7 +16,10 @@ export class LoginComponent implements OnInit {
   isErrorInPassword = false;
   isErrorInEmail = false;
 
-  constructor(private router: Router, private route: ActivatedRoute, private userService: UserService, public toastController: ToastController) {
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private userService: UserService,
+              public toastController: ToastController) {
     route.queryParams.subscribe((data: any) => {
       if (data) {
         this.email = data.email;
@@ -34,7 +37,6 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['./register']);
   }
   login() {
-<<<<<<< HEAD
     this.isErrorInEmail = false;
     this.isErrorInPassword = false;
     this.isLoading = true;
@@ -76,13 +78,8 @@ export class LoginComponent implements OnInit {
     toast.present();
     return toast.onDidDismiss();
   }
-
-=======
-    this.router.navigate(['./home']);
-  }
   forgetPassword() {
     this.router.navigate(['./forgetpassword']);
   }
->>>>>>> login paths set
 }
 
