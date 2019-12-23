@@ -2,9 +2,9 @@
   <div class="ion-padding">
     <ion-toolbar>
       <ion-buttons slot="start">
-        <ion-button>
+        <ion-menu-button menu="home_menu">
           <ion-icon slot="icon-only" name="menu"></ion-icon>
-        </ion-button>
+        </ion-menu-button>
       </ion-buttons>
       <ion-buttons slot="end">
         <ion-button *ngIf='!issearchbaropened' (click)='issearchbaropened=true'>
