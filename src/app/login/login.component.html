@@ -36,6 +36,7 @@
             type="submit"
             [disabled]="!registerForm.form.valid"
             class="btn btn-primary credentials-btn"
+            (click)="login()"
           >
             Login
           </button>
