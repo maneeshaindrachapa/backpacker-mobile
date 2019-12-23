@@ -32,7 +32,7 @@ export class UserService {
          resolve({status: true, data: user});
        });
      }).catch((err: any) => {
-       resolve({status: false, data: err.message});
+       resolve({status: false, data: err});
      });
     });
   }

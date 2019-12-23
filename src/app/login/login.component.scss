@@ -66,3 +66,24 @@ input[type="password"]:focus {
     color: rgba(255,255,255,1);
     outline: none;
 }
+
+.error {
+  background-color: rgba($color: #f44336, $alpha: 0.55);
+}
+
+.loading-btn{
+  background-color: transparent;
+  border: none;
+  text-align: center;
+  font-size: 30px;
+}
+
+.loading-btn:hover{
+  background-color: transparent;
+  cursor: default;
+}
+
+.loading-btn:focus{
+  background-color: transparent;
+  cursor: default;
+}

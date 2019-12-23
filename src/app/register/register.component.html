@@ -84,7 +84,7 @@
             type="submit"
             [disabled]="!registerForm.form.valid"
             class="btn btn-primary credentials-btn"
-            (click)="register(registerForm)"
+            (click)="register(registerForm)" (keyup.enter)="register(registerForm)"
           >
             Register
           </button>

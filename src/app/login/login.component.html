@@ -16,6 +16,7 @@
             id="email"
             class="form-control credentials"
             [(ngModel)]="email"
+            [ngClass]="{ 'error' : isErrorInEmail }"
           />
           <input
             type="password"
@@ -25,6 +26,7 @@
             id="password"
             class="form-control credentials"
             [(ngModel)]="password"
+            [ngClass]="{ 'error' : isErrorInPassword }"
           />
         </ion-col>
       </ion-row>
@@ -32,16 +34,27 @@
       <ion-row>
         <ion-col class="signin-col">
           <button
+                  *ngIf="!isLoading"
             ion-button
             class="submit-btn"
             full
             type="submit"
             [disabled]="!registerForm.form.valid"
             class="btn btn-primary credentials-btn"
-            (click)="login()"
+            (click)="login()" (keyup.enter)="login()"
           >
             Login
           </button>
+
+            <button *ngIf="isLoading"
+                    ion-button
+                    full
+                    type="submit"
+                    class="btn btn-primary loading-btn"
+                    disabled>
+                <ion-spinner name="crescent" color="success"></ion-spinner>
+            </button>
+
         </ion-col>
       </ion-row>
       <ion-row>
