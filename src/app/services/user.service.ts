@@ -11,46 +11,29 @@ import {error} from 'util';
 export class UserService {
 
   constructor(private firestore: AngularFirestore, private fireauth: AngularFireAuth) {
-    this.registerUser({
-      name: 'Thilina Prasad',
-      email: 'thilina.prashad25@gmail.com',
-      age: 24,
-      address: '17B, Kadewaththa, Imbulagoda, Rathgama.',
-      password: '1236'
-    }).then((data) => {
-      console.log(data);
-    });
-  }
-  
-  // // login authentication
-  // authenticateUser(email: string, password: string) {
-  //   return new Promise( resolve => {
-  //     this.getUserByEmail(email).subscribe((data: any) => {
-  //       if (data.length === 1) {
-  //         const user = data[0];
-  //         if (user.password === Md5.hashStr(password)) {
-  //           resolve(true);
-  //         } else {
-  //           resolve(false);
-  //         }
-  //       }
-  //     });
-  //   });
-  // }
-  //
-  // // register user
-  // registerUser(user: any) {
-  //   user.password = Md5.hashStr(user.password);
-  //   return new Promise( resolve => {
-  //         this.addUser(user).then(() => {
-  //           resolve(true);
-  //         });
-  //   });
-  // }
+    // this.registerUser({
+    //   name: 'Thilina Prasad',
+    //   email: 'thilina.prashad25@gmail.com',
+    //   age: 24,
+    //   address: '17B, Kadewaththa, Imbulagoda, Rathgama.',
+    //   password: '123456'
+    // }).then((data) => {
+    //   console.log(data);
+    // });
 
-  authenticateUser(email: string, password: string) {
+  }
+
+  loginUser(email: string, password: string) {
     return new Promise( resolve => {
-     this.fireauth.auth.signInWithEmailAndPassword(email, password);
+     this.fireauth.auth.signInWithEmailAndPassword(email, password).then((data: any) => {
+       this.firestore.collection('users').doc(data.user.uid).get().subscribe((userSubData) => {
+         const user: any = userSubData.data();
+         user.email = data.user.email;
+         resolve({status: true, data: user});
+       });
+     }).catch((err: any) => {
+       resolve({status: false, data: err.message});
+     });
     });
   }
 
@@ -62,20 +45,20 @@ export class UserService {
           age: user.age,
           displayName: user.name
         };
-        this.addUser(authuser.user.uid, userSubData).then(() => {
-          resolve({status: true, description: 'User added successfully!'});
+        this.addSubUserData(authuser.user.uid, userSubData).then(() => {
+          resolve({status: true, data: 'User added successfully!'});
         });
       }).catch((data: any) => {
-        resolve({status: false, description: data.message});
+        resolve({status: false, data: data.message});
       });
     });
   }
 
-  getUserByEmail(email) {
-    return this.firestore.collection('users', ref => ref.where('email', '==', email)).valueChanges();
+  sendPasswordReset(email) {
+    return this.fireauth.auth.sendPasswordResetEmail(email);
   }
 
-  addUser(uid, user) {
+  addSubUserData(uid, user) {
     return this.firestore.collection('users').doc(uid).set(user);
   }
 

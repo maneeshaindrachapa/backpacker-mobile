@@ -18,12 +18,12 @@
     --border-width: 0 0 0 0;
     --inner-border-width: 0;
   }
-  input {
+  input, textarea {
     font-family: "kiona";
     background-color: rgba($color: #000000, $alpha: 0.55);
     color: #fff;
   }
-  input[type="text"]:focus {
+  input[type="text"]:focus, textarea:focus {
     background-color: rgba($color: #000000, $alpha: 0.85);
     outline: none;
   }
@@ -74,5 +74,3 @@
       color: rgba(255,255,255,1);
       outline: none;
   }
-
-

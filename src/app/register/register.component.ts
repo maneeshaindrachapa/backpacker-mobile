@@ -10,7 +10,9 @@ export class RegisterComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {}
+
   login() {
     this.router.navigate(['./login']);
   }
+
 }
