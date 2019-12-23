@@ -11,16 +11,6 @@ import {error} from 'util';
 export class UserService {
 
   constructor(private firestore: AngularFirestore, private fireauth: AngularFireAuth) {
-    // this.registerUser({
-    //   name: 'Thilina Prasad',
-    //   email: 'thilina.prashad25@gmail.com',
-    //   age: 24,
-    //   address: '17B, Kadewaththa, Imbulagoda, Rathgama.',
-    //   password: '123456'
-    // }).then((data) => {
-    //   console.log(data);
-    // });
-
   }
 
   loginUser(email: string, password: string) {
@@ -58,8 +48,6 @@ export class UserService {
       });
     });
   }
-
-  
 
   sendPasswordReset(email) {
     return this.fireauth.auth.sendPasswordResetEmail(email);
