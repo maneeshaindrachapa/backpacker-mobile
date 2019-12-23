@@ -11,11 +11,17 @@ import {error} from 'util';
 export class UserService {
 
   constructor(private firestore: AngularFirestore, private fireauth: AngularFireAuth) {
-   this.registerUser({name: 'Thilina Prasad', email: 'thilina.prashad25@gmail.com', age: 24, address: '17B, Kadewaththa, Imbulagoda, Rathgama.', password: '1236'}).then((data) => {
-     console.log(data);
-   });
+    this.registerUser({
+      name: 'Thilina Prasad',
+      email: 'thilina.prashad25@gmail.com',
+      age: 24,
+      address: '17B, Kadewaththa, Imbulagoda, Rathgama.',
+      password: '1236'
+    }).then((data) => {
+      console.log(data);
+    });
   }
-
+  
   // // login authentication
   // authenticateUser(email: string, password: string) {
   //   return new Promise( resolve => {
