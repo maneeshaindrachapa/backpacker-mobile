@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyDv1Xnr08QHKil44HYACebyBAf1Cck1F94',
+    authDomain: 'backpacker-bb1b2.firebaseapp.com',
+    databaseURL: 'https://backpacker-bb1b2.firebaseio.com',
+    projectId: 'backpacker-bb1b2',
+    storageBucket: 'backpacker-bb1b2.appspot.com',
+    messagingSenderId: '108621503272',
+    appId: '1:108621503272:web:b3310efbb23fd33c92ce1d',
+    measurementId: 'G-ZQK3G2MBW2'
+  }
 };
 
 /*
