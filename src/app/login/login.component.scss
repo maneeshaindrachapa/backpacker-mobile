@@ -46,7 +46,7 @@ input[type="password"]:focus {
     background-color: rgba(0, 0, 0, 0.884);
     border-color:rgba(0, 0, 0, 0.884);
 }
-.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active,.btn-primary:active:focus {
     color: #fff;
     background-color: #000;
     border-color: rgba(0, 0, 0, 0.884);
