@@ -9,6 +9,14 @@
       <ion-row>
         <ion-col>
           <input
+            type="email"
+            placeholder="E-Mail"
+            name="email"
+            required
+            id="email"
+            class="form-control credentials"
+          />
+          <input
             type="text"
             placeholder="Username"
             name="username"
@@ -24,6 +32,14 @@
             id="password"
             class="form-control credentials"
           />
+          <input
+            type="password"
+            placeholder="Re-Type Password"
+            name="repassword"
+            required
+            id="repassword"
+            class="form-control credentials"
+          />
         </ion-col>
       </ion-row>
 
@@ -37,15 +53,15 @@
             [disabled]="!registerForm.form.valid"
             class="btn btn-primary credentials-btn"
           >
-            Login
+            Register
           </button>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col class="register-col">
-            New to Backpacker?
-            <button ion-button class="register-btn" (click)="register()">
-              Register
+           Already Have an Account?
+            <button ion-button class="register-btn" (click)="login()">
+              Login
             </button>
         </ion-col>
       </ion-row>
