@@ -15,6 +15,9 @@
             required
             id="email"
             class="form-control credentials"
+            ngModel
+
+            [ngClass]="{ 'error' : isErrorInEmail }"
           />
           <input
             type="text"
@@ -23,6 +26,7 @@
             required
             id="name"
             class="form-control credentials"
+            ngModel
           />
 
           <input
@@ -34,6 +38,7 @@
             class="form-control credentials"
             min="0"
             max="100"
+            ngModel
           />
 
           <textarea
@@ -42,6 +47,7 @@
             required
             id="address"
             class="form-control credentials"
+            ngModel
           ></textarea>
 
           <input
@@ -51,6 +57,8 @@
             required
             id="password"
             class="form-control credentials"
+            ngModel
+            [ngClass]="{ 'error' : isErrorInPassword }"
           />
 
           <input
@@ -60,6 +68,8 @@
             required
             id="repassword"
             class="form-control credentials"
+            ngModel
+            [ngClass]="{ 'error' : isErrorInPassword }"
           />
 
         </ion-col>
@@ -67,22 +77,42 @@
 
       <ion-row>
         <ion-col class="signin-col">
-          <button
+          <button *ngIf="isLoading === 0"
             ion-button
             class="submit-btn"
             full
             type="submit"
             [disabled]="!registerForm.form.valid"
             class="btn btn-primary credentials-btn"
+            (click)="register(registerForm)"
           >
             Register
           </button>
+
+          <button *ngIf="isLoading === 1"
+                  ion-button
+                  full
+                  type="submit"
+                  class="btn btn-primary loading-btn"
+          disabled>
+            <ion-spinner name="crescent" color="success"></ion-spinner>
+          </button>
+
+          <button *ngIf="isLoading === 2"
+                  ion-button
+                  full
+                  type="submit"
+                  class="btn btn-primary loading-btn"
+          disabled>
+            <ion-icon name="checkmark-circle-outline"></ion-icon>
+          </button>
+
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col class="register-col">
            Already Have an Account?
-            <button ion-button class="register-btn" (click)="login()">
+            <button ion-button class="register-btn" (click)="login(null)">
               Login
             </button>
         </ion-col>

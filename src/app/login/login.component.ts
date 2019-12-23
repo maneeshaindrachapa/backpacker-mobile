@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,13 +8,22 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  email;
+  password;
+
+  constructor(private router: Router, private route: ActivatedRoute) {
+    route.queryParams.subscribe((data: any) => {
+      if (data) {
+        this.email = data.email;
+      }
+    });
+  }
 
   ngOnInit() {}
   register() {
     this.router.navigate(['./register']);
   }
-  login(){
+  login() {
     this.router.navigate(['./home']);
   }
 }

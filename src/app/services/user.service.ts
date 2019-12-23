@@ -48,8 +48,8 @@ export class UserService {
         this.addSubUserData(authuser.user.uid, userSubData).then(() => {
           resolve({status: true, data: 'User added successfully!'});
         });
-      }).catch((data: any) => {
-        resolve({status: false, data: data.message});
+      }).catch((err: any) => {
+        resolve({status: false, data: err});
       });
     });
   }
