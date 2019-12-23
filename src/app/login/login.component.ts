@@ -78,6 +78,7 @@ export class LoginComponent implements OnInit {
     toast.present();
     return toast.onDidDismiss();
   }
+
   forgetPassword() {
     this.router.navigate(['./forgetpassword']);
   }
