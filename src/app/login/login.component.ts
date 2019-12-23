@@ -34,7 +34,6 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['./register']);
   }
   login() {
-<<<<<<< HEAD
     this.isErrorInEmail = false;
     this.isErrorInPassword = false;
     this.isLoading = true;
@@ -77,12 +76,8 @@ export class LoginComponent implements OnInit {
     return toast.onDidDismiss();
   }
 
-=======
-    this.router.navigate(['./home']);
-  }
   forgetPassword() {
     this.router.navigate(['./forgetpassword']);
   }
->>>>>>> login paths set
 }
 
