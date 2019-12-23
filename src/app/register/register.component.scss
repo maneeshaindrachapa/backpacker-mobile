@@ -1,4 +1,4 @@
-.ion-padding {
+.content {
     height: 100%;
     background-image: url("../../assets/img/2.jpg");
     background-repeat: no-repeat;
@@ -32,6 +32,10 @@
     outline: none;
   }
   input[type="email"]:focus {
+    background-color: rgba($color: #000000, $alpha: 0.85);
+    outline: none;
+  }
+  input[type="number"]:focus {
     background-color: rgba($color: #000000, $alpha: 0.85);
     outline: none;
   }
