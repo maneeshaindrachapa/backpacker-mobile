@@ -16,7 +16,10 @@ export class LoginComponent implements OnInit {
   isErrorInPassword = false;
   isErrorInEmail = false;
 
-  constructor(private router: Router, private route: ActivatedRoute, private userService: UserService, public toastController: ToastController) {
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private userService: UserService,
+              public toastController: ToastController) {
     route.queryParams.subscribe((data: any) => {
       if (data) {
         this.email = data.email;

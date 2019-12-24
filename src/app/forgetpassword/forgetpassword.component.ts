@@ -12,7 +12,7 @@ export class ForgetpasswordComponent implements OnInit {
 
   constructor(private router: Router, private userService: UserService, public toastController: ToastController) { }
 
-  email;
+  email: string;
 
   ngOnInit() {}
 

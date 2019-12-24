@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -26,7 +26,19 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 @font-face {
-    font-family: 'kiona';
-    src: url(assets/fonts/Kiona-Regular.ttf) format("truetype");
+  font-family: "kiona";
+  src: url(assets/fonts/Kiona-Regular.ttf) format("truetype");
 }
 
+.alertCustomCss {
+  --background: white !important;
+  --ion-text-color: #000 !important;
+  --ion-font-family: "kiona";
+  .alert-message{
+    font-size: 12px !important;
+  }
+  button {
+    outline: 0.5px solid #7aa5ee !important;
+    font-size: 12px !important;
+  }
+}

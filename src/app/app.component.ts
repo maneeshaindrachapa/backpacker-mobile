@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
-import {AlertController, Platform} from '@ionic/angular';
+import { AlertController, Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import {UserService} from './services/user.service';
+import { UserService } from './services/user.service';
 import { MenuController } from '@ionic/angular';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -43,16 +43,18 @@ export class AppComponent {
 
   async signOut() {
     const alert = await this.alertController.create({
-      message: 'Do you want to log out ??',
-      buttons: [{
-        text: 'Logout',
-        handler: () => {
-          this.userService.logoutUser().then((data) => {
-            localStorage.removeItem('loggedUser');
-            this.login(null);
-          });
-        }
-      },
+      message: 'Do you want to Sign Out ?',
+      cssClass: 'alertCustomCss',
+      buttons: [
+        {
+          text: 'Logout',
+          handler: () => {
+            this.userService.logoutUser().then(data => {
+              localStorage.removeItem('loggedUser');
+              this.login(null);
+            });
+          }
+        },
         {
           text: 'Cancel',
           role: 'cancel'

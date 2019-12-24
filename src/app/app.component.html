@@ -1,18 +1,43 @@
 <ion-app>
-  <ion-menu side="start" menuId="home_menu" class="home_menu" content-id="content">
+  <ion-menu
+    side="start"
+    menuId="home_menu"
+    class="home_menu"
+    contentId="content"
+    swipeEnabled=false 
+  >
     <ion-header>
       <ion-toolbar class="toolbar">
-        <ion-title style="padding-right: 0px;" slot="start">Backpacker</ion-title>
-        <img src="../assets/img/logo.png" width="50px" slot="primary" class="menu-logo">
+        <ion-title style="padding-right: 0px;" slot="start">
+          Backpacker
+        </ion-title>
+        <img
+          src="../assets/img/logo.png"
+          width="50px"
+          slot="primary"
+          class="menu-logo"
+        />
       </ion-toolbar>
     </ion-header>
     <ion-content id="content">
       <ion-list>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-        <ion-item>Menu Item</ion-item>
-        <ion-item class="sign-out" (click)="signOut()"><ion-icon name="log-out" style="margin-right: 10%;"></ion-icon>sign out</ion-item>
+        <ion-menu-toggle auto-hide="false">
+          <ion-item> <ion-button fill="clear" class="itemBtns" > Menu Item </ion-button></ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle auto-hide="false">
+          <ion-item> <ion-button fill="clear" class="itemBtns" > Menu Item </ion-button></ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle auto-hide="false">
+          <ion-item> <ion-button fill="clear" class="itemBtns" > Menu Item </ion-button></ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle auto-hide="false">
+          <ion-item> <ion-button fill="clear" class="itemBtns" > Menu Item </ion-button></ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item class="sign-out"> <ion-button fill="clear" class="itemBtns" (click)="signOut()"><ion-icon name="log-out" style="margin-right: 10%;"></ion-icon>
+            sign out </ion-button>
+          </ion-item>
+        </ion-menu-toggle>
       </ion-list>
     </ion-content>
   </ion-menu>
