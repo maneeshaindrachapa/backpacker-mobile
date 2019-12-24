@@ -32,13 +32,24 @@
 
 .alertCustomCss {
   --background: white !important;
-  --ion-text-color: #000 !important;
+  //--ion-text-color: #000 !important;
   --ion-font-family: "kiona";
   .alert-message{
     font-size: 12px !important;
   }
+  .alert-head{
+    text-align: center;
+  }
+
+  .alert-button-group{
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
   button {
-    outline: 0.5px solid #7aa5ee !important;
+    //outline: 0.5px solid #7aa5ee !important;
     font-size: 12px !important;
   }
 }

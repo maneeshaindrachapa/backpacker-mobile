@@ -20,9 +20,14 @@ export class LoginComponent implements OnInit {
               private route: ActivatedRoute,
               private userService: UserService,
               public toastController: ToastController) {
+
     route.queryParams.subscribe((data: any) => {
       if (data) {
         this.email = data.email;
+        this.password = data.password;
+      } else {
+        this.email = null;
+        this.password = null;
       }
     });
 

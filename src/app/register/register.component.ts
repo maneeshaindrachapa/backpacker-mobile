@@ -19,8 +19,8 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {}
 
-  login(param) {
-    this.router.navigate(['./login'], { queryParams: { email: param } });
+  login(regemail, regpassword) {
+    this.router.navigate(['./login'], { queryParams: { email: regemail, password:  regpassword} });
   }
 
   register(form: any) {
@@ -36,9 +36,9 @@ export class RegisterComponent implements OnInit {
         this.userService.registerUser(user).then((data: any) => {
           if (data.status) {
             this.isLoading = 2;
-            this.presentToast('Successfully Registered!', 1000).then(() => {
-              this.presentToast('Please login to the system with your credentials!', 1000).then(() => {
-                this.login(user.email);
+            this.presentToast('Successfully Sign up to to backpacker!', 1000).then(() => {
+              this.presentToast('Please sign in to the system with your credentials!', 1000).then(() => {
+                this.login(user.email, null);
               });
             });
           } else {

@@ -14,6 +14,8 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {UserService} from './services/user.service';
 import {AngularFireAuthModule} from '@angular/fire/auth';
+import {OpenNativeSettings} from '@ionic-native/open-native-settings/ngx';
+import { Network } from '@ionic-native/network/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,7 +30,9 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-      UserService
+      UserService,
+    OpenNativeSettings,
+    Network
   ],
   bootstrap: [AppComponent]
 })
