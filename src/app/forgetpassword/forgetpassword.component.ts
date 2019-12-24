@@ -19,7 +19,9 @@ export class ForgetpasswordComponent implements OnInit {
   sendEmail() {
     if (this.email) {
       this.userService.sendPasswordReset(this.email).then((data) => {
-        this.presentToast('Password reset link sent to ' + this.email + ' successfully!', 2000);
+        this.presentToast('Password reset link sent to ' + this.email + ' successfully!', 2000).then(() => {
+          this.login();
+        });
       }).catch((err: any) => {
         this.presentToast(err.message, 1000);
       });
