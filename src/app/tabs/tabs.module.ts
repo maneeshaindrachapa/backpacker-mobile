@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 import { TabsComponent } from './tabs.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: '',
     component: TabsComponent,
@@ -13,8 +14,7 @@ const routes: Routes = [
         { path: 'home', loadChildren: () => import('../home/home.module').then(m => m.HomeModule) },
         { path: 'settings', loadChildren: () => import('../settings/settings.module').then(m => m.SettingsModule) },
     ]
-  },
-  { path: '', redirectTo: 'home/home', pathMatch: 'full' },
+  }
 ];
 @NgModule({
   imports: [
