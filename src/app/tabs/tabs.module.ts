@@ -13,6 +13,7 @@ const routes: Routes = [
     children: [
         { path: 'home', loadChildren: () => import('../home/home.module').then(m => m.HomeModule) },
         { path: 'settings', loadChildren: () => import('../settings/settings.module').then(m => m.SettingsModule) },
+        { path: 'add', loadChildren: () => import('../add/add.module').then(m => m.AddPageModule) }
     ]
   }
 ];

@@ -1,0 +1,52 @@
+ion-content{
+  overflow: hidden;
+}
+
+.ion-activatable {
+  position: relative;
+  overflow: hidden;
+}
+
+.operations-group{
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  bottom: 60px;
+}
+
+.outer-circle{
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  border: solid lightgray 10px;
+  background-color: white;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  bottom:12.5px;
+
+  //.inner-circle{
+  //  position: relative;
+  //  left: 10px;
+  //  top: 10px;
+  //  width: 45px;
+  //  height: 45px;
+  //  border-radius: 50%;
+  //  background-color: white;
+  //}
+
+}
+
+
+.sub-operations-btn{
+  color: lightgray;
+  border-radius: 50%;
+  font-size: 30px;
+}
+
+.sub-operations-btn-activated{
+  color: black;
+}
+

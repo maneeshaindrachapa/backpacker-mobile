@@ -16,7 +16,10 @@ import {UserService} from './services/user.service';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {OpenNativeSettings} from '@ionic-native/open-native-settings/ngx';
 import { Network } from '@ionic-native/network/ngx';
-
+import { Camera } from '@ionic-native/camera/ngx';
+import { CameraPreview } from '@ionic-native/camera-preview/ngx';
+import { File } from '@ionic-native/file/ngx';
+import {AngularFireStorageModule} from '@angular/fire/storage';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -24,7 +27,8 @@ import { Network } from '@ionic-native/network/ngx';
     AngularFireModule.initializeApp(environment.firebase),
       AngularFirestoreModule,
       AngularFireDatabaseModule,
-      AngularFireAuthModule
+      AngularFireAuthModule,
+      AngularFireStorageModule
   ],
   providers: [
     StatusBar,
@@ -32,7 +36,10 @@ import { Network } from '@ionic-native/network/ngx';
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
       UserService,
     OpenNativeSettings,
-    Network
+    Network,
+      Camera,
+      File,
+      CameraPreview
   ],
   bootstrap: [AppComponent]
 })

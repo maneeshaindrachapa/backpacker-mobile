@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Photo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+<!--    <ion-fab vertical="bottom" horizontal="center" slot="fixed">-->
+<!--        <ion-fab-button color="light">-->
+<!--            <ion-icon name="camera"></ion-icon>-->
+<!--        </ion-fab-button>-->
+<!--    </ion-fab>-->
+<div class="operations-group">
+    <ion-row>
+        <ion-col text-right>
+            <ion-icon class="sub-operations-btn" name="sync" (click)="switchCamera()" margin-vertical></ion-icon>
+        </ion-col>
+        <ion-col margin-horizontal>
+            <div class="outer-circle ion-activatable" (click)="capture()">
+<!--                <button class="rounded-circle inner-circle" (click)="capture()"></button>-->
+                <ion-ripple-effect></ion-ripple-effect>
+            </div>
+        </ion-col>
+        <ion-col>
+            <ion-icon class="sub-operations-btn" name="flash" *ngIf="isRearCamOn && !isFlashOn" (click)="toggleFlash()" margin-vertical></ion-icon>
+            <ion-icon class="sub-operations-btn" name="flash-off" *ngIf="isRearCamOn && isFlashOn" (click)="toggleFlash()" margin-vertical></ion-icon>
+        </ion-col>
+    </ion-row>
+</div>
+
+
+</ion-content>
