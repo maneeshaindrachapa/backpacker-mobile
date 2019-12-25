@@ -27,24 +27,42 @@ export class SensorsService {
     });
   }
 
-  getLightSensorData() {
+  getLightSensorData(time: any) {
+    let timeInterval = time / 10;
+    let lightPerPeriod = 0
     this.sensors.disableSensor();
-    this.sensors.enableSensor(TYPE_SENSOR.LIGHT);
+
     // this.sensors.enableSensor("LIGHT");
-    setInterval(() => {
+    this.sensors.enableSensor(TYPE_SENSOR.LIGHT);
+
+    // repeat with the interval of period seconds
+    let lightPerPeriodCalc = setInterval(() => {
       this.sensors.getState().then((values) => {
-        this.light = values[0];
+        lightPerPeriod += values[0]
       });
-    }, 300);
+    }, timeInterval)
+
+    // after given seconds stop
+    setTimeout(() => { clearInterval(lightPerPeriodCalc); this.light = lightPerPeriod/10;}, time);
   }
 
-  getMicrophoneData() {
-    setInterval(() => {
+  getMicrophoneData(time: any) {
+    let timeInterval = time / 10;
+    let dbPerPeriod = 0;
+
+    // repeat with the interval of period seconds
+    let dbPerPeriodCalc = setInterval(() => {
       // Start listening
-      const subscription = this.dbMeter.start().subscribe(
-        data => this.microphone = data
+      let subscription = this.dbMeter.start().subscribe(
+        data => {
+          dbPerPeriod += data;
+          console.log(dbPerPeriod);
+        }
       );
-    }, 1000);
+    }, timeInterval);
+
+    // after given seconds stop
+    setTimeout(() => { clearInterval(dbPerPeriodCalc); this.microphone = (dbPerPeriod/10); }, time);
   }
 
 }
