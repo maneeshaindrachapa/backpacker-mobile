@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { HomeComponent } from './home.component';
+import { ViewDetailsComponent } from './view-details.component';
 
 @NgModule({
   imports: [
@@ -13,13 +13,10 @@ import { HomeComponent } from './home.component';
     RouterModule.forChild([
       {
         path: '',
-        children: [
-          { path: '',  component: HomeComponent },
-          { path: 'view', loadChildren: () => import('../view-details/view-details.module').then(m => m.ViewDetailsModule) }
-        ]
+        component: ViewDetailsComponent
       }
     ])
   ],
-  declarations: [HomeComponent]
+  declarations: [ViewDetailsComponent]
 })
-export class HomeModule { }
+export class ViewDetailsModule { }
