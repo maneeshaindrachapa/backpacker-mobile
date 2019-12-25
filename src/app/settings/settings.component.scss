@@ -2,3 +2,16 @@
   position: relative;
   overflow: hidden;
 }
+.ion-padding{
+  padding-top:0px;
+}
+ion-content{
+  font-family: "kiona" !important;
+  background-image: url("../../assets/img/8_1.jpg");
+  background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right center;
+}
+ion-label{
+  font-family: 'kiona' !important;
+}
