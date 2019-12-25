@@ -29,6 +29,18 @@
   font-family: "kiona";
   src: url(assets/fonts/Kiona-Regular.ttf) format("truetype");
 }
+@font-face {
+  font-family: "poppins-regular";
+  src: url(assets/fonts/PoppinsRegular.ttf) format("truetype");
+}
+@font-face {
+  font-family: "poppins-medium";
+  src: url(assets/fonts/PoppinsMedium.ttf) format("truetype");
+}
+@font-face {
+  font-family: "poppins-semibold";
+  src: url(assets/fonts/PoppinsSemiBold.ttf) format("truetype");
+}
 
 .alertCustomCss {
   --background: white !important;
