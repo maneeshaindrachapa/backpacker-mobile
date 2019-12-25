@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../services/user.service';
-import {Router} from '@angular/router';
-import {AlertController} from '@ionic/angular';
+import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +12,7 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router, private userService: UserService) {}
 
   ngOnInit() {}
-
-
+  view() {
+    this.router.navigate(['home', 'home', 'view']/*,{{ queryParams: { email: regemail, password:  regpassword} }}*/);
+  }
 }

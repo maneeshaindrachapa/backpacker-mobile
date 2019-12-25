@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -14,7 +13,10 @@ import { HomeComponent } from './home.component';
     RouterModule.forChild([
       {
         path: '',
-        component: HomeComponent
+        children: [
+          { path: '',  component: HomeComponent },
+          { path: 'view', loadChildren: () => import('../view-details/view-details.module').then(m => m.ViewDetailsModule) }
+        ]
       }
     ])
   ],
