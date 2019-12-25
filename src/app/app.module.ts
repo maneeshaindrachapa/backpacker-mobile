@@ -20,6 +20,7 @@ import { Camera } from '@ionic-native/camera/ngx';
 import { CameraPreview } from '@ionic-native/camera-preview/ngx';
 import { File } from '@ionic-native/file/ngx';
 import {AngularFireStorageModule} from '@angular/fire/storage';
+import {UtilitiesService} from './services/utilities.service';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -39,7 +40,8 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
     Network,
       Camera,
       File,
-      CameraPreview
+      CameraPreview,
+    UtilitiesService
   ],
   bootstrap: [AppComponent]
 })

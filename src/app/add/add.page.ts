@@ -3,6 +3,8 @@ import {AngularFireStorage} from '@angular/fire/storage';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview/ngx';
+import {Router} from '@angular/router';
+import {UtilitiesService} from '../services/utilities.service';
 
 @Component({
   selector: 'app-add',
@@ -14,18 +16,26 @@ export class AddPage implements OnInit, OnDestroy {
   picture;
   isFlashOn = false;
   isRearCamOn = true;
-  constructor(private camera: Camera, private cameraPreview: CameraPreview, private file: File, private storage: AngularFireStorage) {
+  constructor(private router: Router,
+              private camera: Camera,
+              private cameraPreview: CameraPreview,
+              private file: File,
+              private storage: AngularFireStorage, private utilitiesService: UtilitiesService) {
     // this.capture();
-    this.startCameraPreview();
+    // this.startCameraPreview();
+    this.utilitiesService.backToCameraPreview.subscribe((data) => {
+      this.picture = null;
+      this.startCameraPreview();
+    });
   }
 
   ngOnInit() {
-    this.startCameraPreview();
+    // this.startCameraPreview();
   }
 
   // tslint:disable-next-line:use-lifecycle-interface
   ngOnDestroy() {
-    this.cameraPreview.stopCamera();
+    // this.cameraPreview.stopCamera();
   }
 
   public ionViewWillEnter() {
@@ -63,7 +73,6 @@ export class AddPage implements OnInit, OnDestroy {
   // }
 
   startCameraPreview() {
-    console.log( window.screen.width * 0.8);
     const cameraPreviewOpts: CameraPreviewOptions = {
       x: 0,
       y: 56,
@@ -89,17 +98,21 @@ export class AddPage implements OnInit, OnDestroy {
     };
 
     this.cameraPreview.takePicture(pictureOpts).then((imageData) => {
-      // this.picture = 'data:image/jpeg;base64,' + imageData;
-      const filename = imageData.substring(imageData.lastIndexOf('/') + 1);
-      const path = imageData.substring(0, imageData.lastIndexOf('/') + 1);
-      this.file.readAsDataURL(path, filename).then(base64data => {
-        this.picture = base64data;
-        console.log(base64data);
-        // this.storage.ref('pictures').putString(base64data, 'data_url');
-        // this.storage.ref('/location_images/test_picture').putString(base64data, 'data_url').percentageChanges().subscribe((data) => {
-        //   console.log(data);
-        // });
-      });
+      this.picture = 'data:image/jpeg;base64,' + imageData;
+      this.router.navigate(['./add/readings'], { queryParams: { picture: this.picture} });
+      this.cameraPreview.stopCamera();
+      // this.router.navigate(['./add/readings'], { queryParams: { picture: this.picture} });
+
+      // const filename = imageData.substring(imageData.lastIndexOf('/') + 1);
+      // const path = imageData.substring(0, imageData.lastIndexOf('/') + 1);
+      // this.file.readAsDataURL(path, filename).then(base64data => {
+      //   this.picture = base64data;
+      //   console.log(base64data);
+      //   // this.storage.ref('pictures').putString(base64data, 'data_url');
+      //   // this.storage.ref('/location_images/test_picture').putString(base64data, 'data_url').percentageChanges().subscribe((data) => {
+      //   //   console.log(data);
+      //   // });
+      // });
     }, (err) => {
       console.log(err);
       // add alert here

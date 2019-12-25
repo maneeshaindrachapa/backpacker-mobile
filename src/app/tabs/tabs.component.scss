@@ -1,5 +1,12 @@
 ion-tab-bar {
     //--background: #000;
     height: 45px;
+  ion-tab-button{
+    color: lightgray;
+  }
+
+  .tab-selected{
+    color: black;
+  }
   }
 
