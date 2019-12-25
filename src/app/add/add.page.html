@@ -5,8 +5,9 @@
 </ion-header>
 
 <ion-content>
-    <img [src]="picture" *ngIf="picture" class="captured-image">
-    <div class="operations-group">
+    <div *ngIf="isLoading" class="capture-loading-img-wrapper">
+        <img src="../../../assets/img/capture_loading.gif" class="capture-loading-img" margin>
+    </div>    <div class="operations-group">
         <ion-row>
             <ion-col text-right>
                 <ion-icon class="sub-operations-btn" name="sync" (click)="switchCamera()" margin-vertical></ion-icon>

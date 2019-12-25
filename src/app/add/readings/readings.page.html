@@ -1,16 +1,74 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="add" (click)="goback();"></ion-back-button>
-    </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button>next</ion-button>
-    </ion-buttons>
-    <ion-title>
-    </ion-title>
- </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="add" *ngIf="step==0" (click)="closeView();"></ion-back-button>
+            <!--      <ion-back-button defaultHref="#" *ngIf="step>=1" (click)="goback();" ></ion-back-button>-->
+            <ion-button *ngIf="step>=1" (click)="goBack();"
+                        class="sc-ion-back-button-md-h sc-ion-back-button-md-s md button back-button-has-icon-only ion-activatable ion-focusable show-back-button hydrated">
+          <span class="button-inner sc-ion-back-button-md">
+            <ion-icon class="sc-ion-back-button-md md hydrated" name="arrow-back"></ion-icon>
+          </span>
+                <ion-ripple-effect class="sc-ion-back-button-md md unbounded hydrated"
+                                   role="presentation"></ion-ripple-effect>
+            </ion-button>
+        </ion-buttons>
+        <ion-title *ngIf="step==0" no-padding>
+            <i class="far fa-image"></i>&nbsp;Picture
+        </ion-title>
+        <ion-title *ngIf="step==1" no-padding>
+            <i class="fab fa-500px"></i>&nbsp;Status
+        </ion-title>
+        <ion-title *ngIf="step==2" no-padding>
+            <i class="fas fa-share-alt"></i>&nbsp;Social
+        </ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="next()" *ngIf="step<2 && !isTimerChanging">Next&nbsp;<i class="fas fa-forward"></i></ion-button>
+            <ion-button (click)="share()" *ngIf="step==2">Share&nbsp;<i class="fas fa-share"></i></ion-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <img [src]="picture" class="captured-image">
+<ion-content id="step-1" *ngIf="step==0">
+    <div *ngIf="!picture" class="capture-loading-img-wrapper">
+        <img src="../../../assets/img/capture_loading.gif" class="capture-loading-img" margin>
+    </div>
+    <img *ngIf="picture" [src]="picture" class="captured-image">
+
+</ion-content>
+
+<ion-content id="step-2" *ngIf="step==1">
+    <div *ngIf="isTimerChanging">
+        <h5 text-center no-margin margin-top>Change Sensing Interval</h5>
+        <h1 text-center no-margin margin-top class="timer-value">{{ readingInterval }}s</h1>
+        <ion-item>
+            <ion-range min="10" max="100" color="dark" no-padding padding-start padding-end
+                       [(ngModel)]="readingInterval">
+                <ion-text slot="start">10s</ion-text>
+                <ion-text slot="end">100s</ion-text>
+            </ion-range>
+        </ion-item>
+        <ion-button expand="round" color="light" size="large" class="set-interval-btn" (click)="isTimerChanging=false">Set Interval</ion-button>
+    </div>
+
+    <div *ngIf="!isTimerChanging">
+        <h5 text-center no-margin margin-top>Capture Environment Status</h5>
+        <ion-fab vertical="center" horizontal="center" slot="fixed" class="get-status-wrapper">
+        <ion-fab-button color="light" class='get-status-btn' (click)="sensorsCaptureToggle()"
+                        [ngClass]="{ 'get-status-btn-animate' : isSensorsCapturing}">
+            {{ isSensorsCapturing? 'Sensor Capture': '' }}<br *ngIf="isSensorsCapturing">
+          {{ capturingBtnText }}
+        </ion-fab-button>
+    </ion-fab>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="!isSensorsCapturing">
+        <ion-fab-button color="light" (click)="isTimerChanging = true">
+            {{ readingInterval }}s
+        </ion-fab-button>
+    </ion-fab>
+    </div>
+
+</ion-content>
+
+<ion-content id="step-3" *ngIf="step==2">
+    step 3
 </ion-content>

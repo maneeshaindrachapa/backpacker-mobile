@@ -39,7 +39,6 @@ ion-content{
 
 }
 
-
 .sub-operations-btn{
   color: lightgray;
   border-radius: 50%;
@@ -53,4 +52,22 @@ ion-content{
 .captured-image{
   width: 100vw;
   height: 100vw;
+}
+
+.capture-loading-img-wrapper{
+  width: 100vw;
+  height: 100vw;
+  background-image: url("../../assets/img/capture_loading_back.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.capture-loading-img{
+  width: 60vw;
+  height: 60vw;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 20vw auto;
+  opacity:0.4;
 }

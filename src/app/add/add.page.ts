@@ -14,6 +14,7 @@ import {UtilitiesService} from '../services/utilities.service';
 export class AddPage implements OnInit, OnDestroy {
 
   picture;
+  isLoading = false;
   isFlashOn = false;
   isRearCamOn = true;
   constructor(private router: Router,
@@ -25,6 +26,7 @@ export class AddPage implements OnInit, OnDestroy {
     // this.startCameraPreview();
     this.utilitiesService.backToCameraPreview.subscribe((data) => {
       this.picture = null;
+      this.isLoading = false;
       this.startCameraPreview();
     });
   }
@@ -39,6 +41,7 @@ export class AddPage implements OnInit, OnDestroy {
   }
 
   public ionViewWillEnter() {
+    this.isLoading = false;
     this.startCameraPreview();
   }
 
@@ -91,6 +94,8 @@ export class AddPage implements OnInit, OnDestroy {
   }
 
   capture() {
+    this.router.navigate(['./add/readings'], { queryParams: { picture: this.picture} });
+    this.isLoading = true;
     const pictureOpts: CameraPreviewPictureOptions = {
       width: 1280,
       height: 1280,
