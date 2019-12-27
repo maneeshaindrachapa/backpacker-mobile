@@ -21,6 +21,11 @@ import { CameraPreview } from '@ionic-native/camera-preview/ngx';
 import { File } from '@ionic-native/file/ngx';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {UtilitiesService} from './services/utilities.service';
+import {SensorsService} from './services/sensors.service';
+import {Geolocation} from '@ionic-native/geolocation/ngx';
+import { Sensors } from '@ionic-native/sensors/ngx';
+import { DBMeter } from '@ionic-native/db-meter/ngx';
+import {GoogleMaps, GoogleMap } from '@ionic-native/google-maps/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -41,7 +46,13 @@ import {UtilitiesService} from './services/utilities.service';
       Camera,
       File,
       CameraPreview,
-    UtilitiesService
+    UtilitiesService,
+      SensorsService,
+      Geolocation,
+      Sensors,
+      DBMeter,
+      GoogleMaps,
+      GoogleMaps
   ],
   bootstrap: [AppComponent]
 })

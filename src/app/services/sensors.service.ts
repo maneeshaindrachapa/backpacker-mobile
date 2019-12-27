@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Sensors, TYPE_SENSOR } from '@ionic-native/sensors/ngx';
 import { DBMeter } from '@ionic-native/db-meter/ngx';
+import {Platform} from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +13,22 @@ export class SensorsService {
   longitude: number;
   altitude: number;
   light: number;
-  microphone: number;
-
-  constructor(private geolocation: Geolocation, private sensors: Sensors, private dbMeter: DBMeter) {
+  constructor(private geolocation: Geolocation, private sensors: Sensors, private dbMeter: DBMeter,private platform: Platform) {
     this.light = 0;
+    platform.ready().then(() => {
+      this.initSensor();
+    });
+  }
+
+  initSensor() {
+    this.sensors.enableSensor(TYPE_SENSOR.LIGHT).then(() => {
+      setInterval(() => {
+        this.sensors.getState().then((values) => {
+          console.log(values);
+          this.light = values[0];
+        });
+      }, 300);
+    });
   }
 
   getCurrentPositionData() {
@@ -28,7 +41,7 @@ export class SensorsService {
   }
 
   getLightSensorData(time: any) {
-    let timeInterval = time / 10;
+    const timeInterval = time / 10;
     let lightPerPeriod = 0
     this.sensors.disableSensor();
 
@@ -36,7 +49,7 @@ export class SensorsService {
     this.sensors.enableSensor(TYPE_SENSOR.LIGHT);
 
     // repeat with the interval of period seconds
-    let lightPerPeriodCalc = setInterval(() => {
+    const lightPerPeriodCalc = setInterval(() => {
       this.sensors.getState().then((values) => {
         lightPerPeriod += values[0]
       });
@@ -46,23 +59,25 @@ export class SensorsService {
     setTimeout(() => { clearInterval(lightPerPeriodCalc); this.light = lightPerPeriod/10;}, time);
   }
 
-  getMicrophoneData(time: any) {
-    let timeInterval = time / 10;
-    let dbPerPeriod = 0;
+  getMicrophoneData(interval: any) {
+    let sensorReadingSum = 0;
+    let sensingRounds = 0;
 
-    // repeat with the interval of period seconds
-    let dbPerPeriodCalc = setInterval(() => {
-      // Start listening
-      let subscription = this.dbMeter.start().subscribe(
-        data => {
-          dbPerPeriod += data;
-          console.log(dbPerPeriod);
-        }
-      );
-    }, timeInterval);
+    // Subscribe sensor reading event
+    const subscription = this.dbMeter.start().subscribe(
+          data => {
+            sensorReadingSum += data;
+            sensingRounds += 1;
+          } );
 
-    // after given seconds stop
-    setTimeout(() => { clearInterval(dbPerPeriodCalc); this.microphone = (dbPerPeriod/10); }, time);
+    // wait given time period and stop sensing
+    return new Promise(resolve => {
+      setTimeout(() => {
+        subscription.unsubscribe();
+        const avgSensorReading = sensorReadingSum / sensingRounds;
+        resolve(avgSensorReading);
+      }, interval * 1000);
+    });
   }
 
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../services/user.service';
-import {ToastController} from '@ionic/angular';
+import {LoadingController, ToastController} from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -15,11 +15,12 @@ export class LoginComponent implements OnInit {
   isLoading = false;
   isErrorInPassword = false;
   isErrorInEmail = false;
-
+  
   constructor(private router: Router,
               private route: ActivatedRoute,
               private userService: UserService,
-              public toastController: ToastController) {
+              public toastController: ToastController,
+              public loadingController: LoadingController) {
 
     route.queryParams.subscribe((data: any) => {
       if (data) {
@@ -34,13 +35,17 @@ export class LoginComponent implements OnInit {
     const loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
     if (loggedUser) {
       this.router.navigate(['./home']);
+    } else {
     }
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
+
   register() {
     this.router.navigate(['./register']);
   }
+
   login() {
     this.isErrorInEmail = false;
     this.isErrorInPassword = false;
@@ -87,5 +92,6 @@ export class LoginComponent implements OnInit {
   forgetPassword() {
     this.router.navigate(['./forgetpassword']);
   }
-}
 
+
+}

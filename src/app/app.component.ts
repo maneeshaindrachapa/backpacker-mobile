@@ -8,6 +8,7 @@ import { MenuController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import {Network} from '@ionic-native/network/ngx';
 import {OpenNativeSettings} from '@ionic-native/open-native-settings/ngx';
+import {ReadingsPage} from './add/readings/readings.page';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,6 @@ export class AppComponent {
 
   // tslint:disable-next-line:variable-name
   netConnAlert;
-
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -31,56 +31,54 @@ export class AppComponent {
     private network: Network
   ) {
     this.initializeApp();
-    this.connEventSubscription();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.connEventSubscription();
     });
   }
 
-  openHome_menu() {
-    this.menu.enable(true, 'home_menu');
-    this.menu.open('home_menu');
-  }
+  // openHome_menu() {
+  //   this.menu.enable(true, 'home_menu');
+  //   this.menu.open('home_menu');
+  // }
 
   login(param) {
     this.router.navigate(['./login'], { queryParams: { email: param } });
   }
 
-  async signOut() {
-    const alert = await this.alertController.create({
-      header: 'Sign out',
-      // tslint:disable-next-line:max-line-length
-      message: '<div class="w-100 text-center"><i class="fas fa-sign-out-alt fa-4x" ></i><br><br>Do you want to sign out ?</div>',
-
-      cssClass: 'alertCustomCss',
-      buttons: [
-        {
-          text: 'Sign out',
-          handler: () => {
-            this.userService.logoutUser().then(data => {
-              localStorage.removeItem('loggedUser');
-              this.login(null);
-            });
-          }
-        },
-        {
-          text: 'Cancel',
-          role: 'cancel'
-        }
-      ]
-    });
-    await alert.present();
-  }
+  // async signOut() {
+  //   const alert = await this.alertController.create({
+  //     header: 'Sign out',
+  //     // tslint:disable-next-line:max-line-length
+  //     message: '<div class="w-100 text-center"><i class="fas fa-sign-out-alt fa-4x" ></i><br><br>Do you want to sign out ?</div>',
+  //
+  //     cssClass: 'alertCustomCss',
+  //     buttons: [
+  //       {
+  //         text: 'Sign out',
+  //         handler: () => {
+  //           this.userService.logoutUser().then(data => {
+  //             localStorage.removeItem('loggedUser');
+  //             this.login(null);
+  //           });
+  //         }
+  //       },
+  //       {
+  //         text: 'Cancel',
+  //         role: 'cancel'
+  //       }
+  //     ]
+  //   });
+  //   await alert.present();
+  // }
 
   connEventSubscription() {
     this.network.onConnect().subscribe(() => {
-      // console.log('network connected!');
-      // console.log(this.netConnAlert);
-      if(this.netConnAlert) {
+      if (this.netConnAlert) {
         this.netConnAlert.dismiss();
       }
     });
@@ -101,7 +99,7 @@ export class AppComponent {
       buttons: [
         {
           text: 'Open Settings',
-          handler: (blah) => {
+          handler: () => {
             this.openNativeSettings.open('settings').then(() => {
             });
           }
