@@ -3,14 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {UtilitiesService} from '../../services/utilities.service';
 import {Platform} from '@ionic/angular';
 import {SensorsService} from '../../services/sensors.service';
-import {
-  GoogleMaps,
-  GoogleMap,
-  GoogleMapsEvent,
-  GoogleMapOptions,
-  Marker,
-  Environment
-} from '@ionic-native/google-maps/ngx';
+
 @Component({
   selector: 'app-readings',
   templateUrl: './readings.page.html',
@@ -24,7 +17,6 @@ export class ReadingsPage implements OnInit {
   isSensorCapturingDone = true;
   isTimerChanging = false;
   capturingBtnText = 'START';
-  map: GoogleMap;
 
   constructor(private route: ActivatedRoute,
               private utilitiesService: UtilitiesService,
@@ -43,7 +35,6 @@ export class ReadingsPage implements OnInit {
       this.platform.backButton.subscribe(() => {
         this.closeView();
       });
-      this.loadMap();
     });
   }
 
@@ -120,38 +111,4 @@ export class ReadingsPage implements OnInit {
     console.log('share clicked');
   }
 
-  loadMap() {
-
-    // This code is necessary for browser
-    Environment.setEnv({
-      API_KEY_FOR_BROWSER_RELEASE: 'AIzaSyAlHGtuf8gdRngzbQdGY8cqS2L1gFOaEvc',
-      API_KEY_FOR_BROWSER_DEBUG: 'AIzaSyAlHGtuf8gdRngzbQdGY8cqS2L1gFOaEvc'
-    });
-
-    const mapOptions: GoogleMapOptions = {
-      camera: {
-        target: {
-          lat: 7.8731,
-          lng: 80.7718
-        },
-        zoom: 7.5
-      },
-      mapType: 'ROADMAP'
-    };
-
-    this.map = GoogleMaps.create('map_canvas', mapOptions);
-
-    const marker: Marker = this.map.addMarkerSync({
-      title: 'Ionic',
-      icon: 'blue',
-      animation: 'DROP',
-      position: {
-        lat: 6.0559758,
-        lng: 80.1769773
-      }
-    });
-    marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-      alert('clicked');
-    });
-  }
 }

@@ -16,20 +16,17 @@
             <i class="far fa-image"></i>&nbsp;Picture
         </ion-title>
         <ion-title *ngIf="step==1" no-padding>
-            <i class="fas fa-map-marked-alt"></i>&nbsp;Location
-        </ion-title>
-        <ion-title *ngIf="step==2" no-padding>
             <i class="fab fa-500px"></i>&nbsp;Status Capturing
         </ion-title>
-        <ion-title *ngIf="step==3" no-padding>
+        <ion-title *ngIf="step==2" no-padding>
             <i class="fab fa-500px"></i>&nbsp;Captured Status
         </ion-title>
-        <ion-title *ngIf="step==4" no-padding>
+        <ion-title *ngIf="step==3" no-padding>
             <i class="fas fa-share-alt"></i>&nbsp;Social
         </ion-title>
         <ion-buttons slot="end">
-            <ion-button (click)="next()" *ngIf="step<4 && !isTimerChanging">Next&nbsp;<i class="fas fa-forward"></i></ion-button>
-            <ion-button (click)="share()" *ngIf="step==4">Share&nbsp;<i class="fas fa-share"></i></ion-button>
+            <ion-button (click)="next()" *ngIf="step<3 && !isTimerChanging">Next&nbsp;<i class="fas fa-forward"></i></ion-button>
+            <ion-button (click)="share()" *ngIf="step==3">Share&nbsp;<i class="fas fa-share"></i></ion-button>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
@@ -37,21 +34,19 @@
 <ion-content>
 <!--    Step 01 Start-->
     <div class="full-page" *ngIf="step==0">
-    <div *ngIf="!picture" class="capture-loading-img-wrapper">
+    <div *ngIf="!picture" class="capture-loading-img-wrapper mb-1">
         <img src="../../../assets/img/capture_loading.gif" class="capture-loading-img" margin>
     </div>
-    <img *ngIf="picture" [src]="picture" class="captured-image">
+    <img *ngIf="picture" [src]="picture" class="captured-image mb-1">
+
+        <h6 class="text-center mt-4"><i class="fas fa-map-marked-alt fa-3x"></i></h6>
+        <h6 class="text-center shadow-sm">Your captured image on</h6>
+        <h6 class="text-center"><b>Galle Face</b></h6>
     </div>
     <!--    Step 01 End -->
 
     <!--    Step 02 Start-->
     <div class="full-page" *ngIf="step==1">
-        <div #mapElement id="map_canvas"></div>
-    </div>
-    <!--    Step 02 End -->
-
-    <!--    Step 03 Start-->
-    <div class="full-page" *ngIf="step==2">
         <div *ngIf="isTimerChanging">
             <h5 text-center no-margin margin-top>Change Sensing Interval</h5>
             <h1 text-center no-margin margin-top class="timer-value">{{ readingInterval }}s</h1>
@@ -82,16 +77,16 @@
             </ion-fab>
         </div>
     </div>
-    <!--    Step 03 End -->
+    <!--    Step 02 End -->
 
-    <!--    Step 04 Start-->
-    <div class="full-page" *ngIf="step==3">
+    <!--    Step 03 Start-->
+    <div class="full-page" *ngIf="step==2">
         Step 03
     </div>
-    <!--    Step 04 End -->
+    <!--    Step 03 End -->
 
     <!--    Step 05 Start-->
-    <div class="full-page" *ngIf="step==4">
+    <div class="full-page" *ngIf="step==3">
         Step 04
     </div>
     <!--    Step 05 End -->
