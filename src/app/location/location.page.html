@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Location
+      <i class="fas fa-map-marked-alt fa-500px"></i>&nbsp;&nbsp;Location
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,4 +10,8 @@
   <div id="map_canvas" style="height: 100%; width: 100%">
 
   </div>
+ <div class="location-data-wrapper">
+  <h5 text-center class="mt-4">Galle, Srianka.</h5>
+   <div class="btn btn-success w-100 set-location-btn p-3" (click)="setLocation()"><i class="fas fa-street-view"></i>&nbsp;&nbsp;Set Location</div>
+ </div>
 </ion-content>

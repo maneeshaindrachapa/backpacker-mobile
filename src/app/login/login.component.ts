@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
 
     const loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
     if (loggedUser) {
-      this.router.navigate(['./home']);
+      this.router.navigate(['./tabs']);
     } else {
     }
   }
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
         const loggedUser = data.data;
         localStorage.setItem('loggedUser', JSON.stringify(data.data));
         this.isLoading = false;
-        this.router.navigate(['./home']);
+        this.router.navigate(['./tabs']);
       } else {
         switch (data.data.code) {
           case 'auth/wrong-password': {

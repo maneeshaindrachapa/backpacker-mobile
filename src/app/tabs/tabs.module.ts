@@ -22,7 +22,7 @@ const routes: Routes = [
           { path: 'view',
             loadChildren: () =>
             import('../view-details/view-details.module').then(m => m.ViewDetailsModule)
-          }
+          },
         ]
       },
       {
@@ -31,9 +31,13 @@ const routes: Routes = [
           import('../settings/settings.module').then(m => m.SettingsModule)
       },
       {
-        path: 'add',
+        path: 'location',
         loadChildren: () =>
         import('../location/location.module').then(m => m.LocationPageModule)
+      },
+      {
+        path: 'add',
+        loadChildren: () => import('../add/add.module').then( m => m.AddPageModule)
       }
     ]
   }

@@ -9,15 +9,12 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
   },
   { path: 'register', loadChildren: () => import('./register/register.module').then(m => m.RegisterModule)},
-  { path: 'home', loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsModule)},
+  { path: 'tabs', loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsModule)},
   { path: 'forgetpassword', loadChildren: () => import('./forgetpassword/forgetpassword.module').then(m => m.ForgetpasswordModule)},
-  {
-    path: 'add',
-    loadChildren: () => import('./add/add.module').then( m => m.AddPageModule)
-  },  {
-    path: 'location',
-    loadChildren: () => import('./location/location.module').then( m => m.LocationPageModule)
-  }
+  // {
+  //   path: 'location',
+  //   loadChildren: () => import('./location/location.module').then( m => m.LocationPageModule)
+  // }
 
 
 ];

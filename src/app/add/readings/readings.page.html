@@ -2,7 +2,6 @@
     <ion-toolbar>
         <ion-buttons slot="start">
             <ion-back-button defaultHref="add" *ngIf="step==0" (click)="closeView();"></ion-back-button>
-            <!--      <ion-back-button defaultHref="#" *ngIf="step>=1" (click)="goback();" ></ion-back-button>-->
             <ion-button *ngIf="step>=1" (click)="goBack();"
                         class="sc-ion-back-button-md-h sc-ion-back-button-md-s md button back-button-has-icon-only ion-activatable ion-focusable show-back-button hydrated">
           <span class="button-inner sc-ion-back-button-md">

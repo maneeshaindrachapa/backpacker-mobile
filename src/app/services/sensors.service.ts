@@ -9,11 +9,8 @@ import {Platform} from '@ionic/angular';
 })
 export class SensorsService {
 
-  latitude: number;
-  longitude: number;
-  altitude: number;
   light: number;
-  constructor(private geolocation: Geolocation, private sensors: Sensors, private dbMeter: DBMeter,private platform: Platform) {
+  constructor(private geolocation: Geolocation, private sensors: Sensors, private dbMeter: DBMeter, private platform: Platform) {
     this.light = 0;
     platform.ready().then(() => {
       this.initSensor();
@@ -32,11 +29,10 @@ export class SensorsService {
   }
 
   getCurrentPositionData() {
-    const watch = this.geolocation.watchPosition();
-    watch.subscribe((data) => {
-      this.latitude = data.coords.latitude;
-      this.longitude = data.coords.longitude;
-      this.altitude = data.coords.altitude;
+    return new Promise(resolve => {
+      this.geolocation.watchPosition().subscribe((data) => {
+        resolve({position: {lat: data.coords.latitude, lng: data.coords.longitude}, altitude: data.coords.altitude});
+      });
     });
   }
 

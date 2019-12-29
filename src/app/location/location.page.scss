@@ -1,0 +1,26 @@
+.location-data-wrapper{
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 140px;
+  background-color: #FFFFFF;
+  -webkit-border-top-left-radius: 30px;
+  -webkit-border-top-right-radius: 30px;
+  -moz-border-radius-topleft: 30px;
+  -moz-border-radius-topright: 30px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+.set-location-btn{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 0!important;
+  font-weight: bold;
+  font-size: 20px;
+}

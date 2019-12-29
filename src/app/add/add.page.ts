@@ -70,7 +70,7 @@ export class AddPage implements OnInit {
   }
 
   capture() {
-    this.router.navigate(['./add/readings'], { queryParams: { picture: this.picture} });
+    this.router.navigate(['./tabs/add/readings'], { queryParams: { picture: this.picture} });
     this.isLoading = true;
     const pictureOpts: CameraPreviewPictureOptions = {
       width: 1280,
