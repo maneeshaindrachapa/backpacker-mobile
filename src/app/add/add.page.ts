@@ -37,12 +37,12 @@ export class AddPage implements OnInit {
 
   async ngOnInit() {
     await this.platform.ready().then(() => {
-      this.ionViewWillEnter();
       this.rootPage = ReadingsPage;
     });
   }
 
-  public ionViewWillEnter() {
+  async ionViewWillEnter() {
+    await this.platform.ready();
     this.isLoading = false;
     this.startCameraPreview();
   }
@@ -80,10 +80,8 @@ export class AddPage implements OnInit {
 
     this.cameraPreview.takePicture(pictureOpts).then((imageData) => {
       this.picture = 'data:image/jpeg;base64,' + imageData;
-      this.router.navigate(['./add/readings'], { queryParams: { picture: this.picture} });
       this.cameraPreview.stopCamera();
-      this.router.navigate(['./add/readings'], { queryParams: { picture: this.picture} });
-
+      this.router.navigate(['./tabs/add/readings'], { queryParams: { picture: this.picture} });
     }, (err) => {
       console.log(err);
       // add alert here

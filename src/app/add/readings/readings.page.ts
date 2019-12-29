@@ -23,7 +23,6 @@ export class ReadingsPage implements OnInit {
               private platform: Platform,
               private sensorsService: SensorsService,
   ) {
-
     this.step = 0;
     route.queryParams.subscribe((data: any) => {
       if (data) {
@@ -88,18 +87,12 @@ export class ReadingsPage implements OnInit {
     if (this.step !== 0) {
       this.step -= 1;
     }
-    // if (this.step === 2) {
-    //   this.loadMap();
-    // }
   }
 
   next() {
     if (this.step !== 4) {
       this.step += 1;
     }
-    // if (this.step === 2) {
-    //   this.loadMap();
-    // }
   }
 
   closeView() {
