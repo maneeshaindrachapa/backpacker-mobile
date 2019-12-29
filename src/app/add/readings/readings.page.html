@@ -29,14 +29,11 @@
             <i class="fas fa-stopwatch fa-500px"></i>&nbsp;Set Sensing Timer
         </ion-title>
         <ion-title *ngIf="step==2" no-padding>
-            <i class="fab fa-500px"></i>&nbsp;Captured Status
-        </ion-title>
-        <ion-title *ngIf="step==3" no-padding>
             <i class="fas fa-share-alt"></i>&nbsp;Social
         </ion-title>
         <ion-buttons slot="end">
-            <ion-button (click)="next()" *ngIf="step<3 && !isTimerChanging && step!=1">Next&nbsp;<i class="fas fa-forward"></i></ion-button>
-            <ion-button (click)="share()" *ngIf="step==3">Share&nbsp;<i class="fas fa-share"></i></ion-button>
+            <ion-button (click)="next()" *ngIf="step<2 && !isTimerChanging && step!=1">Next&nbsp;<i class="fas fa-forward"></i></ion-button>
+            <ion-button (click)="share()" *ngIf="step==2">Share&nbsp;<i class="fas fa-share"></i></ion-button>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
@@ -63,8 +60,8 @@
             <ion-item>
                 <ion-range min="5" max="50" color="dark" no-padding padding-start padding-end
                            [(ngModel)]="readingInterval">
-                    <ion-text slot="start">10s</ion-text>
-                    <ion-text slot="end">100s</ion-text>
+                    <ion-text slot="start">5s</ion-text>
+                    <ion-text slot="end">50s</ion-text>
                 </ion-range>
             </ion-item>
             <ion-button expand="round" color="light" size="large" class="set-interval-btn" (click)="isTimerChanging=false">Set Interval</ion-button>
@@ -91,14 +88,9 @@
 
     <!--    Step 03 Start-->
     <div class="full-page" *ngIf="step==2">
-        Step 03
+        Add Captured data here
     </div>
     <!--    Step 03 End -->
 
-    <!--    Step 05 Start-->
-    <div class="full-page" *ngIf="step==3">
-        Step 04
-    </div>
-    <!--    Step 05 End -->
 </ion-content>
 
