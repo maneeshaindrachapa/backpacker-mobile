@@ -12,7 +12,7 @@ import {SensorsService} from '../../services/sensors.service';
 export class ReadingsPage implements OnInit {
   picture;
   step = 0;
-  readingInterval = 10;
+  readingInterval = 5;
   isSensorsCapturing = false;
   isSensorCapturingDone = true;
   isTimerChanging = false;
@@ -56,12 +56,8 @@ export class ReadingsPage implements OnInit {
     } else {
       this.capturingBtnText = 'Starting...';
       this.sensorsService.getMicrophoneData(this.readingInterval).then((data) => {
-        console.log(data);
+        alert(data);
       });
-
-      // this.sensorsService.getLightSensorData(this.readingInterval).then((data) => {
-      //   console.log(data);
-      // });
 
       this.capturingBtnTextUpdate(this.readingInterval);
       this.isSensorsCapturing = true;
@@ -76,7 +72,9 @@ export class ReadingsPage implements OnInit {
         if (timerVal >= -1) {
           this.capturingBtnTextUpdate(timerVal);
         } else {
-          this.capturingBtnText = 'Ending...';
+          this.capturingBtnText = 'Done';
+          this.isSensorsCapturing = false;
+          this.next();
         }} else {
           this.capturingBtnText = 'START';
         }

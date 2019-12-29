@@ -35,7 +35,7 @@
             <i class="fas fa-share-alt"></i>&nbsp;Social
         </ion-title>
         <ion-buttons slot="end">
-            <ion-button (click)="next()" *ngIf="step<3 && !isTimerChanging">Next&nbsp;<i class="fas fa-forward"></i></ion-button>
+            <ion-button (click)="next()" *ngIf="step<3 && !isTimerChanging && step!=1">Next&nbsp;<i class="fas fa-forward"></i></ion-button>
             <ion-button (click)="share()" *ngIf="step==3">Share&nbsp;<i class="fas fa-share"></i></ion-button>
         </ion-buttons>
     </ion-toolbar>
@@ -61,7 +61,7 @@
             <h5 text-center no-margin margin-top>Change Sensing Interval</h5>
             <h1 text-center no-margin margin-top class="timer-value">{{ readingInterval }}s</h1>
             <ion-item>
-                <ion-range min="10" max="100" color="dark" no-padding padding-start padding-end
+                <ion-range min="5" max="50" color="dark" no-padding padding-start padding-end
                            [(ngModel)]="readingInterval">
                     <ion-text slot="start">10s</ion-text>
                     <ion-text slot="end">100s</ion-text>
