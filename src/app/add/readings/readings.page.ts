@@ -16,7 +16,6 @@ export class ReadingsPage implements OnInit {
   step = 0;
   readingInterval = 5;
   isSensorsCapturing = false;
-  isSensorCapturingDone = true;
   isTimerChanging = false;
   capturingBtnText = 'START';
   uploadPercentage = 0;
@@ -99,7 +98,7 @@ export class ReadingsPage implements OnInit {
   }
 
   next() {
-    if (this.step !== 4) {
+    if (this.step !== 1) {
       this.step += 1;
     }
   }
