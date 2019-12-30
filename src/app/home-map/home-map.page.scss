@@ -1,0 +1,79 @@
+.toolbar{
+    background-image: url("../../assets/img/4.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    font-family: "kiona";
+  }
+  .logo {
+    display: block;
+    margin: 25% auto;
+  }
+  .list-md.list-inset ion-item:last-child {
+    --border-radius: 0px;
+    --border-width: 0;
+  }
+  .list-ios.list-inset ion-item {
+    --border-width: 0 0 0 0;
+    --inner-border-width: 0;
+  }
+  ion-card{
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    background-color: #fff !important;
+    font-family: "poppins-regular";
+    text-align: justify;
+    text-justify: inter-word;
+    
+  }
+  ion-card-content{
+    font-size: 13px !important;
+    padding: 1px !important;
+    padding-bottom: 5px !important;
+  }
+  ion-item{
+    --border-style:none;
+    padding-left:2px !important;
+  }
+  ion-label{
+    margin:0px;
+  }
+  ion-thumbnail {
+    --border-radius: 5px !important;
+    width: 100px !important;
+    height: 100px !important;
+    display: block;
+    margin:0px;
+    padding:0 7px 0 0;
+  }
+  .card-title {
+    --ion-font-family: "kiona" !important;
+    text-align: left;
+    font-weight: 700;
+  }
+  ion-button {
+    --ion-font-family: "kiona" !important;
+    color: #000;
+    --border-color: #000 !important;
+    font-weight: 700;
+  }
+  ion-searchbar {
+    --background: #fff;
+    font-family: "poppins-regular";
+    padding:0px;
+    margin-top:0px;
+    margin-bottom: 0px;
+    border-radius: 5px;
+  }
+  ion-icon,ion-menu-button {
+    color: #fff;
+    font-size: 25px;
+  }
+  .card-details{
+    font-size: 12px !important;
+    font-family: 'poppins-regular';
+    white-space: normal;
+    position: absolute;
+    top:0px;
+  }
+  

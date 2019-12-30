@@ -8,10 +8,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
   isSearchBarOpened = false;
   inCardView = true;
-  ngOnInit() {}
+
   constructor(private router: Router, private userService: UserService) {}
+
+  ngOnInit() { }
 
   view() {
     this.router.navigate(
@@ -23,6 +26,7 @@ export class HomeComponent implements OnInit {
     );
   }
   toggleview() {
-    this.inCardView = !this.inCardView;
+    this.router.navigate(['./tabs/home-map']);
   }
+
 }
