@@ -10,7 +10,7 @@ import {SensorsService} from '../../services/sensors.service';
   styleUrls: ['./readings.page.scss'],
 })
 export class ReadingsPage implements OnInit {
-  picture;
+  transferData;
   step = 0;
   readingInterval = 5;
   isSensorsCapturing = false;
@@ -26,7 +26,8 @@ export class ReadingsPage implements OnInit {
     this.step = 0;
     route.queryParams.subscribe((data: any) => {
       if (data) {
-        this.picture = data.picture;
+        this.transferData = JSON.parse(data.transferData);
+        console.log(JSON.parse(data.transferData));
       }
     });
 

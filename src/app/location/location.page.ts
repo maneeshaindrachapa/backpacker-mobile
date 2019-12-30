@@ -85,7 +85,7 @@ addMarker(markerOptions) {
 }
 
 setLocation() {
-      this.router.navigate(['./tabs/add'], { queryParams: { locationData: {}} });
+      this.router.navigate(['./tabs/add'], { queryParams: { locationData: JSON.stringify(this.positionData)} });
 }
 }
 
