@@ -3,6 +3,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Sensors, TYPE_SENSOR } from '@ionic-native/sensors/ngx';
 import { DBMeter } from '@ionic-native/db-meter/ngx';
 import {Platform} from '@ionic/angular';
+import { NativeGeocoder, NativeGeocoderOptions, NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,14 @@ import {Platform} from '@ionic/angular';
 export class SensorsService {
 
   light: number;
-  constructor(private geolocation: Geolocation, private sensors: Sensors, private dbMeter: DBMeter, private platform: Platform) {
+
+  //Geocoder configuration
+  geoencoderOptions: NativeGeocoderOptions = {
+    useLocale: true,
+    maxResults: 5
+  };
+  
+  constructor(private geolocation: Geolocation, private sensors: Sensors, private dbMeter: DBMeter, private platform: Platform, private nativeGeocoder: NativeGeocoder) {
     this.light = 0;
     platform.ready().then(() => {
       this.initSensor();
@@ -30,6 +38,17 @@ export class SensorsService {
 
   getCurrentPositionData() {
     return this.geolocation.watchPosition();
+  }
+
+  //geocoder method to fetch address from coordinates passed as arguments
+  getGeoencoder(latitude, longitude) {
+    return this.nativeGeocoder.reverseGeocode(latitude, longitude, this.geoencoderOptions);
+      // .then((result: NativeGeocoderResult[]) => {
+      //   this.geoAddress = result[0]["subThoroughfare"];
+      // })
+      // .catch((error: any) => {
+      //   alert('Error getGeoencoder' + JSON.stringify(error));
+      // });
   }
 
   getLightSensorData(time: any) {
