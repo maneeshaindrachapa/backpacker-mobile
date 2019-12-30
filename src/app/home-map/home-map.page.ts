@@ -30,7 +30,8 @@ export class HomeMapPage implements OnInit {
         lng: 80.1769773
     },
     mapType: 'terrain',
-    zoomControl: false
+    zoomControl: false,
+    scrollwheel: false
 
 };
   constructor(private router: Router, private userService: UserService, private platform: Platform) {}

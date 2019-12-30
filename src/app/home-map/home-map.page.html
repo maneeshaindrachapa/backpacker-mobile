@@ -1,7 +1,7 @@
-<!-- <ion-content class="content">
-  <div class="ion-padding">
+<ion-content>
+  <div padding class="toolbar">
     <ion-toolbar>
-      <ion-buttons slot="start">
+      <ion-buttons slot="start" class="mr-4">
         <ion-icon name="compass" (click)="toggleview()"></ion-icon>
       </ion-buttons>
       <ion-buttons slot="end">
@@ -18,32 +18,6 @@
         (ionCancel)="isSearchBarOpened = false"
       ></ion-searchbar>
     </ion-toolbar>
-    <div id="map_canvas_2" style="height: 100%; width: 100%"></div>
-    
+    <div id="map_canvas_2"></div>
   </div>
-</ion-content> -->
-
-<ion-content>
-  <div padding class="toolbar">
-
-  <ion-toolbar>
-    <ion-buttons slot="start" class="mr-4">
-      <ion-icon name="compass" (click)="toggleview()"></ion-icon>
-    </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button
-        *ngIf="!isSearchBarOpened"
-        (click)="isSearchBarOpened = true"
-      >
-        <ion-icon slot="icon-only" name="search"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-searchbar
-      *ngIf="isSearchBarOpened"
-      showCancelButton="true"
-      (ionCancel)="isSearchBarOpened = false"
-    ></ion-searchbar>
-  </ion-toolbar>
-  </div>
-  <div id="map_canvas_2" style="height: 100%; width: 100%"></div>
 </ion-content>
