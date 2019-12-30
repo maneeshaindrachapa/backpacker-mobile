@@ -1,6 +1,7 @@
+declare var google;
+
 import { Component, OnInit } from '@angular/core';
-import { NavController, Platform } from '@ionic/angular';
-import { Geolocation } from '@ionic-native/geolocation';
+import {  Platform } from '@ionic/angular';
 
 import {
   GoogleMaps,
@@ -9,7 +10,8 @@ import {
   GoogleMapOptions,
   CameraPosition,
   MarkerOptions,
-  Marker
+  Marker,
+    LatLng
  } from '@ionic-native/google-maps';
 import {SensorsService} from '../services/sensors.service';
 import {Router} from '@angular/router';
@@ -19,28 +21,31 @@ import {Router} from '@angular/router';
   templateUrl: './location.page.html',
   styleUrls: ['./location.page.scss'],
 })
-export class LocationPage implements OnInit{
+
+export class LocationPage implements OnInit {
 
   map: GoogleMap;
-  loading: any;
+  marker: Marker;
+  positionData: any;
+  addressData = 'sample address';
     mapOptions: GoogleMapOptions = {
         camera: {
             target: {
-                lat: 6.0559758,
-                lng: 80.1769773
-            },
-            zoom: 12,
+                    lat: 6.0559758,
+                    lng: 80.1769773
+                },
+            zoom: 15,
         },
         center: {
             lat: 6.0559758,
             lng: 80.1769773
         },
-        mapType: 'ROADMAP',
+        mapType: 'terrain',
         zoomControl: false
 
     };
     markerOptions: MarkerOptions = {
-        title: 'Ionic',
+        title: 'My Location',
         icon: 'red',
         animation: 'DROP',
         position: {
@@ -49,55 +54,34 @@ export class LocationPage implements OnInit{
         }
     };
 
+    loading = true;
   constructor(private platform: Platform, private sensorService: SensorsService, private router: Router) {
-      this.sensorService.getCurrentPositionData().then((data: any) => {
-          this.mapOptions.camera.target = data.position;
-          this.mapOptions.center = data.position;
-          this.markerOptions.position = data.position;
-      });
+
   }
 
   async ngOnInit() {
     await this.platform.ready();
-    await this.loadMap();
-    // await this.addMarker();
+    await this.loadMap(this.mapOptions);
+    await this.addMarker(this.markerOptions);
+    this.sensorService.getCurrentPositionData().subscribe((data: any) => {
+          this.positionData = {position: {lat: data.coords.latitude, lng: data.coords.longitude}, altitude: data.coords.altitude};
+          const latLng = new LatLng( data.coords.latitude,  data.coords.longitude);
+          this.mapOptions.camera.target = this.positionData.position;
+          this.mapOptions.center = this.positionData.position;
+          this.markerOptions.position = this.positionData.position;
+          this.map.setCameraTarget(latLng);
+          this.marker.setPosition(latLng);
+          // call service and assign address value to this.addressData
+          this.loading = false;
+      });
 }
 
-loadMap() {
-  this.map = GoogleMaps.create('map_canvas', this.mapOptions);
-  this.map.one(GoogleMapsEvent.MAP_READY)
-  .then(() => {
-    this.map.addMarker(this.markerOptions)
-      .then(marker => {
-        marker.on(GoogleMapsEvent.MARKER_CLICK)
-          .subscribe(() => {
-
-          });
-      });
-
-  });
+async loadMap(mapOptions) {
+  this.map = GoogleMaps.create('map_canvas', mapOptions);
 }
 
-addMarker() {
-  this.map.one(GoogleMapsEvent.MAP_READY)
-      .then(() => {
-        this.map.addMarker({
-            title: 'Ionic',
-            icon: 'blue',
-            animation: 'DROP',
-            position: {
-              lat: 43.0741904,
-              lng: -89.3809802
-            }
-          })
-          .then(marker => {
-            marker.on(GoogleMapsEvent.MARKER_CLICK)
-              .subscribe(() => {
-
-              });
-          });
-
-      });
+addMarker(markerOptions) {
+    this.marker = this.map.addMarkerSync(markerOptions);
 }
 
 setLocation() {

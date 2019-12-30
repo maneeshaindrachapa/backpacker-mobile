@@ -29,11 +29,7 @@ export class SensorsService {
   }
 
   getCurrentPositionData() {
-    return new Promise(resolve => {
-      this.geolocation.watchPosition().subscribe((data) => {
-        resolve({position: {lat: data.coords.latitude, lng: data.coords.longitude}, altitude: data.coords.altitude});
-      });
-    });
+    return this.geolocation.watchPosition();
   }
 
   getLightSensorData(time: any) {

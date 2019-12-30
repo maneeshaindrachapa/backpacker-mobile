@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
+    <ion-title text-center>
       <i class="fas fa-map-marked-alt fa-500px"></i>&nbsp;&nbsp;Pick Location
     </ion-title>
   </ion-toolbar>
@@ -10,8 +10,9 @@
   <div id="map_canvas" style="height: 100%; width: 100%">
 
   </div>
- <div class="location-data-wrapper">
-  <h5 text-center class="mt-4">Galle, Srianka.</h5>
-   <div class="btn btn-success w-100 set-location-btn p-3" (click)="setLocation()"><i class="fas fa-street-view"></i>&nbsp;&nbsp;Set Location</div>
+    <div class="location-data-wrapper">
+  <p text-center class="mt-4" *ngIf="loading">Fetching your location...</p>
+      <p text-center class="mt-4" *ngIf="!loading">{{ addressData }}</p>
+      <button class="btn btn-success w-100 set-location-btn p-3" (click)="setLocation()" [disabled]="loading"><i class="fas fa-street-view"></i>&nbsp;&nbsp;Set Location</button>
  </div>
 </ion-content>
