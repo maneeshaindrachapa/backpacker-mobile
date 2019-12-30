@@ -8,11 +8,25 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
   isSearchBarOpened = false;
+  inCardView = true;
+
   constructor(private router: Router, private userService: UserService) {}
 
-  ngOnInit() {}
+  ngOnInit() { }
+
   view() {
-    this.router.navigate(['home', 'home', 'view']/*,{{ queryParams: { email: regemail, password:  regpassword} }}*/);
+    this.router.navigate(
+      [
+        'home',
+        'home',
+        'view'
+      ] /*,{{ queryParams: { email: regemail, password:  regpassword} }}*/
+    );
   }
+  toggleview() {
+    this.router.navigate(['./tabs/home-map']);
+  }
+
 }

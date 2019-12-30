@@ -38,7 +38,11 @@ const routes: Routes = [
       {
         path: 'add',
         loadChildren: () => import('../add/add.module').then( m => m.AddPageModule)
-      }
+      },
+      {
+        path: 'home-map',
+        loadChildren: () => import('../home-map/home-map.module').then( m => m.HomeMapPageModule)
+      },
     ]
   }
 ];

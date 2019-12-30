@@ -1,51 +1,59 @@
 <ion-content class="content">
   <div class="ion-padding">
     <ion-toolbar>
-      <!-- <ion-buttons slot="start">
-        <ion-menu-button menu="home_menu">
-          <ion-icon slot="icon-only" name="menu"></ion-icon>
-        </ion-menu-button>
-      </ion-buttons> -->
+      <ion-buttons slot="start" class="mr-4">
+        <ion-icon name="compass" (click)="toggleview()"></ion-icon>
+      </ion-buttons>
       <ion-buttons slot="end">
-        <ion-button *ngIf='!isSearchBarOpened' (click)='isSearchBarOpened=true'>
+        <ion-button
+          *ngIf="!isSearchBarOpened"
+          (click)="isSearchBarOpened = true"
+        >
           <ion-icon slot="icon-only" name="search"></ion-icon>
         </ion-button>
       </ion-buttons>
-      <ion-searchbar *ngIf="isSearchBarOpened" showCancelButton='true' (ionCancel)="isSearchBarOpened=false"></ion-searchbar>
+      <ion-searchbar
+        *ngIf="isSearchBarOpened"
+        showCancelButton="true"
+        (ionCancel)="isSearchBarOpened = false"
+      ></ion-searchbar>
     </ion-toolbar>
-
-    <ion-card  class="ion-text-wrap">
-      <ion-item>
-        <ion-label class='card-title'>Lorem Ispum</ion-label>
-        <ion-button fill="outline" slot="end" (click)="view()">View</ion-button>
-      </ion-item>
-      <ion-card-content>
+    <div id="map_canvas" style="height: 100%; width: 100%" *ngIf="!inCardView"></div>
+    <div *ngIf="inCardView">
+      <ion-card class="ion-text-wrap">
         <ion-item>
-          <ion-thumbnail slot="start">
-            <img src="../../assets/img/3.jpg" />
-          </ion-thumbnail>
-          <ion-label class="card-details">This is content, without any paragraph or header tags, within an
-            ion-card-content element.This is content, without any paragraph or header tags, within an
-            ion-card-content element.</ion-label>
+          <ion-label class="card-title">Lorem Ispum</ion-label>
         </ion-item>
-      </ion-card-content>
-    </ion-card>
-    <ion-card  class="ion-text-wrap">
-      <ion-item>
-        <ion-label class='card-title'>Lorem Ispum</ion-label>
-        <ion-button fill="outline" slot="end">View</ion-button>
-      </ion-item>
-      <ion-card-content>
+        <ion-card-content>
+          <ion-item>
+            <ion-thumbnail slot="start">
+              <img src="../../assets/img/3.jpg" />
+            </ion-thumbnail>
+            <ion-label class="card-details"
+              >This is content, without any paragraph or header tags, within an
+              ion-card-content element.This is content, without any paragraph or
+              header tags, within an ion-card-content element.</ion-label
+            >
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+      <ion-card class="ion-text-wrap">
         <ion-item>
-          <ion-thumbnail slot="start">
-            <img src="../../assets/img/5.jpg" />
-          </ion-thumbnail>
-          <ion-label class="card-details">This is content, without any paragraph or header tags, within an
-            ion-card-content element.This is content, without any paragraph or header tags, within an
-            ion-card-content element.</ion-label>
+          <ion-label class="card-title">Lorem Ispum</ion-label>
         </ion-item>
-      </ion-card-content>
-    </ion-card>
+        <ion-card-content>
+          <ion-item>
+            <ion-thumbnail slot="start">
+              <img src="../../assets/img/5.jpg" />
+            </ion-thumbnail>
+            <ion-label class="card-details"
+              >This is content, without any paragraph or header tags, within an
+              ion-card-content element.This is content, without any paragraph or
+              header tags, within an ion-card-content element.</ion-label
+            >
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </div>
   </div>
-
 </ion-content>
