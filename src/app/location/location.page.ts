@@ -15,6 +15,7 @@ import {
  } from '@ionic-native/google-maps';
 import {SensorsService} from '../services/sensors.service';
 import {Router} from '@angular/router';
+import { mapStyle } from './mapstyles';
 
 @Component({
   selector: 'app-location',
@@ -41,7 +42,8 @@ export class LocationPage implements OnInit {
             lng: 80.1769773
         },
         mapType: 'terrain',
-        zoomControl: false
+        zoomControl: false,
+        styles: mapStyle
 
     };
     markerOptions: MarkerOptions = {
