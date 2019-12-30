@@ -85,16 +85,16 @@
             <ion-item text-center margin-bottom no-padding>
                 <ion-label style="font-size: 20px;font-weight: bold;">Sensed Data</ion-label>
             </ion-item>
-            <ion-item >
+            <ion-item text-wrap>
                 <ion-icon name="pin" slot="start" role="img" aria-label="home"></ion-icon>
-                <ion-label>
+                <ion-label text-wrap>
                     <h2>Location</h2>
                     <p>{{ transferData?.location.address }}</p>
                 </ion-label>
             </ion-item>
-            <ion-item *ngFor="let sensor of transferData?.sensorData">
+            <ion-item *ngFor="let sensor of transferData?.sensorData" text-wrap>
                 <ion-icon name="{{ sensor.icon }}" slot="start" role="img" aria-label="home"></ion-icon>
-                <ion-label>
+                <ion-label text-wrap>
                 <h2>{{ sensor.displayName }}</h2>
                 <p>{{ sensor.sensorReading }}</p>
                 </ion-label>
