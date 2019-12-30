@@ -1,7 +1,16 @@
 ion-content{
   overflow: hidden;
+  height: 100%;
+  background-image: url("../../assets/img/5_1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  font-family: "kiona";
 }
-
+.toolbar{
+  font-family: 'kiona';
+  color:#fff;
+}
 .ion-activatable {
   position: relative;
   overflow: hidden;
@@ -70,4 +79,7 @@ ion-content{
   right: 0;
   margin: 20vw auto;
   opacity:0.4;
+}
+.fa-camera{
+  margin-right: 10px;
 }

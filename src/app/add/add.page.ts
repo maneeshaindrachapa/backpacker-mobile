@@ -70,7 +70,7 @@ export class AddPage implements OnInit {
       previewDrag: false,
       toBack: false,
       alpha: 1
-    }
+    };
 
 // start camera
     this.cameraPreview.startCamera(cameraPreviewOpts);

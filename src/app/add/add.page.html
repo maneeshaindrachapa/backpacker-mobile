@@ -1,31 +1,51 @@
-<ion-header>
-    <ion-toolbar>
-        <ion-buttons slot="start">
-        <ion-back-button defaultHref="tabs/location"></ion-back-button>
-        </ion-buttons>
-        <ion-title class="pl-0"><i class="fas fa-camera"></i>&nbsp;&nbsp;Photo</ion-title>
-    </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <div padding class="padding">
+    <ion-toolbar class="toolbar">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="tabs/location"></ion-back-button>
+      </ion-buttons>
+      <ion-title ><i class="fas fa-camera"></i>photo</ion-title>
+    </ion-toolbar>
+    
     <div *ngIf="isLoading" class="capture-loading-img-wrapper">
-        <img src="../../../assets/img/capture_loading.gif" class="capture-loading-img" margin>
-    </div>    <div class="operations-group">
-        <ion-row>
-            <ion-col text-right>
-                <ion-icon class="sub-operations-btn" name="sync" (click)="switchCamera()" margin-vertical></ion-icon>
-            </ion-col>
-            <ion-col margin-horizontal>
-                <div class="outer-circle ion-activatable" (click)="capture()">
-                    <ion-ripple-effect></ion-ripple-effect>
-                </div>
-            </ion-col>
-            <ion-col>
-                <ion-icon class="sub-operations-btn" name="flash" *ngIf="isRearCamOn && !isFlashOn"
-                          (click)="toggleFlash()" margin-vertical></ion-icon>
-                <ion-icon class="sub-operations-btn" name="flash-off" *ngIf="isRearCamOn && isFlashOn"
-                          (click)="toggleFlash()" margin-vertical></ion-icon>
-            </ion-col>
-        </ion-row>
+      <img
+        src="../../../assets/img/capture_loading.gif"
+        class="capture-loading-img"
+        margin
+      />
     </div>
+    <div class="operations-group">
+      <ion-row>
+        <ion-col text-right>
+          <ion-icon
+            class="sub-operations-btn"
+            name="sync"
+            (click)="switchCamera()"
+            margin-vertical
+          ></ion-icon>
+        </ion-col>
+        <ion-col margin-horizontal>
+          <div class="outer-circle ion-activatable" (click)="capture()">
+            <ion-ripple-effect></ion-ripple-effect>
+          </div>
+        </ion-col>
+        <ion-col>
+          <ion-icon
+            class="sub-operations-btn"
+            name="flash"
+            *ngIf="isRearCamOn && !isFlashOn"
+            (click)="toggleFlash()"
+            margin-vertical
+          ></ion-icon>
+          <ion-icon
+            class="sub-operations-btn"
+            name="flash-off"
+            *ngIf="isRearCamOn && isFlashOn"
+            (click)="toggleFlash()"
+            margin-vertical
+          ></ion-icon>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
 </ion-content>
