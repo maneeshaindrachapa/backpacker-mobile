@@ -78,7 +78,7 @@ export class AddPage implements OnInit {
   }
 
   capture() {
-    this.router.navigate(['./tabs/add/readings'], { queryParams: {transferData: JSON.stringify(this.transferData)} });
+    // this.router.navigate(['./tabs/add/readings'], { queryParams: {transferData: JSON.stringify(this.transferData)} });
     this.isLoading = true;
     const pictureOpts: CameraPreviewPictureOptions = {
       width: 1280,

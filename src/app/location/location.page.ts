@@ -26,7 +26,7 @@ export class LocationPage implements OnInit {
 
   map: GoogleMap;
   marker: Marker;
-  positionData: any;
+  positionData: {position: {lat: null, lng: null}, altitude: null, address: null};
   addressData = 'sample address';
     mapOptions: GoogleMapOptions = {
         camera: {
@@ -64,13 +64,17 @@ export class LocationPage implements OnInit {
     await this.loadMap(this.mapOptions);
     await this.addMarker(this.markerOptions);
     this.sensorService.getCurrentPositionData().subscribe((data: any) => {
-          this.positionData = {position: {lat: data.coords.latitude, lng: data.coords.longitude}, altitude: data.coords.altitude};
+          this.positionData.position.lat = data.coords.latitude;
+          this.positionData.position.lng = data.coords.longitude;
+          this.positionData.altitude =  data.coords.altitude;
+
           const latLng = new LatLng( data.coords.latitude,  data.coords.longitude);
           this.mapOptions.camera.target = this.positionData.position;
           this.mapOptions.center = this.positionData.position;
           this.markerOptions.position = this.positionData.position;
           this.map.setCameraTarget(latLng);
           this.marker.setPosition(latLng);
+
           // call service and assign address value to this.addressData
           this.loading = false;
       });
