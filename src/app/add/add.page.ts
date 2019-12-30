@@ -23,7 +23,7 @@ export class AddPage implements OnInit {
   rootPage: any;
   transferData = {location: null,
     picture: null,
-    sensorData: null
+    sensorData: []
   };
   constructor(private router: Router,
               private camera: Camera,

@@ -27,7 +27,6 @@ export class ReadingsPage implements OnInit {
     route.queryParams.subscribe((data: any) => {
       if (data) {
         this.transferData = JSON.parse(data.transferData);
-        console.log(JSON.parse(data.transferData));
       }
     });
 
@@ -57,7 +56,7 @@ export class ReadingsPage implements OnInit {
     } else {
       this.capturingBtnText = 'Starting...';
       this.sensorsService.getMicrophoneData(this.readingInterval).then((data) => {
-        alert(data);
+        this.transferData.sensorData.push({displayName: 'Noise Level', sensorReading: data, icon: 'mic'});
       });
 
       this.capturingBtnTextUpdate(this.readingInterval);
