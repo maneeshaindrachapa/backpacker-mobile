@@ -116,4 +116,5 @@ export class AddPage implements OnInit {
       this.isFlashOn = false;
     }
   }
+
 }

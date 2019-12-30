@@ -55,8 +55,8 @@ export class ReadingsPage implements OnInit {
       this.isSensorsCapturing = false;
     } else {
       this.capturingBtnText = 'Starting...';
-      this.sensorsService.getMicrophoneData(this.readingInterval).then((data) => {
-        this.transferData.sensorData.push({displayName: 'Noise Level', sensorReading: data, icon: 'mic'});
+      this.sensorsService.getMicrophoneData(this.readingInterval).then((data: any) => {
+        this.transferData.sensorData.push({displayName: 'Noise Level', sensorReading: data.displayData, icon: 'mic'});
       });
 
       this.capturingBtnTextUpdate(this.readingInterval);
@@ -84,6 +84,8 @@ export class ReadingsPage implements OnInit {
   goBack() {
     if (this.step !== 0) {
       this.step -= 1;
+      this.transferData.sensorData = [];
+      this.capturingBtnText = 'START';
     }
   }
 
