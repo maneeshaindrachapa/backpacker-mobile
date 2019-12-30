@@ -31,3 +31,11 @@
 h5,p{
   font-family: "poppins-regular";
 }
+.btn{
+  background-image: linear-gradient(to right, #00B4DB , #0083B0);
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active,.btn-primary:active:focus {
+  color: #fff;
+  background-image: linear-gradient(to right, #00B4DB , #0083B0);
+  border-color: rgba(0, 0, 0, 0.884);
+}
