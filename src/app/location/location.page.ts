@@ -1,7 +1,7 @@
-declare var google;
 
 import { Component, OnInit } from '@angular/core';
 import {  Platform } from '@ionic/angular';
+import { NativeGeocoderResult } from '@ionic-native/native-geocoder/ngx';
 
 import {
   GoogleMaps,
@@ -26,7 +26,7 @@ export class LocationPage implements OnInit {
 
   map: GoogleMap;
   marker: Marker;
-  positionData: {position: {lat: null, lng: null}, altitude: null, address: null};
+  positionData: {position: {lat: number, lng: number}, altitude: number, address: string};
   addressData = 'sample address';
     mapOptions: GoogleMapOptions = {
         camera: {
@@ -76,7 +76,11 @@ export class LocationPage implements OnInit {
           this.marker.setPosition(latLng);
 
           // call service and assign address value to this.addressData
-          this.loading = false;
+          this.sensorService.getGeoencoder(data.coords.latitude, data.coords.longitude).then((result: NativeGeocoderResult[]) => {
+              this.addressData = result[0]["subThoroughfare"];
+              this.positionData.address = result[0]["subThoroughfare"];
+              this.loading = false;
+          });
       });
 }
 
