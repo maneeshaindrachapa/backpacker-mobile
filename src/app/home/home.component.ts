@@ -9,10 +9,20 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   isSearchBarOpened = false;
+  inCardView = true;
+  ngOnInit() {}
   constructor(private router: Router, private userService: UserService) {}
 
-  ngOnInit() {}
   view() {
-    this.router.navigate(['home', 'home', 'view']/*,{{ queryParams: { email: regemail, password:  regpassword} }}*/);
+    this.router.navigate(
+      [
+        'home',
+        'home',
+        'view'
+      ] /*,{{ queryParams: { email: regemail, password:  regpassword} }}*/
+    );
+  }
+  toggleview() {
+    this.inCardView = !this.inCardView;
   }
 }
