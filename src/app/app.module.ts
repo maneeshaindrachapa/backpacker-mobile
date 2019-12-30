@@ -26,6 +26,7 @@ import {Geolocation} from '@ionic-native/geolocation/ngx';
 import { Sensors } from '@ionic-native/sensors/ngx';
 import { DBMeter } from '@ionic-native/db-meter/ngx';
 import {GoogleMaps, GoogleMap } from '@ionic-native/google-maps/ngx';
+import {NativeGeocoder} from '@ionic-native/native-geocoder/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -52,7 +53,8 @@ import {GoogleMaps, GoogleMap } from '@ionic-native/google-maps/ngx';
       Sensors,
       DBMeter,
       GoogleMaps,
-      GoogleMaps
+      GoogleMaps,
+      NativeGeocoder
   ],
   bootstrap: [AppComponent]
 })

@@ -12,13 +12,11 @@ export class SensorsService {
 
   light: number;
 
-  //Geocoder configuration
-  geoencoderOptions: NativeGeocoderOptions = {
-    useLocale: true,
-    maxResults: 5
-  };
-  
-  constructor(private geolocation: Geolocation, private sensors: Sensors, private dbMeter: DBMeter, private platform: Platform, private nativeGeocoder: NativeGeocoder) {
+  constructor(private geolocation: Geolocation,
+              private sensors: Sensors,
+              private dbMeter: DBMeter,
+              private platform: Platform,
+              private nativeGeoCoder: NativeGeocoder) {
     this.light = 0;
     platform.ready().then(() => {
       this.initSensor();
@@ -40,15 +38,12 @@ export class SensorsService {
     return this.geolocation.watchPosition();
   }
 
-  //geocoder method to fetch address from coordinates passed as arguments
-  getGeoencoder(latitude, longitude) {
-    return this.nativeGeocoder.reverseGeocode(latitude, longitude, this.geoencoderOptions);
-      // .then((result: NativeGeocoderResult[]) => {
-      //   this.geoAddress = result[0]["subThoroughfare"];
-      // })
-      // .catch((error: any) => {
-      //   alert('Error getGeoencoder' + JSON.stringify(error));
-      // });
+  getGeoCoder(latitude, longitude) {
+    const geoCoderOptions: NativeGeocoderOptions = {
+      useLocale: true,
+      maxResults: 5
+    };
+    return this.nativeGeoCoder.reverseGeocode(latitude, longitude, geoCoderOptions);
   }
 
   getLightSensorData(time: any) {

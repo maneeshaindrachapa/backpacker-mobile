@@ -39,7 +39,7 @@ export class AddPage implements OnInit {
       this.startCameraPreview();
     });
     route.queryParams.subscribe((data: any) => {
-      this.transferData.location = data.locationData;
+      this.transferData.location = JSON.parse(data.locationData);
     });
   }
 

@@ -26,7 +26,7 @@ export class LocationPage implements OnInit {
 
   map: GoogleMap;
   marker: Marker;
-  positionData: {position: {lat: number, lng: number}, altitude: number, address: string};
+  positionData = {position: {lat: 6.0559758, lng: 80.1769773}, altitude: 0, address: 'Galle, Sri Lanka.'};
   addressData = 'sample address';
     mapOptions: GoogleMapOptions = {
         camera: {
@@ -53,11 +53,8 @@ export class LocationPage implements OnInit {
             lng: 80.1769773
         }
     };
-
     loading = true;
-  constructor(private platform: Platform, private sensorService: SensorsService, private router: Router) {
-
-  }
+  constructor(private platform: Platform, private sensorService: SensorsService, private router: Router) {  }
 
   async ngOnInit() {
     await this.platform.ready();
@@ -74,17 +71,15 @@ export class LocationPage implements OnInit {
           this.markerOptions.position = this.positionData.position;
           this.map.setCameraTarget(latLng);
           this.marker.setPosition(latLng);
-
-          // call service and assign address value to this.addressData
-          this.sensorService.getGeoencoder(data.coords.latitude, data.coords.longitude).then((result: NativeGeocoderResult[]) => {
-              this.addressData = result[0]["subThoroughfare"];
-              this.positionData.address = result[0]["subThoroughfare"];
+          this.sensorService.getGeoCoder(data.coords.latitude, data.coords.longitude).then((result: NativeGeocoderResult[]) => {
+              this.addressData = result[0].subThoroughfare;
+              this.positionData.address = result[0].subThoroughfare;
               this.loading = false;
           });
       });
 }
 
-async loadMap(mapOptions) {
+loadMap(mapOptions) {
   this.map = GoogleMaps.create('map_canvas', mapOptions);
 }
 
