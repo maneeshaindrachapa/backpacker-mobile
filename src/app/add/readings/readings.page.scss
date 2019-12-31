@@ -14,7 +14,7 @@ video {
   transform: translateX(-50%) translateY(-50%);
   
 }
-ion-title,ion-back-button{
+ion-title, ion-back-button , .back-button-custom{
   font-size: 18px;
   color: #fff !important;
 }
@@ -174,8 +174,8 @@ ion-title,ion-back-button{
   color: #fff;
   font-family: 'kiona';
 }
-ion-item{
-  --border-style:none;
+.change-timer{
+  --border-style:none !important;
 }
 
 .disabled-div{

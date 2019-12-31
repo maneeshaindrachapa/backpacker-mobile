@@ -13,7 +13,7 @@ import { HomeMapPage } from './home-map.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    HomeMapPageRoutingModule
+    HomeMapPageRoutingModule,
   ],
   declarations: [HomeMapPage]
 })

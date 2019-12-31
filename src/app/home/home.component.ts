@@ -22,17 +22,8 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() { }
 
-  view() {
-    this.router.navigate(
-      [
-        'home',
-        'home',
-        'view'
-      ] /*,{{ queryParams: { email: regemail, password:  regpassword} }}*/
-    );
-  }
   toggleview() {
-    this.router.navigate(['./tabs/home-map']);
+    this.router.navigate(['tabs', 'home', 'home-map']);
   }
 
 }
