@@ -22,8 +22,8 @@ export class ReadingsPage implements OnInit {
   uploadPercentage = 0;
   uploadDone = false;
   isShareClicked = false;
-  rating = 0;
   successRedirectTimeout = 5;
+  // recommendationText;
   constructor(private route: ActivatedRoute,
               private utilitiesService: UtilitiesService,
               private platform: Platform,
@@ -33,7 +33,6 @@ export class ReadingsPage implements OnInit {
               private router: Router) {
     this.step = 0;
     route.queryParams.subscribe((data: any) => {
-      console.log(data);
       if (data) {
         this.transferData = JSON.parse(data.transferData);
       }
@@ -52,8 +51,9 @@ export class ReadingsPage implements OnInit {
   public ionViewWillEnter() {
 
   }
+
   logRatingChange(rating) {
-    this.rating = rating;
+    this.transferData.recommendation.rating = rating;
   }
   public ionViewCanLeave() {
     return this.step === 0;
@@ -141,6 +141,9 @@ export class ReadingsPage implements OnInit {
   }
 
   addRecommendation() {
+    // this.transferData.recommendation.text = this.recommendationText;
     this.next();
+    console.log(this.transferData);
+    // console.log(this.recommendationText);
   }
 }

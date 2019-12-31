@@ -26,7 +26,8 @@ export class AddPage implements OnInit {
     picture: null,
     sensorData: [],
     timeStamp: null,
-    userId: null
+    userId: null,
+    recommendation: {rating: 1, text: null}
   };
   constructor(private router: Router,
               private camera: Camera,

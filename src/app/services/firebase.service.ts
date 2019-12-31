@@ -13,7 +13,7 @@ export class FirebaseService {
 
   saveSensorData(locationData) {
     // tslint:disable-next-line:max-line-length
-    const fireStoreData = {location: locationData.location, sensorData: locationData.sensorData, timeStamp: locationData.timeStamp, userId: locationData.userId};
+    const fireStoreData = {location: locationData.location, sensorData: locationData.sensorData, timeStamp: locationData.timeStamp, userId: locationData.userId, recommendation: locationData.recommendation};
     return new Promise((resolve) => {
       this.firestore.collection('locationData').add(fireStoreData).then((firestoreResponse: any) => {
         const path = '/locationData/' + firestoreResponse.id;

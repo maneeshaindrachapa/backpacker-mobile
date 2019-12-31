@@ -196,6 +196,10 @@ ion-title, ion-back-button , .back-button-custom {
     background: #CCC;
   }
 
+.icon-data, .sensor-reading{
+  color: #FFF;
+}
+
 .success-alert{
   width: 70vw;
   height: 50vw;
@@ -205,7 +209,7 @@ ion-title, ion-back-button , .back-button-custom {
   left:0; right:0;
   top:0; bottom:0;
   margin:auto;
-  color: black;
+  color: black !important;
   z-index: 1000;
 
   .success-img{
@@ -223,9 +227,6 @@ ion-title, ion-back-button , .back-button-custom {
 }
 .sensor-data-title , .sensor-data{
   font-family: 'kiona';
-  color: #FFF;
-}
-.icon-data,p{
   color: #FFF;
 }
 
