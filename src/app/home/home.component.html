@@ -29,13 +29,14 @@
           </ion-thumbnail>
           <ion-label slot="end" class="card-details">
             <h4 no-margin no-padding class="card-recommendation-address">{{ location?.data.location.address }}</h4>
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/5_stars.svg/1280px-5_stars.svg.png" style="width: 25%;position: relative;top: -3.5px;">
+              <img src="../../assets/img/star_rating/{{ (location?.data.recommendation.rating).toString()+'.png' }}" style="width: 25%;position: relative;top: -3.5px;">
               <p class="card-recommendation-date">{{ location?.data.timeStamp.toDate() | date:'medium' }}</p>
-            <p class="card-recommendation-text mt-1" text-justify>
-              This is content, without any paragraph or header tags, within an
-              ion-card-content element.This is content, without any paragraph or
-              header tags, within an ion-card-content element.
+            <p class="card-recommendation-text mt-1" text-justify *ngIf="location?.data.recommendation.text">
+                {{ location?.data.recommendation.text }}
             </p>
+              <p class="card-recommendation-text mt-1" text-justify *ngIf="!location?.data.recommendation.text" style="color: #e57373;">
+                  No recommendation text.
+              </p>
           </ion-label>
         </ion-item>
       </ion-card>

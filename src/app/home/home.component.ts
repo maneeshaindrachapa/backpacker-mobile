@@ -40,6 +40,7 @@ export class HomeComponent implements OnInit {
         }, error => {
           console.log(error);
         });
+        console.log(tempDataObj);
         this.locationData.push(tempDataObj);
       }
       this.isLoading = false;
