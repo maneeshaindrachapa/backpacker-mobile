@@ -7,6 +7,7 @@ import {
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { Platform } from '@ionic/angular';
+import {mapStyle} from '../location/mapstyles';
 
 @Component({
   selector: 'app-home-map',
@@ -20,20 +21,16 @@ export class HomeMapPage implements OnInit {
   mapOptions: GoogleMapOptions = {
     camera: {
         target: {
-                lat: 6.0559758,
-                lng: 80.1769773
+            lat: 7.8731,
+            lng: 80.7718
             },
-        zoom: 15,
-    },
-    center: {
-        lat: 6.0559758,
-        lng: 80.1769773
+        zoom: 7.5,
     },
     mapType: 'terrain',
     zoomControl: false,
-    scrollwheel: false
-
-};
+    scrollwheel: false,
+    styles: mapStyle
+  };
   constructor(private router: Router, private userService: UserService, private platform: Platform) {}
 
   async ngOnInit() {

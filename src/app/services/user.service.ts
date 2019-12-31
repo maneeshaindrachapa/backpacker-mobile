@@ -10,6 +10,7 @@ import {error} from 'util';
 })
 export class UserService {
 
+  public loggedUser;
   constructor(private firestore: AngularFirestore, private fireauth: AngularFireAuth) {
   }
 

@@ -1,8 +1,10 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UtilitiesService} from '../../services/utilities.service';
-import {Platform} from '@ionic/angular';
+import {AlertController, Platform} from '@ionic/angular';
 import {SensorsService} from '../../services/sensors.service';
+import {FirebaseService} from '../../services/firebase.service';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-readings',
@@ -15,14 +17,19 @@ export class ReadingsPage implements OnInit {
   step = 0;
   readingInterval = 5;
   isSensorsCapturing = false;
-  isSensorCapturingDone = true;
   isTimerChanging = false;
   capturingBtnText = 'START';
+  uploadPercentage = 0;
+  uploadDone = false;
+  isShareClicked = false;
+  successRedirectTimeout = 5;
   constructor(private route: ActivatedRoute,
               private utilitiesService: UtilitiesService,
               private platform: Platform,
               private sensorsService: SensorsService,
-  ) {
+              private firebaseService: FirebaseService,
+              public alertController: AlertController,
+              private router: Router) {
     this.step = 0;
     route.queryParams.subscribe((data: any) => {
       if (data) {
@@ -54,6 +61,7 @@ export class ReadingsPage implements OnInit {
       this.isSensorsCapturing = false;
     } else {
       this.capturingBtnText = 'Starting...';
+      this.transferData.timeStamp = new Date();
       this.sensorsService.getMicrophoneData(this.readingInterval).then((data: any) => {
         this.transferData.sensorData.push({displayName: 'Noise Level', sensorReading: data.displayData, icon: 'mic'});
       });
@@ -86,10 +94,11 @@ export class ReadingsPage implements OnInit {
       this.transferData.sensorData = [];
       this.capturingBtnText = 'START';
     }
+    this.successRedirectTimeout = 10;
   }
 
   next() {
-    if (this.step !== 4) {
+    if (this.step !== 1) {
       this.step += 1;
     }
   }
@@ -100,7 +109,30 @@ export class ReadingsPage implements OnInit {
   }
 
   share() {
-    console.log('share clicked');
+    this.isShareClicked = true;
+    this.firebaseService.saveSensorData(this.transferData).then((data: any) => {
+      data.subscribe((uploadVal: any) => {
+        this.uploadPercentage = uploadVal / 100;
+        if (uploadVal === 100) {
+          this.uploadDone = true;
+          this.updateSuccessTimeOut();
+        }
+      });
+    });
+  }
+
+  updateSuccessTimeOut() {
+    setTimeout(() => {
+      this.successRedirectTimeout -= 1;
+      if (this.successRedirectTimeout === 0) {
+          this.goHome();
+        }
+      this.updateSuccessTimeOut();
+    }, 1000);
+  }
+
+  goHome() {
+    this.router.navigate(['./tabs/home']);
   }
 
 }

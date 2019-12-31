@@ -27,6 +27,7 @@ import { Sensors } from '@ionic-native/sensors/ngx';
 import { DBMeter } from '@ionic-native/db-meter/ngx';
 import {GoogleMaps, GoogleMap } from '@ionic-native/google-maps/ngx';
 import {NativeGeocoder} from '@ionic-native/native-geocoder/ngx';
+import {FirebaseService} from './services/firebase.service';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -54,7 +55,8 @@ import {NativeGeocoder} from '@ionic-native/native-geocoder/ngx';
       DBMeter,
       GoogleMaps,
       GoogleMaps,
-      NativeGeocoder
+      NativeGeocoder,
+      FirebaseService
   ],
   bootstrap: [AppComponent]
 })

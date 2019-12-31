@@ -51,7 +51,6 @@
     ></ion-button>
   </ion-buttons>
 </ion-toolbar>
-
 <ion-content>
   <!--    Step 01 Start-->
   <div class="full-page" *ngIf="step==0">
@@ -175,4 +174,49 @@
     </ion-list>
   </div>
   <!--    Step 02 End -->
+    <!--    Step 02 Start-->
+<!--    success progress bar-->
+    <ion-progress-bar color="success" [value]="uploadPercentage" *ngIf="(uploadPercentage>0 && !uploadDone) || (isShareClicked && !uploadDone)"></ion-progress-bar>
+    <ion-progress-bar color="success" type="indeterminate" *ngIf="uploadDone"></ion-progress-bar>
+    <!--    success progress bar-->
+    <!--    Success alert box-->
+    <div class="success-alert" text-center *ngIf="isShareClicked">
+        <img src="../../../assets/img/check-circle.gif" class="success-img mx-auto d-block mt-3 mb-2" *ngIf="uploadDone">
+        <p text-center class="mb-1" *ngIf="uploadDone">Successfully uploaded!</p>
+        <p text-sm-center *ngIf="uploadDone">Redirecting to <i class="fas fa-home"></i> {{ successRedirectTimeout }} secs</p>
+
+        <img src="../../../assets/img/uploading.gif" class="success-img mx-auto d-block mt-3 mb-3" *ngIf="isShareClicked && !uploadDone">
+        <p text-center class="mb-1" *ngIf="isShareClicked && !uploadDone">Uploading...</p>
+    </div>
+    <!--    Success alert box-->
+
+<!--   step 2 content-->
+    <div class="full-page" *ngIf="step==1" [ngClass]="{ 'disabled-div': (uploadPercentage>0 || isShareClicked) }">
+        <div *ngIf="!transferData?.picture" class="capture-loading-img-wrapper mb-1">
+            <img src="../../../assets/img/capture_loading.gif" class="capture-loading-img" margin>
+        </div>
+        <img *ngIf="transferData?.picture" [src]="transferData?.picture" class="captured-image mb-1">
+
+        <ion-list>
+            <ion-item text-center margin-bottom no-padding>
+                <ion-label style="font-size: 20px;font-weight: bold;">Sensed Data</ion-label>
+            </ion-item>
+            <ion-item text-wrap>
+                <ion-icon name="pin" slot="start" role="img" aria-label="home"></ion-icon>
+                <ion-label text-wrap>
+                    <h2>Location</h2>
+                    <p>{{ transferData?.location.address }}</p>
+                </ion-label>
+            </ion-item>
+            <ion-item *ngFor="let sensor of transferData?.sensorData" text-wrap>
+                <ion-icon name="{{ sensor.icon }}" slot="start" role="img" aria-label="home"></ion-icon>
+                <ion-label text-wrap>
+                <h2>{{ sensor.displayName }}</h2>
+                <p>{{ sensor.sensorReading }}</p>
+                </ion-label>
+            </ion-item>
+        </ion-list>
+    </div>
+    <!-- step 2 content-->
+    <!--    Step 02 End -->
 </ion-content>

@@ -56,7 +56,9 @@ export class LocationPage implements OnInit {
         }
     };
     loading = true;
-  constructor(private platform: Platform, private sensorService: SensorsService, private router: Router) {  }
+  constructor(private platform: Platform,
+              private sensorService: SensorsService,
+              private router: Router) {  }
 
   async ngOnInit() {
     await this.platform.ready();

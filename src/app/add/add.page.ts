@@ -8,6 +8,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {UtilitiesService} from '../services/utilities.service';
 import {Platform} from '@ionic/angular';
 import {ReadingsPage} from './readings/readings.page';
+import {UserService} from '../services/user.service';
 
 @Component({
   selector: 'app-add',
@@ -23,7 +24,9 @@ export class AddPage implements OnInit {
   rootPage: any;
   transferData = {location: null,
     picture: null,
-    sensorData: []
+    sensorData: [],
+    timeStamp: null,
+    userId: null
   };
   constructor(private router: Router,
               private camera: Camera,
@@ -32,12 +35,14 @@ export class AddPage implements OnInit {
               private storage: AngularFireStorage,
               private utilitiesService: UtilitiesService,
               private platform: Platform,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private userService: UserService) {
     this.utilitiesService.backToCameraPreview.subscribe((data) => {
       this.picture = null;
       this.isLoading = false;
       this.startCameraPreview();
     });
+    this.transferData.userId = this.userService.loggedUser.authData.uid;
     route.queryParams.subscribe((data: any) => {
       this.transferData.location = JSON.parse(data.locationData);
     });

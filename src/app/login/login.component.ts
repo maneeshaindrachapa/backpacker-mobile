@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   isLoading = false;
   isErrorInPassword = false;
   isErrorInEmail = false;
-  
+
   constructor(private router: Router,
               private route: ActivatedRoute,
               private userService: UserService,
@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
 
     const loggedUser = JSON.parse(localStorage.getItem('loggedUser'));
     if (loggedUser) {
+      this.userService.loggedUser = loggedUser;
       this.router.navigate(['./tabs']);
     } else {
     }
@@ -53,7 +54,8 @@ export class LoginComponent implements OnInit {
     this.userService.loginUser(this.email, this.password).then((data: any) => {
       if (data.status) {
         const loggedUser = data.data;
-        localStorage.setItem('loggedUser', JSON.stringify(data.data));
+        localStorage.setItem('loggedUser', JSON.stringify(loggedUser));
+        this.userService.loggedUser = loggedUser;
         this.isLoading = false;
         this.router.navigate(['./tabs']);
       } else {

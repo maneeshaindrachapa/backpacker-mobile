@@ -1,11 +1,11 @@
-.toolbar{
-    background-image: url("../../assets/img/4.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    font-family: "kiona";
-    height: 100%;
-  }
+.toolbar-wrapper{
+  background-color: transparent!important;
+}
+ion-toolbar {
+  //background-image: url("../../assets/img/4.jpg");
+  background-color: transparent!important;
+  z-index: 1000;
+}
   .logo {
     display: block;
     margin: 25% auto;
@@ -78,9 +78,8 @@
     top:0px;
   }
   #map_canvas_2{
-    height: 95%; 
+    height: 100%;
     width: 100%;
-    border-radius:3%;
-    margin-bottom: 5% !important;
-    background-color: rgba(0,0,0,0) !important;
+    //margin-bottom: 5% !important;
+    //background-color: rgba(0,0,0,0) !important;
   }
