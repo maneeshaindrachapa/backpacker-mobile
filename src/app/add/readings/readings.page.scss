@@ -190,13 +190,13 @@ ion-title, ion-back-button , .back-button-custom {
 .success-alert{
   width: 70vw;
   height: 50vw;
-  background-color: white;
+  background-color:black;
   border-radius: 20px;
   position:absolute; /*it can be fixed too*/
   left:0; right:0;
   top:0; bottom:0;
   margin:auto;
-
+  color: #FFF;
   z-index: 1000;
 
   .success-img{
