@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {UtilitiesService} from '../../services/utilities.service';
 import {Platform} from '@ionic/angular';
@@ -9,6 +9,7 @@ import {SensorsService} from '../../services/sensors.service';
   templateUrl: './readings.page.html',
   styleUrls: ['./readings.page.scss'],
 })
+
 export class ReadingsPage implements OnInit {
   transferData;
   step = 0;
@@ -17,7 +18,6 @@ export class ReadingsPage implements OnInit {
   isSensorCapturingDone = true;
   isTimerChanging = false;
   capturingBtnText = 'START';
-
   constructor(private route: ActivatedRoute,
               private utilitiesService: UtilitiesService,
               private platform: Platform,
@@ -38,7 +38,6 @@ export class ReadingsPage implements OnInit {
   }
 
   ngOnInit() {
-
   }
 
   public ionViewWillEnter() {
@@ -66,7 +65,7 @@ export class ReadingsPage implements OnInit {
 
   capturingBtnTextUpdate(timerVal) {
         setTimeout(() => {
-        this.capturingBtnText = timerVal.toString() + 's';
+        this.capturingBtnText = timerVal.toString() + ' s';
         timerVal -= 1;
         if (this.isSensorsCapturing) {
         if (timerVal >= -1) {
