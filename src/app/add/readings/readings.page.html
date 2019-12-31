@@ -42,11 +42,14 @@
   <ion-title *ngIf="step==0 && isTimerChanging" class="ion-no-padding">
     <i class="fas fa-stopwatch fa-500px"></i>Set Sensing Timer
   </ion-title>
-  <ion-title *ngIf="step==1" class="ion-no-padding">
+    <ion-title *ngIf="step==1" class="ion-no-padding">
+        <i class="fas fa-star-half-alt"></i>&nbsp;Recommendation
+    </ion-title>
+  <ion-title *ngIf="step==2" class="ion-no-padding">
     <i class="fas fa-share-alt"></i>&nbsp;Social
   </ion-title>
   <ion-buttons slot="end">
-    <ion-button (click)="share()" *ngIf="step==1"
+    <ion-button (click)="share()" *ngIf="step==2"
       >Share&nbsp;<i class="fas fa-share"></i
     ></ion-button>
   </ion-buttons>
@@ -123,7 +126,13 @@
   </div>
   <!--    Step 01 End -->
 
-  <!--    Step 02 Start-->
+    <!--    Step 02 Start-->
+    <div class="full-page" *ngIf="step==1">
+        Add recommendation page
+    </div>
+    <!--    Step 02 End -->
+
+  <!--    Step 03 Start-->
   <div class="full-page" *ngIf="step==1">
     <div
       *ngIf="!transferData?.picture"
@@ -173,7 +182,6 @@
       </ion-item>
     </ion-list>
   </div>
-  <!--    Step 02 End -->
     <!--    Step 02 Start-->
 <!--    success progress bar-->
     <ion-progress-bar color="success" [value]="uploadPercentage" *ngIf="(uploadPercentage>0 && !uploadDone) || (isShareClicked && !uploadDone)"></ion-progress-bar>
@@ -190,7 +198,7 @@
     </div>
     <!--    Success alert box-->
 
-<!--   step 2 content-->
+<!--   step 3 content-->
     <div class="full-page" *ngIf="step==1" [ngClass]="{ 'disabled-div': (uploadPercentage>0 || isShareClicked) }">
         <div *ngIf="!transferData?.picture" class="capture-loading-img-wrapper mb-1">
             <img src="../../../assets/img/capture_loading.gif" class="capture-loading-img" margin>
@@ -217,6 +225,7 @@
             </ion-item>
         </ion-list>
     </div>
-    <!-- step 2 content-->
-    <!--    Step 02 End -->
+    <!-- step 3 content-->
+    <!--    Step 03 End -->
+
 </ion-content>

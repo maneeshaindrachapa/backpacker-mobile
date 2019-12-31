@@ -98,7 +98,7 @@ export class ReadingsPage implements OnInit {
   }
 
   next() {
-    if (this.step !== 1) {
+    if (this.step !== 2) {
       this.step += 1;
     }
   }
