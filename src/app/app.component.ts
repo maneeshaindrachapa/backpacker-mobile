@@ -76,31 +76,4 @@ export class AppComponent {
     });
   }
 
-  // async networkAlert() {
-  //   const alert = await this.alertController.create({
-  //     header: 'No Internet Connection',
-  //     // tslint:disable-next-line:max-line-length
-  //     message: '<div class="w-100 text-center"><i class="fas fa-exclamation-triangle fa-4x" ></i><br><br>Sorry! Not detected any Internet connection. Please reconnect and try again.</div>',
-  //     backdropDismiss: false,
-  //     cssClass: 'alertCustomCss',
-  //     buttons: [
-  //       // {
-  //       //   text: 'Open Settings',
-  //       //   handler: () => {
-  //       //     this.openNativeSettings.open('settings').then(() => {
-  //       //     });
-  //       //   }
-  //       // },
-  //       {
-  //         text: 'Exit',
-  //         handler: () => {
-  //           navigator['app'].exitApp();
-  //         }
-  //       }
-  //     ]
-  //   });
-  //   this.netConnAlert = await alert;
-  //   await alert.present();
-  // }
-
 }
