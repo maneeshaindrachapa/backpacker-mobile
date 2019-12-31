@@ -14,11 +14,13 @@ video {
   transform: translateX(-50%) translateY(-50%);
   
 }
-ion-title, ion-back-button , .back-button-custom{
+ion-title, ion-back-button , .back-button-custom {
   font-size: 18px;
   color: #fff !important;
 }
-
+.share-button{
+  color: #FFF !important;
+}
 .capture-loading-img-wrapper {
   width: 100vw;
   height: 100vw;
@@ -27,7 +29,7 @@ ion-title, ion-back-button , .back-button-custom{
   background-size: cover;
 }
 
-.fa-500px {
+.fa-500px ,.fas {
   margin-right: 10px;
 }
 
@@ -201,4 +203,16 @@ ion-title, ion-back-button , .back-button-custom{
     width: 25vw;
     height: 25vw;
   }
+}
+.sensed-data{
+  border-radius: 5% 5% 0 0;
+  background-color:rgba(0,0,0,0.75);
+  height: 100%;
+}
+.sensor-data-title , .sensor-data{
+  font-family: 'kiona';
+  color: #FFF;
+}
+.icon-data{
+  color: #FFF;
 }
