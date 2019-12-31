@@ -11,19 +11,35 @@ import {FirebaseService} from '../services/firebase.service';
 export class HomeComponent implements OnInit {
 
   isSearchBarOpened = false;
-  locationData;
+  locationData = [];
   constructor(private router: Router,
               private userService: UserService,
               private firebaseService: FirebaseService) {
-    this.firebaseService.getAllSensorData().then((data) => {
-      this.locationData = data;
-    });
+    this.loadAllSensorData();
   }
 
   ngOnInit() { }
 
   toggleview() {
     this.router.navigate(['tabs', 'home', 'home-map']);
+  }
+
+  loadAllSensorData() {
+    this.firebaseService.getAllSensorData().subscribe((locationData) => {
+                // tslint:disable-next-line:prefer-for-of
+      for (let i = 0; i < locationData.length; i++) {
+        const tempDataObj = {id: null, data: null, path: null, imgUrl: null};
+        tempDataObj.data = locationData[i].payload.doc.data();
+        tempDataObj.id = locationData[i].payload.doc.id;
+        tempDataObj.path = locationData[i].payload.doc.ref.path;
+        this.firebaseService.getFireStorageDataByPath(locationData[i].payload.doc.ref.path).subscribe((url) => {
+          tempDataObj.imgUrl = url;
+        }, error => {
+          console.log(error);
+        });
+        this.locationData.push(tempDataObj);
+      }
+    });
   }
 
 }

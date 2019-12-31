@@ -22,25 +22,9 @@ export class FirebaseService {
     });
   }
 
-  getAllSensorData() {
-    return new Promise(resolve => {
-      this.firestore.collection('locationData').snapshotChanges().subscribe((locationData: any) => {
-        const tempOutput = [];
-            // tslint:disable-next-line:prefer-for-of
-        for (let i = 0; i < locationData.length; i++) {
-            const tempDataObj = {id: null, data: null, path: null, imgUrl: null};
-            tempDataObj.data = locationData[i].payload.doc.data();
-            tempDataObj.id = locationData[i].payload.doc.id;
-            tempDataObj.path = locationData[i].payload.doc.ref.path;
-            this.firestorage.ref(tempDataObj.path).getDownloadURL().subscribe((url) => {
-              tempDataObj.imgUrl = url;
-            });
-            tempOutput.push(tempDataObj);
-        }
-        resolve(tempOutput);
-          });
-    });
-  }
+    getAllSensorData() {
+      return this.firestore.collection('locationData').snapshotChanges();
+    }
 
   // should pass {lat: 6.8001731, lng: 79.9011715} obj as input
   getSensorDataByLaLong(latLngObj) {
@@ -64,5 +48,8 @@ export class FirebaseService {
         });
     }
 
+  getFireStorageDataByPath(path) {
+      return this.firestorage.ref(path).getDownloadURL();
+  }
 }
 
