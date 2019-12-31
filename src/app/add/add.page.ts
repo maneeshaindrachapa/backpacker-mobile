@@ -88,7 +88,7 @@ export class AddPage implements OnInit {
     const pictureOpts: CameraPreviewPictureOptions = {
       width: 1280,
       height: 1280,
-      quality: 85
+      quality: 50
     };
 
     this.cameraPreview.takePicture(pictureOpts).then((imageData) => {

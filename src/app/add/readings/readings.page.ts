@@ -32,6 +32,7 @@ export class ReadingsPage implements OnInit {
               private router: Router) {
     this.step = 0;
     route.queryParams.subscribe((data: any) => {
+      console.log(data);
       if (data) {
         this.transferData = JSON.parse(data.transferData);
       }

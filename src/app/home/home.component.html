@@ -20,7 +20,7 @@
     </ion-toolbar>
 
     <!--    Location List view-->
-    <div no-padding>
+    <div no-padding *ngIf="!isLoading && locationData.length > 0">
       <ion-card padding *ngFor="let location of locationData">
         <ion-item class="ion-text-wrap" no-padding no-margin>
           <ion-thumbnail slot="start">
@@ -28,17 +28,9 @@
             <img src="../../assets/img/img_loading.gif" *ngIf="!location?.imgUrl" />
           </ion-thumbnail>
           <ion-label slot="end" class="card-details">
-<!--            <ion-row no-padding no-margin>-->
-<!--              <ion-col no-padding no-margin>-->
-<!--              </ion-col>-->
-<!--              <ion-col no-padding no-margin >-->
-<!--                &lt;!&ndash;              add star rating thing here&ndash;&gt;-->
-<!--                <img class="float-right" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/5_stars.svg/1280px-5_stars.svg.png" style="width: 70%;margin: auto;position: relative; top: 2px;">-->
-<!--                &lt;!&ndash;              add star rating thing here&ndash;&gt;-->
-<!--              </ion-col>-->
-<!--            </ion-row>-->
             <h4 no-margin no-padding class="card-recommendation-address">{{ location?.data.location.address }}</h4>
-            <p class="card-recommendation-date" no-margin no-padding>{{ location?.data.timeStamp.toDate() | date:'medium' }}</p>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/5_stars.svg/1280px-5_stars.svg.png" style="width: 25%;position: relative;top: -3.5px;">
+              <p class="card-recommendation-date">{{ location?.data.timeStamp.toDate() | date:'medium' }}</p>
             <p class="card-recommendation-text mt-1" text-justify>
               This is content, without any paragraph or header tags, within an
               ion-card-content element.This is content, without any paragraph or
@@ -49,6 +41,98 @@
       </ion-card>
     </div>
     <!--    Location List view-->
+
+      <!--    Location List view loading-->
+      <div no-padding *ngIf="isLoading">
+          <ion-card padding >
+              <ion-item class="ion-text-wrap" no-padding no-margin>
+                  <ion-thumbnail slot="start">
+                      <ion-skeleton-text animated></ion-skeleton-text>
+                  </ion-thumbnail>
+                  <ion-label slot="end" class="card-details">
+
+                      <h4 no-margin no-padding class="card-recommendation-address">
+                          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+                          <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+                      </h4>
+                      <img src="../../assets/img/star_rating/loading.png" style="width: 25%;">
+                      <p class="card-recommendation-date"><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text></p>
+                      <p class="card-recommendation-text mt-1" text-justify>
+                          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+                          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+                          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+                      </p>
+                  </ion-label>
+              </ion-item>
+          </ion-card>
+          <ion-card padding >
+              <ion-item class="ion-text-wrap" no-padding no-margin>
+                  <ion-thumbnail slot="start">
+                      <ion-skeleton-text animated></ion-skeleton-text>
+                  </ion-thumbnail>
+                  <ion-label slot="end" class="card-details">
+
+                      <h4 no-margin no-padding class="card-recommendation-address">
+                          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+                          <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+                      </h4>
+                      <img src="../../assets/img/star_rating/loading.png" style="width: 25%;">
+                      <p class="card-recommendation-date"><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text></p>
+                      <p class="card-recommendation-text mt-1" text-justify>
+                          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+                          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+                          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+                      </p>
+                  </ion-label>
+              </ion-item>
+          </ion-card>
+          <ion-card padding >
+              <ion-item class="ion-text-wrap" no-padding no-margin>
+                  <ion-thumbnail slot="start">
+                      <ion-skeleton-text animated></ion-skeleton-text>
+                  </ion-thumbnail>
+                  <ion-label slot="end" class="card-details">
+
+                      <h4 no-margin no-padding class="card-recommendation-address">
+                          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+                          <ion-skeleton-text animated style="width: 40%"></ion-skeleton-text>
+                      </h4>
+                      <img src="../../assets/img/star_rating/loading.png" style="width: 25%;">
+                      <p class="card-recommendation-date"><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text></p>
+                      <p class="card-recommendation-text mt-1" text-justify>
+                          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+                          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+                          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+                      </p>
+                  </ion-label>
+              </ion-item>
+          </ion-card>
+      </div>
+      <!--    Location List view loading-->
+
+      <!--    Location List view loading-->
+      <div no-padding *ngIf="!isLoading && locationData.length === 0">
+          <ion-card padding >
+              <ion-item class="ion-text-wrap" no-padding no-margin>
+                  <ion-thumbnail slot="start">
+                      <ion-skeleton-text></ion-skeleton-text>
+                  </ion-thumbnail>
+                  <ion-label slot="end" class="card-details">
+
+                      <h4 no-margin no-padding class="card-recommendation-address">
+                          Sorry, No data found!
+                      </h4>
+                      <img src="../../assets/img/star_rating/loading.png" style="width: 25%;">
+                      <p class="card-recommendation-date"><ion-skeleton-text style="width: 50%"></ion-skeleton-text></p>
+                      <p class="card-recommendation-text mt-1" text-justify>
+                          There are no data submitted by users. Please keep in touch with BackPacker. we will notify you when users submit the data.
+                      </p>
+                  </ion-label>
+              </ion-item>
+          </ion-card>
+      </div>
+      <!--    Location List view loading-->
+
   </div>
 
 </ion-content>

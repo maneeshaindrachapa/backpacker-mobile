@@ -1,6 +1,7 @@
 .captured-image {
   width: 100vw;
   height: 100vw;
+  z-index: 100!important;
 }
 video {
   position: fixed;
@@ -27,6 +28,7 @@ ion-title, ion-back-button , .back-button-custom {
   background-image: url("../../../assets/img/capture_loading_back.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  z-index: 100!important;
 }
 
 .fa-500px ,.fas {
@@ -44,6 +46,8 @@ ion-title, ion-back-button , .back-button-custom {
   right: 0;
   margin: 20vw auto;
   opacity: 0.4;
+  z-index: 100!important;
+
 }
 
 .back-btn-customized {
@@ -215,4 +219,8 @@ ion-title, ion-back-button , .back-button-custom {
 }
 .icon-data{
   color: #FFF;
+}
+
+gl-background-video {
+  z-index: -100!important;
 }

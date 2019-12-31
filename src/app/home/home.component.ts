@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
 
   isSearchBarOpened = false;
   locationData = [];
+  isLoading = false;
   constructor(private router: Router,
               private userService: UserService,
               private firebaseService: FirebaseService) {
@@ -25,8 +26,10 @@ export class HomeComponent implements OnInit {
   }
 
   loadAllSensorData() {
+    this.isLoading = true;
     this.firebaseService.getAllSensorData().subscribe((locationData) => {
-                // tslint:disable-next-line:prefer-for-of
+      this.locationData = [];
+      // tslint:disable-next-line:prefer-for-of
       for (let i = 0; i < locationData.length; i++) {
         const tempDataObj = {id: null, data: null, path: null, imgUrl: null};
         tempDataObj.data = locationData[i].payload.doc.data();
@@ -39,6 +42,7 @@ export class HomeComponent implements OnInit {
         });
         this.locationData.push(tempDataObj);
       }
+      this.isLoading = false;
     });
   }
 
