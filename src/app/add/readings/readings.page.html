@@ -129,60 +129,11 @@
     <!--    Step 02 Start-->
     <div class="full-page" *ngIf="step==1">
         Add recommendation page
+      <ion-button color="primary" (click)="addRecommendation()" block>Add Recomendation</ion-button>
     </div>
     <!--    Step 02 End -->
 
-  <!--    Step 03 Start-->
-  <div class="full-page" *ngIf="step==1">
-    <div
-      *ngIf="!transferData?.picture"
-      class="capture-loading-img-wrapper mb-1"
-    >
-      <img
-        src="../../../assets/img/capture_loading.gif"
-        class="capture-loading-img"
-        margin
-      />
-    </div>
-    <img
-      *ngIf="transferData?.picture"
-      [src]="transferData?.picture"
-      class="captured-image mb-1"
-    />
-
-    <ion-list>
-      <ion-item text-center margin-bottom no-padding>
-        <ion-label style="font-size: 20px;font-weight: bold;"
-          >Sensed Data</ion-label
-        >
-      </ion-item>
-      <ion-item text-wrap>
-        <ion-icon
-          name="pin"
-          slot="start"
-          role="img"
-          aria-label="home"
-        ></ion-icon>
-        <ion-label text-wrap>
-          <h2>Location</h2>
-          <p>{{ transferData?.location.address }}</p>
-        </ion-label>
-      </ion-item>
-      <ion-item *ngFor="let sensor of transferData?.sensorData" text-wrap>
-        <ion-icon
-          name="{{ sensor.icon }}"
-          slot="start"
-          role="img"
-          aria-label="home"
-        ></ion-icon>
-        <ion-label text-wrap>
-          <h2>{{ sensor.displayName }}</h2>
-          <p>{{ sensor.sensorReading }}</p>
-        </ion-label>
-      </ion-item>
-    </ion-list>
-  </div>
-    <!--    Step 02 Start-->
+    <!--    Step 03 Start-->
 <!--    success progress bar-->
     <ion-progress-bar color="success" [value]="uploadPercentage" *ngIf="(uploadPercentage>0 && !uploadDone) || (isShareClicked && !uploadDone)"></ion-progress-bar>
     <ion-progress-bar color="success" type="indeterminate" *ngIf="uploadDone"></ion-progress-bar>
@@ -197,9 +148,8 @@
         <p text-center class="mb-1" *ngIf="isShareClicked && !uploadDone">Uploading...</p>
     </div>
     <!--    Success alert box-->
-
 <!--   step 3 content-->
-    <div class="full-page" *ngIf="step==1" [ngClass]="{ 'disabled-div': (uploadPercentage>0 || isShareClicked) }">
+    <div class="full-page" *ngIf="step==2" [ngClass]="{ 'disabled-div': (uploadPercentage>0 || isShareClicked) }">
         <div *ngIf="!transferData?.picture" class="capture-loading-img-wrapper mb-1">
             <img src="../../../assets/img/capture_loading.gif" class="capture-loading-img" margin>
         </div>

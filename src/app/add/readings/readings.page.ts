@@ -135,4 +135,7 @@ export class ReadingsPage implements OnInit {
     this.router.navigate(['./tabs/home']);
   }
 
+  addRecommendation() {
+    this.next();
+  }
 }
