@@ -1,9 +1,9 @@
 <ion-content>
     <div id="map_canvas" style="height: 100%; width: 100%"></div>
     <div class="location-data-wrapper">
-        <h5 text-center class="mt-3 address-title"><i class="fas fa-map-marked-alt fa-500px"></i>Pick Your Location</h5>
-        <p text-center class="mt-2 address-data" *ngIf="loading">Fetching Your Location...</p>
-      <p text-center class="mt-2 address-data" *ngIf="!loading">{{ addressData }}</p>
+        <h5  class="mt-3 address-title ion-text-center"><i class="fas fa-map-marked-alt fa-500px"></i>Pick Your Location</h5>
+        <p  class="mt-2 address-data ion-text-center" *ngIf="loading">Fetching Your Location...</p>
+      <p  class="mt-2 address-data ion-text-center" *ngIf="!loading">{{ addressData }}</p>
       <button class="btn btn-success w-100 set-location-btn p-2" (click)="setLocation()" [disabled]="loading"><i class="fas fa-street-view"></i>&nbsp;&nbsp;Set Location</button>
  </div>
 </ion-content>
