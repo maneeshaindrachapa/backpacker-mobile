@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {Observable} from 'rxjs';
+import {forEach} from '@angular-devkit/schematics';
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +10,6 @@ import {Observable} from 'rxjs';
 export class FirebaseService {
 
   constructor(private firestore: AngularFirestore, private firestorage: AngularFireStorage) {
-    // console.log('firebase service');
-    // // tslint:disable-next-line:max-line-length
-    // const data = {location: {position: {lat: 6.8001435, lng: 79.9011946}, altitude: -77.20000457763672, address: 'New Hostel Complex, university of Moratuwa, Bandaranayeke Road, Katubadda'},
-    //   picture: null,
-    //   sensorData: [{displayName: 'Noise Level', sensorReading: 'Normal conversation, background music (57.9dB)', icon: 'mic'}]};
-    // this.saveSensorData(data);
   }
 
   saveSensorData(locationData) {
@@ -22,9 +17,53 @@ export class FirebaseService {
     const fireStoreData = {location: locationData.location, sensorData: locationData.sensorData, timeStamp: locationData.timeStamp, userId: locationData.userId};
     return new Promise((resolve) => {
       this.firestore.collection('locationData').add(fireStoreData).then((firestoreResponse: any) => {
-        const path = '/location_images/' + firestoreResponse.id;
+        const path = '/locationData/' + firestoreResponse.id;
         resolve(this.firestorage.ref(path).putString(locationData.picture, 'data_url').percentageChanges());
       });
     });
   }
+
+  getAllSensorData() {
+    return new Promise(resolve => {
+      this.firestore.collection('locationData').snapshotChanges().subscribe((locationData: any) => {
+        const tempOutput = [];
+            // tslint:disable-next-line:prefer-for-of
+        for (let i = 0; i < locationData.length; i++) {
+            const tempDataObj = {id: null, data: null, path: null, imgUrl: null};
+            tempDataObj.data = locationData[i].payload.doc.data();
+            tempDataObj.id = locationData[i].payload.doc.id;
+            tempDataObj.path = locationData[i].payload.doc.ref.path;
+            this.firestorage.ref(tempDataObj.path).getDownloadURL().subscribe((url) => {
+              tempDataObj.imgUrl = url;
+            });
+            tempOutput.push(tempDataObj);
+        }
+        resolve(tempOutput);
+          });
+    });
+  }
+
+  // should pass {lat: 6.8001731, lng: 79.9011715} obj as input
+  getSensorDataByLaLong(latLngObj) {
+        return new Promise(resolve => {
+            // tslint:disable-next-line:max-line-length no-unused-expression
+            this.firestore.collection('locationData', ref => (ref.where('location.position.lat', '==', latLngObj.lat), '&&', (ref.where('location.position.lng', '==', latLngObj.lng)))).snapshotChanges().subscribe((locationData: any) => {
+                const tempOutput = [];
+                // tslint:disable-next-line:prefer-for-of
+                for (let i = 0; i < locationData.length; i++) {
+                    const tempDataObj = {id: null, data: null, path: null, imgUrl: null};
+                    tempDataObj.data = locationData[i].payload.doc.data();
+                    tempDataObj.id = locationData[i].payload.doc.id;
+                    tempDataObj.path = locationData[i].payload.doc.ref.path;
+                    this.firestorage.ref(tempDataObj.path).getDownloadURL().subscribe((url) => {
+                        tempDataObj.imgUrl = url;
+                    });
+                    tempOutput.push(tempDataObj);
+                }
+                resolve(tempOutput);
+            });
+        });
+    }
+
 }
+
