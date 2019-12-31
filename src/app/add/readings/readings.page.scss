@@ -25,9 +25,9 @@ ion-title, ion-back-button , .back-button-custom {
 .capture-loading-img-wrapper {
   width: 100vw;
   height: 100vw;
-  background-image: url("../../../assets/img/capture_loading_back.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  // background-image: url("../../../assets/img/capture_loading_back.jpg");
+  // background-repeat: no-repeat;
+  // background-size: cover;
   z-index: 100!important;
 }
 
@@ -164,6 +164,11 @@ ion-title, ion-back-button , .back-button-custom {
   min-height: 100%;
   min-width: 100%;
   font-family: "kiona";
+  background-image: url("../../../assets/img/background_video_add.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  font-family: "kiona";
 }
 .changetimeinterval{
   background-color: rgba(0,0,0,0) !important;
@@ -211,16 +216,36 @@ ion-title, ion-back-button , .back-button-custom {
 .sensed-data{
   border-radius: 5% 5% 0 0;
   background-color:rgba(0,0,0,0.75);
-  height: 100%;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
 }
 .sensor-data-title , .sensor-data{
   font-family: 'kiona';
   color: #FFF;
 }
-.icon-data{
+.icon-data,p{
   color: #FFF;
 }
 
 gl-background-video {
   z-index: -100!important;
+}
+.recomendation-btn{
+  display: block;
+  margin: 0 25%;
+  margin-top: 15%;
+}
+.text-area{
+  background-color: rgba(255,255,255,0.85);
+  font-family: 'poppins-regular';
+}
+ionic4-star-rating{
+  display: block;
+  margin-left: 2%;
+  margin-top:10%;
+}
+ion-content {
+  --overflow: hidden;
 }

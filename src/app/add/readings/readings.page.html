@@ -33,7 +33,7 @@
     <ion-button (click)="share()" *ngIf="step==2" class="share-button"><i class="fas fa-share"></i>Share</ion-button>
   </ion-buttons>
 </ion-toolbar>
-<ion-content>
+<ion-content >
   <!--    Step 01 Start-->
   <div class="full-page" *ngIf="step==0">
     <div *ngIf="isTimerChanging" class="changetimeinterval">
@@ -76,8 +76,21 @@
 
   <!--    Step 02 Start-->
   <div class="full-page" *ngIf="step==1">
-    Add recommendation page
-    <ion-button color="primary" (click)="addRecommendation()" block>Add Recomendation</ion-button>
+    <gl-background-video src="assets/video/ig_2.mp4" poster="assets/img/background_video_add.png">
+    </gl-background-video>
+    <ionic4-star-rating #rating
+        activeIcon = "ios-star"
+        defaultIcon = "ios-star-outline"
+        activeColor = "#d4af37" 
+        defaultColor = "#FFFFFF"
+        readonly="false"
+        rating="3"
+        fontSize = "32px"
+        (ratingChanged)="logRatingChange($event)">
+    </ionic4-star-rating>
+    <ion-textarea rows="15" placeholder="Add your recomendation here..." class="text-area"></ion-textarea>
+    <ion-button expand="block" color="light" class="recomendation-btn" (click)="addRecommendation()">Add Recomendation
+    </ion-button>
   </div>
   <!--    Step 02 End -->
 
@@ -101,12 +114,14 @@
     <div *ngIf="!transferData?.picture" class="capture-loading-img-wrapper mb-1">
       <img src="../../../assets/img/capture_loading.gif" class="capture-loading-img ion-margin">
     </div>
-    <img *ngIf="transferData?.picture" [src]="transferData?.picture" class="captured-image mb-1">
+    <div *ngIf="!transferData?.picture" class="capture-loading-img-wrapper mb-1">
+      <img *ngIf="transferData?.picture" [src]="transferData?.picture" class="captured-image mb-1">
+    </div>
     <ion-list class="sensed-data">
       <ion-item class="ion-margin-bottom ion-no-padding ion-text-center ">
         <ion-label style="font-size: 20px;font-weight: bold;" class="sensor-data-title">Sensed Data</ion-label>
       </ion-item>
-      <ion-item class="ion-text-wrap" >
+      <ion-item class="ion-text-wrap">
         <ion-icon name="pin" slot="start" role="img" aria-label="home" class="icon-data"></ion-icon>
         <ion-label class="ion-text-wrap sensor-data">
           <h2>Location</h2>
@@ -124,5 +139,4 @@
   </div>
   <!-- step 3 content-->
   <!--    Step 03 End -->
-
-</ion-content>
+</ion-content >

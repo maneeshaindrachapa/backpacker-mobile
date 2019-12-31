@@ -1,10 +1,10 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {UtilitiesService} from '../../services/utilities.service';
-import {AlertController, Platform} from '@ionic/angular';
-import {SensorsService} from '../../services/sensors.service';
-import {FirebaseService} from '../../services/firebase.service';
-import {UserService} from '../../services/user.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UtilitiesService } from '../../services/utilities.service';
+import { AlertController, Platform } from '@ionic/angular';
+import { SensorsService } from '../../services/sensors.service';
+import { FirebaseService } from '../../services/firebase.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-readings',
@@ -22,6 +22,7 @@ export class ReadingsPage implements OnInit {
   uploadPercentage = 0;
   uploadDone = false;
   isShareClicked = false;
+  rating = 0;
   successRedirectTimeout = 5;
   constructor(private route: ActivatedRoute,
               private utilitiesService: UtilitiesService,
@@ -51,7 +52,9 @@ export class ReadingsPage implements OnInit {
   public ionViewWillEnter() {
 
   }
-
+  logRatingChange(rating) {
+    this.rating = rating;
+  }
   public ionViewCanLeave() {
     return this.step === 0;
   }
@@ -64,7 +67,7 @@ export class ReadingsPage implements OnInit {
       this.capturingBtnText = 'Starting...';
       this.transferData.timeStamp = new Date();
       this.sensorsService.getMicrophoneData(this.readingInterval).then((data: any) => {
-        this.transferData.sensorData.push({displayName: 'Noise Level', sensorReading: data.displayData, icon: 'mic'});
+        this.transferData.sensorData.push({ displayName: 'Noise Level', sensorReading: data.displayData, icon: 'mic' });
       });
 
       this.capturingBtnTextUpdate(this.readingInterval);
@@ -73,20 +76,21 @@ export class ReadingsPage implements OnInit {
   }
 
   capturingBtnTextUpdate(timerVal) {
-        setTimeout(() => {
-        this.capturingBtnText = timerVal.toString() + ' s';
-        timerVal -= 1;
-        if (this.isSensorsCapturing) {
+    setTimeout(() => {
+      this.capturingBtnText = timerVal.toString() + ' s';
+      timerVal -= 1;
+      if (this.isSensorsCapturing) {
         if (timerVal >= -1) {
           this.capturingBtnTextUpdate(timerVal);
         } else {
           this.capturingBtnText = 'Done';
           this.isSensorsCapturing = false;
           this.next();
-        }} else {
-          this.capturingBtnText = 'START';
         }
-        }, 1000);
+      } else {
+        this.capturingBtnText = 'START';
+      }
+    }, 1000);
   }
 
   goBack() {
@@ -126,8 +130,8 @@ export class ReadingsPage implements OnInit {
     setTimeout(() => {
       this.successRedirectTimeout -= 1;
       if (this.successRedirectTimeout === 0) {
-          this.goHome();
-        }
+        this.goHome();
+      }
       this.updateSuccessTimeOut();
     }, 1000);
   }
