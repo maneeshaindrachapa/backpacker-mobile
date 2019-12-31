@@ -8,7 +8,6 @@ import {forEach} from '@angular-devkit/schematics';
   providedIn: 'root'
 })
 export class FirebaseService {
-
   constructor(private firestore: AngularFirestore, private firestorage: AngularFireStorage) {
   }
 

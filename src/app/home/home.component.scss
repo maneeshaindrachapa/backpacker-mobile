@@ -18,6 +18,9 @@
   --border-width: 0 0 0 0;
   --inner-border-width: 0;
 }
+
+
+
 ion-card{
   margin-left: 0px !important;
   margin-right: 0px !important;
@@ -77,3 +80,22 @@ ion-icon,ion-menu-button {
   position: absolute;
   top:0px;
 }
+
+.card-recommendation-text, .card-recommendation-address{
+  font-size: 11px;
+  line-height: 13px;
+}
+
+.card-recommendation-date{
+  font-size: 8px;
+  line-height: 8px;
+}
+
+.card-recommendation-address{
+  font-weight: bold;
+}
+
+//ion-toolbar{
+//  position: fixed;
+//  top: 0;
+//}

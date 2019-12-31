@@ -1,5 +1,5 @@
-<ion-content class="content">
-  <div class="ion-padding">
+<ion-content class="content" >
+  <div padding>
     <ion-toolbar>
       <ion-buttons slot="start" class="mr-4">
         <ion-icon name="compass" (click)="toggleview()"></ion-icon>
@@ -18,42 +18,37 @@
         (ionCancel)="isSearchBarOpened = false"
       ></ion-searchbar>
     </ion-toolbar>
-    <div id="map_canvas" style="height: 100%; width: 100%" *ngIf="!inCardView"></div>
-    <div *ngIf="inCardView">
-      <ion-card class="ion-text-wrap">
-        <ion-item>
-          <ion-label class="card-title">Lorem Ispum</ion-label>
-        </ion-item>
-        <ion-card-content>
-          <ion-item>
-            <ion-thumbnail slot="start">
-              <img src="../../assets/img/3.jpg" />
-            </ion-thumbnail>
-            <ion-label class="card-details"
-              >This is content, without any paragraph or header tags, within an
+
+    <!--    Location List view-->
+    <div no-padding>
+      <ion-card padding *ngFor="let location of locationData">
+        <ion-item class="ion-text-wrap" no-padding no-margin>
+          <ion-thumbnail slot="start">
+            <img [src]="location?.imgUrl" *ngIf="location?.imgUrl" />
+            <img src="../../assets/img/img_loading.gif" *ngIf="!location?.imgUrl" />
+          </ion-thumbnail>
+          <ion-label slot="end" class="card-details">
+<!--            <ion-row no-padding no-margin>-->
+<!--              <ion-col no-padding no-margin>-->
+<!--              </ion-col>-->
+<!--              <ion-col no-padding no-margin >-->
+<!--                &lt;!&ndash;              add star rating thing here&ndash;&gt;-->
+<!--                <img class="float-right" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/5_stars.svg/1280px-5_stars.svg.png" style="width: 70%;margin: auto;position: relative; top: 2px;">-->
+<!--                &lt;!&ndash;              add star rating thing here&ndash;&gt;-->
+<!--              </ion-col>-->
+<!--            </ion-row>-->
+            <h4 no-margin no-padding class="card-recommendation-address">{{ location?.data.location.address }}</h4>
+            <p class="card-recommendation-date" no-margin no-padding>{{ location?.data.timeStamp.toDate() | date:'medium' }}</p>
+            <p class="card-recommendation-text mt-1" text-justify>
+              This is content, without any paragraph or header tags, within an
               ion-card-content element.This is content, without any paragraph or
-              header tags, within an ion-card-content element.</ion-label
-            >
-          </ion-item>
-        </ion-card-content>
-      </ion-card>
-      <ion-card class="ion-text-wrap">
-        <ion-item>
-          <ion-label class="card-title">Lorem Ispum</ion-label>
+              header tags, within an ion-card-content element.
+            </p>
+          </ion-label>
         </ion-item>
-        <ion-card-content>
-          <ion-item>
-            <ion-thumbnail slot="start">
-              <img src="../../assets/img/5.jpg" />
-            </ion-thumbnail>
-            <ion-label class="card-details"
-              >This is content, without any paragraph or header tags, within an
-              ion-card-content element.This is content, without any paragraph or
-              header tags, within an ion-card-content element.</ion-label
-            >
-          </ion-item>
-        </ion-card-content>
       </ion-card>
     </div>
+    <!--    Location List view-->
   </div>
+
 </ion-content>
