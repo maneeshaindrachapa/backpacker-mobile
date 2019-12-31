@@ -2,7 +2,7 @@
   <ion-buttons slot="start">
     <ion-back-button
       defaultHref="tabs/add"
-      *ngIf="step==0"
+      *ngIf="step==0 && !isTimerChanging"
       (click)="closeView();"
     ></ion-back-button>
     <ion-button
@@ -21,7 +21,7 @@
       ></ion-ripple-effect>
     </ion-button>
     <ion-button
-      *ngIf="step==1 && isTimerChanging"
+      *ngIf="step==0 && isTimerChanging"
       (click)="isTimerChanging = false"
       class="sc-ion-back-button-md-h sc-ion-back-button-md-s md button back-button-has-icon-only ion-activatable ion-focusable show-back-button hydrated">
       <span class="button-inner sc-ion-back-button-md">
