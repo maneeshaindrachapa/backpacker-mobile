@@ -1,39 +1,20 @@
 <ion-toolbar class="toolbar">
   <ion-buttons slot="start">
-    <ion-back-button
-      defaultHref="tabs/add"
-      *ngIf="step==0 && !isTimerChanging"
-      (click)="closeView();"
-    ></ion-back-button>
-    <ion-button
-      *ngIf="step>=1 && !isTimerChanging"
-      (click)="goBack();"
+    <ion-back-button defaultHref="tabs/add" *ngIf="step==0 && !isTimerChanging" (click)="closeView();">
+    </ion-back-button>
+    <ion-button *ngIf="step>=1 && !isTimerChanging" (click)="goBack();"
       class="sc-ion-back-button-md-h sc-ion-back-button-md-s md button back-button-has-icon-only ion-activatable ion-focusable show-back-button hydrated">
       <span class="button-inner sc-ion-back-button-md">
-        <ion-icon
-          class="sc-ion-back-button-md md hydrated"
-          name="arrow-back"
-        ></ion-icon>
+        <ion-icon class="sc-ion-back-button-md md hydrated" name="arrow-back"></ion-icon>
       </span>
-      <ion-ripple-effect
-        class="sc-ion-back-button-md md unbounded hydrated"
-        role="presentation"
-      ></ion-ripple-effect>
+      <ion-ripple-effect class="sc-ion-back-button-md md unbounded hydrated" role="presentation"></ion-ripple-effect>
     </ion-button>
-    <ion-button
-      *ngIf="step==0 && isTimerChanging"
-      (click)="isTimerChanging = false"
+    <ion-button *ngIf="step==0 && isTimerChanging" (click)="isTimerChanging = false"
       class="sc-ion-back-button-md-h sc-ion-back-button-md-s md button back-button-has-icon-only ion-activatable ion-focusable show-back-button hydrated">
       <span class="button-inner sc-ion-back-button-md">
-        <ion-icon
-          class="sc-ion-back-button-md md hydrated"
-          name="arrow-back"
-        ></ion-icon>
+        <ion-icon class="sc-ion-back-button-md md hydrated" name="arrow-back"></ion-icon>
       </span>
-      <ion-ripple-effect
-        class="sc-ion-back-button-md md unbounded hydrated"
-        role="presentation"
-      ></ion-ripple-effect>
+      <ion-ripple-effect class="sc-ion-back-button-md md unbounded hydrated" role="presentation"></ion-ripple-effect>
     </ion-button>
   </ion-buttons>
   <ion-title *ngIf="step==0 && !isTimerChanging" class="ion-no-padding">
@@ -42,82 +23,50 @@
   <ion-title *ngIf="step==0 && isTimerChanging" class="ion-no-padding">
     <i class="fas fa-stopwatch fa-500px"></i>Set Sensing Timer
   </ion-title>
-    <ion-title *ngIf="step==1" class="ion-no-padding">
-        <i class="fas fa-star-half-alt"></i>&nbsp;Recommendation
-    </ion-title>
+  <ion-title *ngIf="step==1" class="ion-no-padding">
+    <i class="fas fa-star-half-alt"></i>&nbsp;Recommendation
+  </ion-title>
   <ion-title *ngIf="step==2" class="ion-no-padding">
     <i class="fas fa-share-alt"></i>&nbsp;Social
   </ion-title>
   <ion-buttons slot="end">
-    <ion-button (click)="share()" *ngIf="step==2"
-      >Share&nbsp;<i class="fas fa-share"></i
-    ></ion-button>
+    <ion-button (click)="share()" *ngIf="step==2">Share&nbsp;<i class="fas fa-share"></i></ion-button>
   </ion-buttons>
 </ion-toolbar>
 <ion-content>
   <!--    Step 01 Start-->
   <div class="full-page" *ngIf="step==0">
     <div *ngIf="isTimerChanging" class="changetimeinterval">
-        <video
-        autoplay
-        loop
-        src="assets/video/ig_2.mp4#t=0.1"
-        [muted]="'muted'"
-      ></video>
+      <gl-background-video src="assets/video/ig_2.mp4" poster="assets/img/background_video_add.png">
+      </gl-background-video>
       <h5 class="ion-margin-top ion-no-margin ion-text-center title">Change Sensing Interval</h5>
       <h1 class="ion-margin-top ion-no-margin ion-text-center timer-value">
         {{ readingInterval }}s
       </h1>
-      <ion-item>
-        <ion-range
-          min="5"
-          max="50"
-          color="light"
-          [(ngModel)]="readingInterval" class="ion-no-padding ion-padding-end ion-padding-start">
+      <ion-item class="change-timer">
+        <ion-range min="5" max="50" color="light" [(ngModel)]="readingInterval"
+          class="ion-no-padding ion-padding-end ion-padding-start">
           <ion-text slot="start">5s</ion-text>
           <ion-text slot="end">50s</ion-text>
         </ion-range>
       </ion-item>
-      <ion-button  expand="block"
-        color="light"
-        class="set-interval-btn"
-        (click)="isTimerChanging=false"
-        >Set Interval</ion-button>
+      <ion-button expand="block" color="light" class="set-interval-btn" (click)="isTimerChanging=false">Set Interval
+      </ion-button>
     </div>
 
     <div *ngIf="!isTimerChanging">
-      <video
-        autoplay
-        loop
-        src="assets/video/ig_2.mp4#t=0.1"
-        [muted]="'muted'"
-      ></video>
+      <gl-background-video src="assets/video/ig_2.mp4" poster="assets/img/background_video_add.png">
+      </gl-background-video>
       <h5 class='sub-title ion-text-center ion-margin-top ion-no-margin'>Capture Environmental Status</h5>
-      <ion-fab
-        vertical="center"
-        horizontal="center"
-        slot="fixed"
-        class="get-status-wrapper"
-      >
-        <ion-fab-button
-          color="dark"
-          class="get-status-btn"
-          (click)="sensorsCaptureToggle()"
-          [ngClass]="{ 'get-status-btn-animate' : isSensorsCapturing}"
-        >
-          {{ isSensorsCapturing? 'Sensor Capture': '' }}<br
-            *ngIf="isSensorsCapturing"
-          />
+      <ion-fab vertical="center" horizontal="center" slot="fixed" class="get-status-wrapper">
+        <ion-fab-button color="dark" class="get-status-btn" (click)="sensorsCaptureToggle()"
+          [ngClass]="{ 'get-status-btn-animate' : isSensorsCapturing}">
+          {{ isSensorsCapturing? 'Sensor Capture': '' }}<br *ngIf="isSensorsCapturing" />
           {{ capturingBtnText }}
         </ion-fab-button>
       </ion-fab>
 
-      <ion-fab
-        vertical="bottom"
-        horizontal="end"
-        slot="fixed"
-        *ngIf="!isSensorsCapturing"
-      >
+      <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="!isSensorsCapturing">
         <ion-fab-button color="dark" (click)="isTimerChanging = true" class="get-timer-btn">
           {{ readingInterval }} s
         </ion-fab-button>
@@ -126,56 +75,59 @@
   </div>
   <!--    Step 01 End -->
 
-    <!--    Step 02 Start-->
-    <div class="full-page" *ngIf="step==1">
-        Add recommendation page
-      <ion-button color="primary" (click)="addRecommendation()" block>Add Recomendation</ion-button>
-    </div>
-    <!--    Step 02 End -->
+  <!--    Step 02 Start-->
+  <div class="full-page" *ngIf="step==1">
+    Add recommendation page
+    <ion-button color="primary" (click)="addRecommendation()" block>Add Recomendation</ion-button>
+  </div>
+  <!--    Step 02 End -->
 
-    <!--    Step 03 Start-->
-<!--    success progress bar-->
-    <ion-progress-bar color="success" [value]="uploadPercentage" *ngIf="(uploadPercentage>0 && !uploadDone) || (isShareClicked && !uploadDone)"></ion-progress-bar>
-    <ion-progress-bar color="success" type="indeterminate" *ngIf="uploadDone"></ion-progress-bar>
-    <!--    success progress bar-->
-    <!--    Success alert box-->
-    <div class="success-alert" text-center *ngIf="isShareClicked">
-        <img src="../../../assets/img/check-circle.gif" class="success-img mx-auto d-block mt-3 mb-2" *ngIf="uploadDone">
-        <p text-center class="mb-1" *ngIf="uploadDone">Successfully uploaded!</p>
-        <p text-sm-center *ngIf="uploadDone">Redirecting to <i class="fas fa-home"></i> {{ successRedirectTimeout }} secs</p>
+  <!--    Step 03 Start-->
+  <!--    success progress bar-->
+  <ion-progress-bar color="success" [value]="uploadPercentage"
+    *ngIf="(uploadPercentage>0 && !uploadDone) || (isShareClicked && !uploadDone)"></ion-progress-bar>
+  <ion-progress-bar color="success" type="indeterminate" *ngIf="uploadDone"></ion-progress-bar>
+  <!--    success progress bar-->
+  <!--    Success alert box-->
+  <div class="success-alert" text-center *ngIf="isShareClicked">
+    <img src="../../../assets/img/check-circle.gif" class="success-img mx-auto d-block mt-3 mb-2" *ngIf="uploadDone">
+    <p text-center class="mb-1" *ngIf="uploadDone">Successfully uploaded!</p>
+    <p text-sm-center *ngIf="uploadDone">Redirecting to <i class="fas fa-home"></i> {{ successRedirectTimeout }} secs
+    </p>
 
-        <img src="../../../assets/img/uploading.gif" class="success-img mx-auto d-block mt-3 mb-3" *ngIf="isShareClicked && !uploadDone">
-        <p text-center class="mb-1" *ngIf="isShareClicked && !uploadDone">Uploading...</p>
+    <img src="../../../assets/img/uploading.gif" class="success-img mx-auto d-block mt-3 mb-3"
+      *ngIf="isShareClicked && !uploadDone">
+    <p text-center class="mb-1" *ngIf="isShareClicked && !uploadDone">Uploading...</p>
+  </div>
+  <!--    Success alert box-->
+  <!--   step 3 content-->
+  <div class="full-page" *ngIf="step==2" [ngClass]="{ 'disabled-div': (uploadPercentage>0 || isShareClicked) }">
+    <div *ngIf="!transferData?.picture" class="capture-loading-img-wrapper mb-1">
+      <img src="../../../assets/img/capture_loading.gif" class="capture-loading-img" margin>
     </div>
-    <!--    Success alert box-->
-<!--   step 3 content-->
-    <div class="full-page" *ngIf="step==2" [ngClass]="{ 'disabled-div': (uploadPercentage>0 || isShareClicked) }">
-        <div *ngIf="!transferData?.picture" class="capture-loading-img-wrapper mb-1">
-            <img src="../../../assets/img/capture_loading.gif" class="capture-loading-img" margin>
-        </div>
-        <img *ngIf="transferData?.picture" [src]="transferData?.picture" class="captured-image mb-1">
+    <img *ngIf="transferData?.picture" [src]="transferData?.picture" class="captured-image mb-1">
 
-        <ion-list>
-            <ion-item text-center margin-bottom no-padding>
-                <ion-label style="font-size: 20px;font-weight: bold;">Sensed Data</ion-label>
-            </ion-item>
-            <ion-item text-wrap>
-                <ion-icon name="pin" slot="start" role="img" aria-label="home"></ion-icon>
-                <ion-label text-wrap>
-                    <h2>Location</h2>
-                    <p>{{ transferData?.location.address }}</p>
-                </ion-label>
-            </ion-item>
-            <ion-item *ngFor="let sensor of transferData?.sensorData" text-wrap>
-                <ion-icon name="{{ sensor.icon }}" slot="start" role="img" aria-label="home"></ion-icon>
-                <ion-label text-wrap>
-                <h2>{{ sensor.displayName }}</h2>
-                <p>{{ sensor.sensorReading }}</p>
-                </ion-label>
-            </ion-item>
-        </ion-list>
-    </div>
-    <!-- step 3 content-->
-    <!--    Step 03 End -->
+    <ion-list>
+      <ion-item text-center margin-bottom no-padding>
+        <ion-label style="font-size: 20px;font-weight: bold;">Sensed Data</ion-label>
+      </ion-item>
+      <ion-item text-wrap>
+        <ion-icon name="pin" slot="start" role="img" aria-label="home"></ion-icon>
+        <ion-label text-wrap>
+          <h2>Location</h2>
+          <p>{{ transferData?.location.address }}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item *ngFor="let sensor of transferData?.sensorData" text-wrap>
+        <ion-icon name="{{ sensor.icon }}" slot="start" role="img" aria-label="home"></ion-icon>
+        <ion-label text-wrap>
+          <h2>{{ sensor.displayName }}</h2>
+          <p>{{ sensor.sensorReading }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+  <!-- step 3 content-->
+  <!--    Step 03 End -->
 
 </ion-content>

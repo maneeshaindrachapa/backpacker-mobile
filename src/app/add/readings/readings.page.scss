@@ -174,8 +174,8 @@ ion-title,ion-back-button{
   color: #fff;
   font-family: 'kiona';
 }
-ion-item{
-  --border-style:none;
+.change-timer{
+  --border-style:none !important;
 }
 
 .disabled-div{
