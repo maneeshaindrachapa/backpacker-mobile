@@ -19,9 +19,9 @@ const routes: Routes = [
             loadChildren: () =>
               import('../home/home.module').then(m => m.HomeModule)
           },
-          { path: 'view',
-            loadChildren: () =>
-            import('../view-details/view-details.module').then(m => m.ViewDetailsModule)
+          {
+            path: 'home-map',
+            loadChildren: () => import('../home-map/home-map.module').then( m => m.HomeMapPageModule)
           },
         ]
       },
@@ -38,11 +38,7 @@ const routes: Routes = [
       {
         path: 'add',
         loadChildren: () => import('../add/add.module').then( m => m.AddPageModule)
-      },
-      {
-        path: 'home-map',
-        loadChildren: () => import('../home-map/home-map.module').then( m => m.HomeMapPageModule)
-      },
+      }
     ]
   }
 ];

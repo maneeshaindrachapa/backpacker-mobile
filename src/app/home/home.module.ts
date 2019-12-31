@@ -15,7 +15,7 @@ import { HomeComponent } from './home.component';
         path: '',
         children: [
           { path: '',  component: HomeComponent },
-          { path: 'view', loadChildren: () => import('../view-details/view-details.module').then(m => m.ViewDetailsModule) }
+          { path: 'home-map', loadChildren: () => import('../home-map/home-map.module').then(m => m.HomeMapPageModule) }
         ]
       }
     ])
