@@ -50,6 +50,7 @@
     "core-js": "^2.5.4",
     "crypto-js": "^3.1.9-1",
     "firebase": "^7.6.1",
+    "gl-ionic-background-video": "0.0.5",
     "rxjs": "~6.5.1",
     "ts-md5": "^1.2.7",
     "tslib": "^1.9.0",
