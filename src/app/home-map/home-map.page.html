@@ -1,5 +1,6 @@
 <ion-content>
-    <div id="map_canvas_2">
+    <ion-progress-bar color="success" type="indeterminate" *ngIf="isLoading"></ion-progress-bar>
+    <div id="map_canvas_2" [ngClass]="{ 'disabled-div': isLoading }">
         <div padding class="toolbar-wrapper">
             <ion-toolbar>
                 <ion-buttons slot="start" class="mr-4">

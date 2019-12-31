@@ -81,3 +81,8 @@ ion-toolbar {
     width: 100%;
   }
 
+.disabled-div{
+  pointer-events: none;
+  opacity: 0.8;
+  background: #CCC;
+}
