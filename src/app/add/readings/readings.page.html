@@ -3,7 +3,7 @@
     <ion-back-button defaultHref="tabs/add" *ngIf="step==0 && !isTimerChanging" (click)="closeView();">
     </ion-back-button>
     <ion-button *ngIf="step>=1 && !isTimerChanging" (click)="goBack();"
-      class="sc-ion-back-button-md-h sc-ion-back-button-md-s md button back-button-has-icon-only ion-activatable ion-focusable show-back-button hydrated">
+      class="sc-ion-back-button-md-h sc-ion-back-button-md-s md button back-button-has-icon-only ion-activatable ion-focusable show-back-button hydrated ">
       <span class="button-inner sc-ion-back-button-md">
         <ion-icon class="sc-ion-back-button-md md hydrated" name="arrow-back"></ion-icon>
       </span>
@@ -12,7 +12,7 @@
     <ion-button *ngIf="step==0 && isTimerChanging" (click)="isTimerChanging = false"
       class="sc-ion-back-button-md-h sc-ion-back-button-md-s md button back-button-has-icon-only ion-activatable ion-focusable show-back-button hydrated">
       <span class="button-inner sc-ion-back-button-md">
-        <ion-icon class="sc-ion-back-button-md md hydrated" name="arrow-back"></ion-icon>
+        <ion-icon class="sc-ion-back-button-md md hydrated back-button-custom" name="arrow-back"></ion-icon>
       </span>
       <ion-ripple-effect class="sc-ion-back-button-md md unbounded hydrated" role="presentation"></ion-ripple-effect>
     </ion-button>
