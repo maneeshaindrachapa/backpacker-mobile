@@ -88,7 +88,7 @@
   <div class="success-alert" text-center *ngIf="isShareClicked">
     <img src="../../../assets/img/check-circle.gif" class="success-img mx-auto d-block mt-3 mb-2" *ngIf="uploadDone">
     <p text-center class="mb-1" *ngIf="uploadDone">Successfully uploaded!</p>
-    <p text-sm-center *ngIf="uploadDone">Redirecting to <i class="fas fa-home"></i> {{ successRedirectTimeout }} secs
+    <p text-sm-center *ngIf="uploadDone">Redirecting to <i class="fas fa-home"></i>{{ successRedirectTimeout }} secs
     </p>
     <img src="../../../assets/img/uploading.gif" class="success-img mx-auto d-block mt-3 mb-3"
       *ngIf="isShareClicked && !uploadDone">
