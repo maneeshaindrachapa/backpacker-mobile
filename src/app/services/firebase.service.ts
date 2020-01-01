@@ -51,5 +51,9 @@ export class FirebaseService {
   getFireStorageDataByPath(path) {
       return this.firestorage.ref(path).getDownloadURL();
   }
+
+  getLocationByID(id) {
+      return this.firestore.collection('locationData').doc(id);
+  }
 }
 
