@@ -37,6 +37,9 @@ ion-title, ion-back-button , .back-button-custom {
 
 .toolbar {
   font-family: "kiona";
+  background-image: url("../../../assets/img/background_video_add.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .capture-loading-img {
   width: 60vw;
