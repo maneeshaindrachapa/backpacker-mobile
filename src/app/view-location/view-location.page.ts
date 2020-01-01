@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FirebaseService} from '../services/firebase.service';
+import {UserService} from '../services/user.service';
 
 @Component({
   selector: 'app-view-location',
@@ -11,7 +12,9 @@ export class ViewLocationPage implements OnInit {
   backRoute;
   locationData = {id: null, data: null, path: null, imgUrl: null};
   isLoading = false;
-  constructor(private route: ActivatedRoute, private firebaseService: FirebaseService, private router: Router) {
+  userName;
+    // tslint:disable-next-line:max-line-length
+  constructor(private route: ActivatedRoute, private firebaseService: FirebaseService, private router: Router, private userService: UserService) {
     route.queryParams.subscribe((data: any) => {
       this.getLocationData(data.id);
       this.backRoute = data.backRoute;
@@ -31,6 +34,9 @@ export class ViewLocationPage implements OnInit {
             this.locationData.imgUrl = imgPath;
         }, error => {
           console.log(error);
+        });
+        this.userService.getUserById(location.payload.data().userId).subscribe((user: any) => {
+            this.userName = user.displayName;
         });
         this.isLoading = false;
         console.log(this.locationData);
