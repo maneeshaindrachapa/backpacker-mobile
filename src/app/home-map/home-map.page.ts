@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {
     GoogleMaps,
     GoogleMap,
-    GoogleMapOptions, MarkerOptions
+    GoogleMapOptions,
+    MarkerOptions,
+    GoogleMapsEvent
 } from '@ionic-native/google-maps';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
@@ -76,7 +78,7 @@ export class HomeMapPage implements OnInit {
                     animation: 'DROP',
                     position: location.location.position
                 };
-                this.addMarker(markerOptions);
+                this.addMarker(markerOptions, locationData[i].payload.doc.id);
             }
             this.locationData = locationData;
             // tslint:disable-next-line:prefer-for-of
@@ -84,7 +86,13 @@ export class HomeMapPage implements OnInit {
         });
     }
 
-    addMarker(markerOptions) {
-        this.map.addMarkerSync(markerOptions);
+    addMarker(markerOptions, id) {
+        const marker = this.map.addMarkerSync(markerOptions);
+        marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
+            this.viewLocation(id, 'tabs/home/home-map');
+        });
+    }
+    viewLocation(locationId, backRoute) {
+        this.router.navigate(['tabs', 'home', 'view-location'], { queryParams: {id: locationId, backRoute}});
     }
 }
