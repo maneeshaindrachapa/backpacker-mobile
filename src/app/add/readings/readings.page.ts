@@ -69,7 +69,9 @@ export class ReadingsPage implements OnInit {
       this.sensorsService.getMicrophoneData(this.readingInterval).then((data: any) => {
         this.transferData.sensorData.push({ displayName: 'Noise Level', sensorReading: data.displayData, icon: 'mic' });
       });
-
+      this.sensorsService.getLightSensorData(5).then((data: any) => {
+            this.transferData.sensorData.push({ displayName: 'Luminosity', sensorReading: data.displayData, icon: 'sunny' });
+        });
       this.capturingBtnTextUpdate(this.readingInterval);
       this.isSensorsCapturing = true;
     }
