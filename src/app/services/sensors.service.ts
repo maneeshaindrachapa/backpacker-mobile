@@ -46,6 +46,22 @@ export class SensorsService {
     return this.nativeGeoCoder.reverseGeocode(latitude, longitude, geoCoderOptions);
   }
 
+  generateAddress(addressObj) {
+    const obj = [];
+    let address = '';
+    // tslint:disable-next-line:forin
+    for (const key in addressObj) {
+      obj.push(addressObj[key]);
+    }
+    obj.reverse();
+    for (const val in obj) {
+      if (obj[val].length) {
+        address += obj[val] + ', ';
+      }
+    }
+    return address.slice(0, -2);
+  }
+
   getLightSensorData(time: any) {
     const timeInterval = time / 10;
     let lightPerPeriod = 0
