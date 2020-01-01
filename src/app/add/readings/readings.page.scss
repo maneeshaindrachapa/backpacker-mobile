@@ -196,8 +196,12 @@ ion-title, ion-back-button , .back-button-custom {
     background: #CCC;
   }
 
-.icon-data, .sensor-reading{
+.icon-data{
   color: #FFF;
+}
+.sensor-reading{
+  color:#FFF;
+  font-family: 'poppins-regular';
 }
 
 .success-alert{
@@ -220,10 +224,6 @@ ion-title, ion-back-button , .back-button-custom {
 .sensed-data{
   border-radius: 5% 5% 0 0;
   background-color:rgba(0,0,0,0.75);
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
 }
 .sensor-data-title , .sensor-data{
   font-family: 'kiona';

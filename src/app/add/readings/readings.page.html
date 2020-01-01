@@ -105,8 +105,8 @@
   <div class="full-page" *ngIf="step==2" [ngClass]="{ 'disabled-div': (uploadPercentage>0 || isShareClicked) }">
     <gl-background-video style="z-index: -1;" src="assets/video/ig_2.mp4" poster="assets/img/background_video_add.png">
     </gl-background-video>
-    <ion-row>
-      <ion-col>
+    <ion-row class="ion-no-padding ion-no-margin">
+      <ion-col class="ion-no-padding ion-no-margin">
         <div *ngIf="!transferData?.picture" class="capture-loading-img-wrapper mb-1">
           <img src="../../../assets/img/capture_loading.gif" class="capture-loading-img ion-margin">
         </div>
