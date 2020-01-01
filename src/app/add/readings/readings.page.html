@@ -33,7 +33,7 @@
     <ion-button (click)="share()" *ngIf="step==2" class="share-button"><i class="fas fa-share"></i>Share</ion-button>
   </ion-buttons>
 </ion-toolbar>
-<ion-content >
+<ion-content>
   <!--    Step 01 Start-->
   <div class="full-page" *ngIf="step==0">
     <div *ngIf="isTimerChanging" class="changetimeinterval">
@@ -78,17 +78,11 @@
   <div class="full-page" *ngIf="step==1">
     <gl-background-video src="assets/video/ig_2.mp4" poster="assets/img/background_video_add.png">
     </gl-background-video>
-    <ionic4-star-rating #rating
-        activeIcon = "ios-star"
-        defaultIcon = "ios-star-outline"
-        activeColor = "#d4af37" 
-        defaultColor = "#FFFFFF"
-        readonly="false"
-        rating="1"
-        fontSize = "32px"
-        (ratingChanged)="logRatingChange($event)">
+    <ionic4-star-rating #rating activeIcon="ios-star" defaultIcon="ios-star-outline" activeColor="#d4af37"
+      defaultColor="#FFFFFF" readonly="false" rating="1" fontSize="32px" (ratingChanged)="logRatingChange($event)">
     </ionic4-star-rating>
-    <ion-textarea rows="15" placeholder="Add your recomendation here..." class="text-area" [(ngModel)]="transferData.recommendation.text"></ion-textarea>
+    <ion-textarea rows="15" placeholder="Add your recomendation here..." class="text-area"
+      [(ngModel)]="transferData.recommendation.text"></ion-textarea>
     <ion-button expand="block" color="light" class="recomendation-btn" (click)="addRecommendation()">Add Recomendation
     </ion-button>
   </div>
@@ -109,14 +103,19 @@
   </div>
   <!--   step 3 content-->
   <div class="full-page" *ngIf="step==2" [ngClass]="{ 'disabled-div': (uploadPercentage>0 || isShareClicked) }">
-    <!--    <gl-background-video style="z-index: -1;" src="assets/video/ig_2.mp4" poster="assets/img/background_video_add.png">-->
-    <!--    </gl-background-video>-->
-    <div *ngIf="!transferData?.picture" class="capture-loading-img-wrapper mb-1">
-      <img src="../../../assets/img/capture_loading.gif" class="capture-loading-img ion-margin">
-    </div>
-    <div *ngIf="transferData?.picture" class="capture-loading-img-wrapper mb-1">
-      <img  [src]="transferData?.picture" class="captured-image mb-1">
-    </div>
+    <gl-background-video style="z-index: -1;" src="assets/video/ig_2.mp4" poster="assets/img/background_video_add.png">
+    </gl-background-video>
+    <ion-row>
+      <ion-col>
+        <div *ngIf="!transferData?.picture" class="capture-loading-img-wrapper mb-1">
+          <img src="../../../assets/img/capture_loading.gif" class="capture-loading-img ion-margin">
+        </div>
+        <div *ngIf="transferData?.picture" class="capture-loading-img-wrapper mb-1">
+          <img [src]="transferData?.picture" class="captured-image mb-1">
+        </div>
+      </ion-col>
+    </ion-row>
+
     <ion-list class="sensed-data">
       <ion-item class="ion-margin-bottom ion-no-padding ion-text-center ">
         <ion-label style="font-size: 20px;font-weight: bold;" class="sensor-data-title">Sensed Data</ion-label>
@@ -139,4 +138,4 @@
   </div>
   <!-- step 3 content-->
   <!--    Step 03 End -->
-</ion-content >
+</ion-content>

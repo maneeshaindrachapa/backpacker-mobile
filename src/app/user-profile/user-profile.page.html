@@ -1,15 +1,25 @@
-<ion-toolbar class="toolbar">
-  <ion-buttons slot="start">
-    <ion-back-button [defaultHref]="backRoute">
-    </ion-back-button>
-  </ion-buttons>
-  <ion-title  class="ion-no-padding">
-    <i class="fab fa-500px"></i>&nbsp;User Profile
-  </ion-title>
-</ion-toolbar>
+<ion-content class="content">
+  <gl-background-video src="assets/video/ig_1.mp4" poster="assets/img/background_vid_login_poster.png">
+  </gl-background-video>
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="backRoute">
+      </ion-back-button>
+    </ion-buttons>
 
-<ion-content >
-  <div class="ion-padding-horizontal">
-  <img src="../../assets/img/user.png" class="user-img mx-auto d-block">
+    <ion-title>
+      <ion-icon name="contact" class='ion-icon'></ion-icon>
+      User Profile
+    </ion-title>
+  </ion-toolbar>
+  <div class="ion-padding">
+    <ion-row>
+      <ion-col>
+        <img src="../../assets/img/user.png" class="user-img mx-auto d-block">
+      </ion-col>
+    </ion-row>
   </div>
+  <!-- <div class="ion-padding-horizontal" style="z-index: 1000;">
+    
+  </div> -->
 </ion-content>

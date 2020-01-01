@@ -1,21 +1,27 @@
-ion-toolbar{
-  //color: #FFFFFF;
-  //background-color: transparent!important;
+.content {
+  height: 100%;
+  background-image: url("../../assets/img/background_vid_login_poster.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
   font-family: "kiona";
-  background-image: url("../../assets/img/8_1.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: left top;
+}
+ion-toolbar{
+  font-family: "kiona";
+  color : #FFF;
+  font-size: 18px;
 }
 
-ion-content{
-  font-family: "kiona" !important;
-  background-image: url("../../assets/img/8_1.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: left center;
+// ion-content{
+//   font-family: "kiona" !important;
+//   background-image: url("../../assets/img/8_1.jpg");
+//   background-repeat: no-repeat;
+//   background-size: cover;
+//   background-position: left center;
+// }
+.ion-icon{
+  font-size: 20px !important;
 }
-
 .user-img{
   width:40vw;
   height: 40vw;
