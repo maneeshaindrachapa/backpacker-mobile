@@ -1,13 +1,35 @@
-<ion-toolbar class="toolbar">
-  <ion-buttons slot="start">
-    <ion-back-button [defaultHref]="backRoute"></ion-back-button>
-  </ion-buttons>
-  <ion-title class="ion-no-padding">
-    <i class="far fa-map"></i>&nbsp;View Location
-  </ion-title>
+<ion-content class="content">
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="backRoute"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-no-padding">
+      <i class="far fa-map"></i>&nbsp;View Location
+    </ion-title>
+  </ion-toolbar>
 
-</ion-toolbar>
-
-<ion-content>
-
+  <div class="ion-padding">
+    <div class="image">
+      <img src="../../assets/img/1.jpg" height="100%" width="100%">
+    </div>
+    <ion-list class="sensed-data">
+      <ion-item class="ion-margin-bottom ion-no-padding ion-text-center ">
+        <ion-label style="font-size: 20px;font-weight: bold;" class="sensor-data-title">Details</ion-label>
+      </ion-item>
+      <ion-item class="ion-text-wrap">
+        <ion-icon name="pin" slot="start" role="img" aria-label="home" class="icon-data"></ion-icon>
+        <ion-label class="ion-text-wrap sensor-data">
+          <h2>Location</h2>
+          <p class="sensor-reading">{{ transferData?.location.address }}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item *ngFor="let sensor of transferData?.sensorData" class="ion-text-wrap">
+        <ion-icon name="{{ sensor.icon }}" slot="start" role="img" aria-label="home" class="icon-data"></ion-icon>
+        <ion-label class="ion-text-wrap sensor-data">
+          <h2>{{ sensor.displayName }}</h2>
+          <p class="sensor-reading">{{ sensor.sensorReading }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>
