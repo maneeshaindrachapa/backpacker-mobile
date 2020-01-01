@@ -1,0 +1,28 @@
+.content{
+    height: 100%;
+    background-image: url("../../assets/img/1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    font-family: "kiona";
+}
+.toolbar{
+    font-family: 'kiona';
+    color:#FFF;
+}
+.image{
+    border-radius: 5%;
+}
+.sensed-data{
+    border-radius: 5% 5% 0 0;
+    background-color:rgba(0,0,0,0.75);
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+  }
+  .sensor-data-title , .sensor-data{
+    font-family: 'poppins-regular';
+    color: #FFF;
+  }
+  
