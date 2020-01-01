@@ -1,6 +1,6 @@
 .content{
     height: 100%;
-    background-image: url("../../assets/img/1.jpg");
+    background-image: url("../../assets/img/4.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -9,17 +9,14 @@
 .toolbar{
     font-family: 'kiona';
     color:#FFF;
+    font-size: 12px;
 }
-.image{
-    border-radius: 5%;
+.image img{
+    border-radius: 10px;
 }
 .sensed-data{
-    border-radius: 5% 5% 0 0;
+    border-radius: 10px 10px 0 0;
     background-color:rgba(0,0,0,1);
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
   }
   .sensor-data-title , .sensor-data{
     font-family: 'poppins-regular';
@@ -36,4 +33,13 @@ ion-skeleton-text{
 
 ion-icon {
   color: #FFFFFF;
+}
+.recomendation{
+  background-color: #000;
+  border-radius: 10px;
+  margin-bottom: 3%;
+  margin-top:3%;
+}
+ion-title{
+  font-size: 18px;
 }

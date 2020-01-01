@@ -1,4 +1,4 @@
-<ion-content class="content">
+<ion-content class="content ion-padding-horizontal">
   <ion-toolbar class="toolbar">
     <ion-buttons slot="start">
       <ion-back-button [defaultHref]="backRoute"></ion-back-button>
@@ -10,8 +10,23 @@
 
   <div *ngIf="!isLoading">
     <div class="image">
-      <img [src]="locationData?.imgUrl" height="100%" width="100%" >
+      <img [src]="locationData?.imgUrl" height="100%" width="100%">
     </div>
+    <ion-list class="recomendation">
+      <ion-item class="ion-no-padding ion-text-center ion-no-margin">
+        <ion-label style="font-size: 20px;font-weight: bold;" class="sensor-data-title">Recomendation</ion-label>
+      </ion-item>
+      <ion-item class="ion-text-wrap">
+        <img src="../../assets/img/star_rating/5.png" width="20%" class="mx-auto d-block">
+      </ion-item>
+      <ion-item class="ion-text-wrap">
+        <ion-icon name="pin" slot="start" role="img" aria-label="home" class="icon-data"></ion-icon>
+        <ion-label class="ion-text-wrap sensor-data">
+          <h2>Location</h2>
+          <p class="sensor-reading">{{ locationData?.data.location.address }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
     <ion-list class="sensed-data">
       <ion-item class="ion-margin-bottom ion-no-padding ion-text-center ">
         <ion-label style="font-size: 20px;font-weight: bold;" class="sensor-data-title">Details</ion-label>
@@ -20,7 +35,7 @@
         <ion-icon name="pin" slot="start" role="img" aria-label="home" class="icon-data"></ion-icon>
         <ion-label class="ion-text-wrap sensor-data">
           <h2>Location</h2>
-          <p class="sensor-reading" >{{ locationData?.data.location.address }}</p>
+          <p class="sensor-reading">{{ locationData?.data.location.address }}</p>
         </ion-label>
       </ion-item>
       <ion-item *ngFor="let sensor of locationData?.data.sensorData" class="ion-text-wrap">
@@ -33,9 +48,9 @@
     </ion-list>
   </div>
 
-  <div  *ngIf="isLoading">
+  <div *ngIf="isLoading">
     <div class="image">
-            <img src="../../assets/img/img_loading.gif" height="100%" width="100%" >
+      <img src="../../assets/img/img_loading.gif" height="100%" width="100%">
     </div>
     <ion-list class="sensed-data">
       <ion-item class="ion-margin-bottom ion-no-padding ion-text-center ">
@@ -49,10 +64,12 @@
           <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
         </ion-label>
       </ion-item>
-      <ion-item  class="ion-text-wrap">
+      <ion-item class="ion-text-wrap">
         <ion-icon name="search" slot="start" role="img" aria-label="home" class="icon-data"></ion-icon>
         <ion-label class="ion-text-wrap sensor-data">
-          <h2><ion-skeleton-text animated style="width: 50%"></ion-skeleton-text></h2>
+          <h2>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h2>
           <p class="sensor-reading">
             <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
             <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
