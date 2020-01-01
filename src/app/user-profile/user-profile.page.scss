@@ -11,14 +11,6 @@ ion-toolbar{
   color : #FFF;
   font-size: 18px;
 }
-
-// ion-content{
-//   font-family: "kiona" !important;
-//   background-image: url("../../assets/img/8_1.jpg");
-//   background-repeat: no-repeat;
-//   background-size: cover;
-//   background-position: left center;
-// }
 .ion-icon{
   font-size: 20px !important;
 }
@@ -28,4 +20,20 @@ ion-toolbar{
   border-radius: 50%;
   margin-top: 10vh;
 }
-
+.profile-details{
+  background-color:rgba(255,255,255,0.70);
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+  border-radius:10px 10px 0 0;
+}
+ion-item{
+  --border-color:rgba(0,0,0,0);
+}
+ion-label h2,ion-label p{
+  font-family: 'poppins-regular';
+}
+ion-item ion-label{
+  font-family: 'kiona';
+}

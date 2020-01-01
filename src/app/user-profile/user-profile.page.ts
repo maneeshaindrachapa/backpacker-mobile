@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../services/user.service';
-import {ActivatedRoute} from '@angular/router';
+import { UserService } from '../services/user.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile',
@@ -8,7 +8,7 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./user-profile.page.scss'],
 })
 export class UserProfilePage implements OnInit {
-  userData;
+  userData = { address: '', age: '', email: '', displayName: '' };
   isLoading = false;
   backRoute;
   constructor(private userService: UserService, private route: ActivatedRoute) {

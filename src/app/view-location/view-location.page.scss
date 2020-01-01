@@ -16,11 +16,11 @@
 }
 .sensed-data{
     border-radius: 10px 10px 0 0;
-    background-color:rgba(0,0,0,0.9);
+    background-color:rgba(255,255,255,0.75);
   }
   .sensor-data-title , .sensor-data{
     font-family: 'poppins-regular';
-    color: #FFF;
+    color: #000;
   }
 
 .capture-loading-img{
@@ -28,18 +28,21 @@
 }
 
 ion-skeleton-text{
-  --background-rgb: 255,255,255;
+  --background-rgb: 0,0,0;
 }
 
 ion-icon {
-  color: #FFFFFF;
+  color: #000;
 }
 .recomendation{
-  background-color:rgba(0,0,0,0.9);
+  background-color:rgba(255,255,255,0.75);
   border-radius: 10px;
   margin-bottom: 3%;
   margin-top:3%;
 }
 ion-title{
   font-size: 18px;
+}
+ion-item{
+  --border-color:rgba(0,0,0,0);
 }

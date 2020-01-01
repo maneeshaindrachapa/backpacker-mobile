@@ -1,5 +1,5 @@
 <ion-content class="content">
-  <gl-background-video src="assets/video/ig_1.mp4" poster="assets/img/background_vid_login_poster.png">
+  <gl-background-video src="assets/video/ig_3.mp4" poster="assets/img/background_video_prof.png">
   </gl-background-video>
   <ion-toolbar class="toolbar">
     <ion-buttons slot="start">
@@ -19,7 +19,31 @@
       </ion-col>
     </ion-row>
   </div>
-  <!-- <div class="ion-padding-horizontal" style="z-index: 1000;">
-    
-  </div> -->
+  <ion-list class="profile-details">
+    <ion-item class="ion-margin-bottom ion-no-padding ion-text-center ">
+      <ion-label style="font-size: 20px;font-weight: bold;" class="sensor-data-title ion-no-margin ion-margin-top">
+        {{userData.displayName}}</ion-label>
+    </ion-item>
+    <ion-item class="ion-text-wrap">
+      <ion-icon name="pin" slot="start" role="img" aria-label="home" class="icon-data"></ion-icon>
+      <ion-label class="ion-text-wrap sensor-data">
+        <h2>Address</h2>
+        <p class="sensor-reading">{{ userData.address }}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item class="ion-text-wrap">
+      <ion-icon name='walk' slot="start" role="img" aria-label="home" class="icon-data"></ion-icon>
+      <ion-label class="ion-text-wrap sensor-data">
+        <h2>Age</h2>
+        <p class="sensor-reading">{{ userData.age }}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item class="ion-text-wrap">
+      <ion-icon name="mail" slot="start" role="img" aria-label="home" class="icon-data"></ion-icon>
+      <ion-label class="ion-text-wrap sensor-data">
+        <h2>E-mail</h2>
+        <p class="sensor-reading">{{userData.email}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
