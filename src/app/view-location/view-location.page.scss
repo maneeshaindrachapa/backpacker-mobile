@@ -15,7 +15,7 @@
 }
 .sensed-data{
     border-radius: 5% 5% 0 0;
-    background-color:rgba(0,0,0,0.75);
+    background-color:rgba(0,0,0,1);
     position: absolute;
     bottom: 0px;
     left: 0px;
@@ -25,4 +25,15 @@
     font-family: 'poppins-regular';
     color: #FFF;
   }
-  
+
+.capture-loading-img{
+  opacity:0.4!important;
+}
+
+ion-skeleton-text{
+  --background-rgb: 255,255,255;
+}
+
+ion-icon {
+  color: #FFFFFF;
+}

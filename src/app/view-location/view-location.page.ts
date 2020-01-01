@@ -24,7 +24,6 @@ export class ViewLocationPage implements OnInit {
   getLocationData(id) {
     this.isLoading = true;
     this.firebaseService.getLocationByID(id).snapshotChanges().subscribe((location: any) => {
-        console.log(location);
         this.locationData.id = location.payload.id;
         this.locationData.data = location.payload.data();
         this.locationData.path = location.payload.ref.path;
