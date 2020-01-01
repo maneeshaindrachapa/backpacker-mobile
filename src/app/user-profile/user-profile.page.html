@@ -1,13 +1,15 @@
 <ion-toolbar class="toolbar">
   <ion-buttons slot="start">
-    <ion-back-button defaultHref="tabs/settings">
+    <ion-back-button [defaultHref]="backRoute">
     </ion-back-button>
   </ion-buttons>
   <ion-title  class="ion-no-padding">
-    <i class="fab fa-500px"></i>&nbsp;My Profile
+    <i class="fab fa-500px"></i>&nbsp;User Profile
   </ion-title>
 </ion-toolbar>
 
-<ion-content>
-
+<ion-content >
+  <div class="ion-padding-horizontal">
+  <img src="../../assets/img/user.png" class="user-img mx-auto d-block">
+  </div>
 </ion-content>

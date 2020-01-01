@@ -48,6 +48,6 @@ export class SettingsComponent implements OnInit {
   }
 
   userProfile() {
-    this.router.navigate(['tabs', 'settings', 'user-profile']);
+    this.router.navigate(['tabs', 'settings', 'user-profile'], { queryParams: {uid: this.userService.loggedUser.authData.uid, backRoute: 'tabs/settings'}});
   }
 }

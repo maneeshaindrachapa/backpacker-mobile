@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {FirebaseService} from '../services/firebase.service';
 
 @Component({
@@ -11,7 +11,7 @@ export class ViewLocationPage implements OnInit {
   backRoute;
   locationData = {id: null, data: null, path: null, imgUrl: null};
   isLoading = false;
-  constructor(private route: ActivatedRoute, private firebaseService: FirebaseService) {
+  constructor(private route: ActivatedRoute, private firebaseService: FirebaseService, private router: Router) {
     route.queryParams.subscribe((data: any) => {
       this.getLocationData(data.id);
       this.backRoute = data.backRoute;
@@ -33,6 +33,13 @@ export class ViewLocationPage implements OnInit {
           console.log(error);
         });
         this.isLoading = false;
+        console.log(this.locationData);
     });
   }
+
+  viewUser(id) {
+      console.log('uid: ' + id);
+      // tslint:disable-next-line:max-line-length
+      this.router.navigate(['tabs', 'home', 'view-location', 'user-profile'], { queryParams: {uid: id, backRoute: 'tabs/home/view-location?id=' + this.locationData.id}});
+    }
 }

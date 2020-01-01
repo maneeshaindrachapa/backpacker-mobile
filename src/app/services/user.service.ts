@@ -37,6 +37,8 @@ export class UserService {
     return new Promise( resolve => {
       this.fireauth.auth.createUserWithEmailAndPassword(user.email, user.password).then((authuser) => {
         const userSubData = {
+          displayName: user.name,
+          email: user.email,
           address: user.address,
           age: user.age,
         };
@@ -58,4 +60,7 @@ export class UserService {
     return this.firestore.collection('users').doc(uid).set(user);
   }
 
+  getUserById(id) {
+    return this.firestore.collection('users').doc(id).valueChanges();
+  }
 }

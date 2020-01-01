@@ -6,7 +6,14 @@ import { ViewLocationPage } from './view-location.page';
 const routes: Routes = [
   {
     path: '',
-    component: ViewLocationPage
+    children: [{
+      path: '',
+      component: ViewLocationPage
+    },
+      {
+      path: 'user-profile',
+      loadChildren: () => import('../user-profile/user-profile.module').then( m => m.UserProfilePageModule)
+    }]
   }
 ];
 
