@@ -23,7 +23,7 @@ export class ReadingsPage implements OnInit {
   uploadDone = false;
   isShareClicked = false;
   successRedirectTimeout = 5;
-  // recommendationText;
+  isRedirected = false;
   constructor(private route: ActivatedRoute,
               private utilitiesService: UtilitiesService,
               private platform: Platform,
@@ -132,7 +132,9 @@ export class ReadingsPage implements OnInit {
     setTimeout(() => {
       this.successRedirectTimeout -= 1;
       if (this.successRedirectTimeout === 0) {
+        this.isRedirected = true;
         this.goHome();
+        return;
       }
       this.updateSuccessTimeOut();
     }, 1000);

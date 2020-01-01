@@ -30,7 +30,7 @@
     <i class="fas fa-share-alt"></i>Social
   </ion-title>
   <ion-buttons slot="end">
-    <ion-button (click)="share()" *ngIf="step==2" class="share-button"><i class="fas fa-share"></i>Share</ion-button>
+    <ion-button (click)="share()" *ngIf="step==2 && !isRedirected" class="share-button"><i class="fas fa-share"></i>Share</ion-button>
   </ion-buttons>
 </ion-toolbar>
 <ion-content>
@@ -90,9 +90,9 @@
 
   <!--    Step 03 Start-->
   <ion-progress-bar color="success" [value]="uploadPercentage"
-    *ngIf="(uploadPercentage>0 && !uploadDone) || (isShareClicked && !uploadDone)"></ion-progress-bar>
-  <ion-progress-bar color="success" type="indeterminate" *ngIf="uploadDone"></ion-progress-bar>
-  <div class="success-alert" text-center *ngIf="isShareClicked">
+    *ngIf="(isShareClicked && !uploadDone) && !isRedirected"></ion-progress-bar>
+  <ion-progress-bar color="success" type="indeterminate" *ngIf="(uploadDone && !isRedirected)"></ion-progress-bar>
+  <div class="success-alert" text-center *ngIf="isShareClicked && !isRedirected">
     <img src="../../../assets/img/check-circle.gif" class="success-img mx-auto d-block mt-3 mb-2" *ngIf="uploadDone">
     <p text-center class="mb-1" *ngIf="uploadDone">Successfully uploaded!</p>
     <p text-sm-center *ngIf="uploadDone">Redirecting to <i class="fas fa-home"></i>{{ successRedirectTimeout }} secs
@@ -102,7 +102,7 @@
     <p text-center class="mb-1" *ngIf="isShareClicked && !uploadDone">Uploading...</p>
   </div>
   <!--   step 3 content-->
-  <div class="full-page" *ngIf="step==2" [ngClass]="{ 'disabled-div': (uploadPercentage>0 || isShareClicked) }">
+  <div class="full-page" *ngIf="step==2" [ngClass]="{ 'disabled-div': ((uploadPercentage>0 || isShareClicked) && !isRedirected) }">
     <gl-background-video style="z-index: -1;" src="assets/video/ig_2.mp4" poster="assets/img/background_video_add.png">
     </gl-background-video>
     <ion-row class="ion-no-padding ion-no-margin">
