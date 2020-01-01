@@ -27,17 +27,28 @@ const routes: Routes = [
       },
       {
         path: 'settings',
+        children: [{
+          path: '',
         loadChildren: () =>
           import('../settings/settings.module').then(m => m.SettingsModule)
       },
+          {
+            path: 'user-profile',
+            loadChildren: () => import('../user-profile/user-profile.module').then( m => m.UserProfilePageModule)
+          }
+      ]},
       {
         path: 'location',
-        loadChildren: () =>
-        import('../location/location.module').then(m => m.LocationPageModule)
-      },
-      {
-        path: 'add',
-        loadChildren: () => import('../add/add.module').then( m => m.AddPageModule)
+        children: [
+          {path: '',
+            loadChildren: () =>
+                import('../location/location.module').then(m => m.LocationPageModule)
+          },
+          {
+            path: 'add',
+            loadChildren: () => import('../add/add.module').then( m => m.AddPageModule)
+          }
+        ]
       },
       {
         path: 'view-location',

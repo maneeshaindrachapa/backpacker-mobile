@@ -38,11 +38,11 @@ export class ReadingsPage implements OnInit {
       }
     });
 
-    this.platform.ready().then(() => {
-      this.platform.backButton.subscribe(() => {
-        this.closeView();
-      });
-    });
+    // this.platform.ready().then(() => {
+    //   this.platform.backButton.subscribe(() => {
+    //     this.closeView();
+    //   });
+    // });
   }
 
   ngOnInit() {

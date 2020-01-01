@@ -12,11 +12,11 @@
     font-size: 12px;
 }
 .image img{
-    border-radius: 10px;
+    border-radius: 10px!important;
 }
 .sensed-data{
     border-radius: 10px 10px 0 0;
-    background-color:rgba(0,0,0,1);
+    background-color:rgba(0,0,0,0.9);
   }
   .sensor-data-title , .sensor-data{
     font-family: 'poppins-regular';
@@ -35,7 +35,7 @@ ion-icon {
   color: #FFFFFF;
 }
 .recomendation{
-  background-color: #000;
+  background-color:rgba(0,0,0,0.9);
   border-radius: 10px;
   margin-bottom: 3%;
   margin-top:3%;

@@ -96,7 +96,7 @@ export class AddPage implements OnInit {
       this.picture = 'data:image/jpeg;base64,' + imageData;
       this.cameraPreview.stopCamera();
       this.transferData.picture = this.picture;
-      this.router.navigate(['./tabs/add/readings'], { queryParams: {transferData: JSON.stringify(this.transferData)} });
+      this.router.navigate(['tabs', 'location', 'add', 'readings'], { queryParams: {transferData: JSON.stringify(this.transferData)} });
     }, (err) => {
       console.log(err);
       // add alert here

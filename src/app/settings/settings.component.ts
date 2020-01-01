@@ -46,4 +46,8 @@ export class SettingsComponent implements OnInit {
     });
     await alert.present();
   }
+
+  userProfile() {
+    this.router.navigate(['tabs', 'settings', 'user-profile']);
+  }
 }

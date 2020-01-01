@@ -1,4 +1,4 @@
-<ion-content class="content ion-padding-horizontal">
+<ion-content class="content">
   <ion-toolbar class="toolbar">
     <ion-buttons slot="start">
       <ion-back-button [defaultHref]="backRoute"></ion-back-button>
@@ -8,28 +8,28 @@
     </ion-title>
   </ion-toolbar>
 
-  <div *ngIf="!isLoading">
-    <div class="image">
-      <img [src]="locationData?.imgUrl" height="100%" width="100%">
+  <div *ngIf="!isLoading" class="ion-padding-horizontal">
+    <div class="image h-100 w-100">
+      <img [src]="locationData?.imgUrl" *ngIf="locationData?.imgUrl" height="100%" width="100%">
+      <img *ngIf="!locationData?.imgUrl" src="../../assets/img/img_loading.gif" height="100%" width="100%">
     </div>
     <ion-list class="recomendation">
       <ion-item class="ion-no-padding ion-text-center ion-no-margin">
-        <ion-label style="font-size: 20px;font-weight: bold;" class="sensor-data-title">Recomendation</ion-label>
+        <ion-label style="font-size: 20px;font-weight: bold;" class="sensor-data-title ion-no-margin">Recomendation</ion-label>
       </ion-item>
       <ion-item class="ion-text-wrap">
-        <img src="../../assets/img/star_rating/5.png" width="20%" class="mx-auto d-block">
+        <img src="../../assets/img/star_rating/{{ (locationData?.data.recommendation.rating).toString()+'.png' }}" width="35%" class="mx-auto d-block">
       </ion-item>
       <ion-item class="ion-text-wrap">
-        <ion-icon name="pin" slot="start" role="img" aria-label="home" class="icon-data"></ion-icon>
-        <ion-label class="ion-text-wrap sensor-data">
-          <h2>Location</h2>
-          <p class="sensor-reading">{{ locationData?.data.location.address }}</p>
+        <ion-label class="ion-text-wrap sensor-data text-center">
+          <p class="sensor-reading" *ngIf="locationData?.data.recommendation.text">{{ locationData?.data.recommendation.text }}</p>
+          <p class="sensor-reading" style="color: #e57373;" *ngIf="!locationData?.data.recommendation.text">No recommendation text for this location.</p>
         </ion-label>
       </ion-item>
     </ion-list>
     <ion-list class="sensed-data">
       <ion-item class="ion-margin-bottom ion-no-padding ion-text-center ">
-        <ion-label style="font-size: 20px;font-weight: bold;" class="sensor-data-title">Details</ion-label>
+        <ion-label style="font-size: 20px;font-weight: bold;" class="sensor-data-title ion-no-margin ion-margin-top">Details</ion-label>
       </ion-item>
       <ion-item class="ion-text-wrap">
         <ion-icon name="pin" slot="start" role="img" aria-label="home" class="icon-data"></ion-icon>
@@ -48,13 +48,30 @@
     </ion-list>
   </div>
 
-  <div *ngIf="isLoading">
+  <div *ngIf="isLoading" class="ion-padding-horizontal">
     <div class="image">
       <img src="../../assets/img/img_loading.gif" height="100%" width="100%">
     </div>
+    <ion-list class="recomendation">
+      <ion-item class="ion-no-padding ion-text-center ion-no-margin">
+        <ion-label style="font-size: 20px;font-weight: bold;" class="sensor-data-title ion-no-margin">Recomendation</ion-label>
+      </ion-item>
+      <ion-item class="ion-text-wrap">
+        <img src="../../assets/img/star_rating/loading.png" width="35%" class="mx-auto d-block">
+      </ion-item>
+      <ion-item class="ion-text-wrap">
+        <ion-label class="ion-text-wrap sensor-data text-center">
+          <p class="sensor-reading">
+            <ion-skeleton-text class="mx-auto d-block" animated style="width: 100%"></ion-skeleton-text>
+            <ion-skeleton-text class="mx-auto d-block" animated style="width: 100%"></ion-skeleton-text>
+            <ion-skeleton-text class="mx-auto d-block" animated style="width: 80%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
     <ion-list class="sensed-data">
       <ion-item class="ion-margin-bottom ion-no-padding ion-text-center ">
-        <ion-label style="font-size: 20px;font-weight: bold;" class="sensor-data-title">Details</ion-label>
+        <ion-label style="font-size: 20px;font-weight: bold;" class="sensor-data-title ion-no-margin ion-margin-top">Details</ion-label>
       </ion-item>
       <ion-item class="ion-text-wrap">
         <ion-icon name="pin" slot="start" role="img" aria-label="home" class="icon-data"></ion-icon>
