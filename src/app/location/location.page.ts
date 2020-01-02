@@ -77,7 +77,7 @@ export class LocationPage implements OnInit {
           this.marker.setPosition(latLng);
           this.sensorService.getGeoCoder(data.coords.latitude, data.coords.longitude).then((result: NativeGeocoderResult[]) => {
               this.addressData = this.sensorService.generateAddress(result[0]);
-              this.positionData.address = result[0].subThoroughfare;
+              this.positionData.address = this.addressData;
               this.loading = false;
           });
       });
