@@ -11,6 +11,7 @@ import { UserService } from '../services/user.service';
 import { Platform } from '@ionic/angular';
 import {mapStyle} from '../location/mapstyles';
 import {FirebaseService} from '../services/firebase.service';
+import {error} from 'util';
 
 @Component({
   selector: 'app-home-map',
@@ -36,7 +37,7 @@ export class HomeMapPage implements OnInit {
   };
   isLoading = false;
   locationData;
-  markers = [];
+  markers: MarkerOptions[] = [];
   searchKeyword;
     constructor(private router: Router,
                 private userService: UserService,
@@ -94,6 +95,9 @@ export class HomeMapPage implements OnInit {
         const marker = this.map.addMarkerSync(markerOptions);
         marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
             this.viewLocation(markerOptions.id, 'tabs/home/home-map');
+            // tslint:disable-next-line:no-shadowed-variable
+        }, error => {
+            console.error('Marker adding error');
         });
     }
     viewLocation(locationId, backRoute) {
@@ -102,6 +106,7 @@ export class HomeMapPage implements OnInit {
 
     searchLocations() {
         this.map.clear();
+        this.isLoading = true;
         if (this.markers.length && this.searchKeyword && this.searchKeyword.trim().length) {
             this.markers.forEach((marker: any) => {
                 if (marker.title.toLowerCase().includes(this.searchKeyword.toLowerCase())) {
@@ -113,5 +118,6 @@ export class HomeMapPage implements OnInit {
                     this.addMarker(marker);
             });
         }
+        this.isLoading = false;
     }
 }

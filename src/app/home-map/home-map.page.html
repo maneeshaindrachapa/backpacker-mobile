@@ -19,7 +19,7 @@
                         showCancelButton="true"
                         (ionCancel)="isSearchBarOpened = false"
                         [(ngModel)]="searchKeyword"
-                        (keyup) = "searchLocations()"
+                        (keyup.space) = "searchLocations()"
                         (keyup.enter) = "searchLocations()"
                 ></ion-searchbar>
             </ion-toolbar>
