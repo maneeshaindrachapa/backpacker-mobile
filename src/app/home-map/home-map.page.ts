@@ -36,10 +36,12 @@ export class HomeMapPage implements OnInit {
   };
   isLoading = false;
   locationData;
-  constructor(private router: Router,
-              private userService: UserService,
-              private platform: Platform,
-              private firebaseService: FirebaseService) {
+  markers = [];
+  searchKeyword;
+    constructor(private router: Router,
+                private userService: UserService,
+                private platform: Platform,
+                private firebaseService: FirebaseService) {
       this.loadAllSensorData();
   }
 
@@ -76,9 +78,11 @@ export class HomeMapPage implements OnInit {
                     title: location.location.address,
                     icon: 'red',
                     animation: 'DROP',
-                    position: location.location.position
+                    position: location.location.position,
+                    id: locationData[i].payload.doc.id
                 };
-                this.addMarker(markerOptions, locationData[i].payload.doc.id);
+                this.addMarker(markerOptions);
+                this.markers.push(markerOptions);
             }
             this.locationData = locationData;
             // tslint:disable-next-line:prefer-for-of
@@ -86,13 +90,28 @@ export class HomeMapPage implements OnInit {
         });
     }
 
-    addMarker(markerOptions, id) {
+    addMarker(markerOptions: MarkerOptions) {
         const marker = this.map.addMarkerSync(markerOptions);
         marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe(() => {
-            this.viewLocation(id, 'tabs/home/home-map');
+            this.viewLocation(markerOptions.id, 'tabs/home/home-map');
         });
     }
     viewLocation(locationId, backRoute) {
         this.router.navigate(['tabs', 'home', 'view-location'], { queryParams: {id: locationId, backRoute}});
+    }
+
+    searchLocations() {
+        this.map.clear();
+        if (this.markers.length && this.searchKeyword && this.searchKeyword.trim().length) {
+            this.markers.forEach((marker: any) => {
+                if (marker.title.toLowerCase().includes(this.searchKeyword.toLowerCase())) {
+                    this.addMarker(marker);
+                }
+            });
+        } else {
+            this.markers.forEach((marker: any) => {
+                    this.addMarker(marker);
+            });
+        }
     }
 }
