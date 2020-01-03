@@ -12,7 +12,9 @@ export class HomeComponent implements OnInit {
 
   isSearchBarOpened = false;
   locationData = [];
+  searchedLocationData = [];
   isLoading = false;
+  searchKeyword;
   constructor(private router: Router,
               private userService: UserService,
               private firebaseService: FirebaseService) {
@@ -42,11 +44,22 @@ export class HomeComponent implements OnInit {
         });
         this.locationData.push(tempDataObj);
       }
+      this.searchedLocationData = this.locationData;
       this.isLoading = false;
     });
   }
 
   viewLocation(locationId, backRoute) {
     this.router.navigate(['tabs', 'home', 'view-location'], { queryParams: {id: locationId, backRoute}});
+  }
+
+  searchLocation() {
+    if (this.searchedLocationData.length && this.searchKeyword && this.searchKeyword.trim().length) {
+      this.searchedLocationData = this.searchedLocationData.filter(location => {
+        return location.data.location.address.toLowerCase().indexOf(this.searchKeyword.toLowerCase()) > -1;
+      });
+    } else {
+      this.searchedLocationData = this.locationData;
+    }
   }
 }
