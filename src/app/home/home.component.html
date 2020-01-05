@@ -16,12 +16,14 @@
         *ngIf="isSearchBarOpened"
         showCancelButton="true"
         (ionCancel)="isSearchBarOpened = false"
+        (ionChange)="searchLocation()"
+        [(ngModel)]="searchKeyword"
       ></ion-searchbar>
     </ion-toolbar>
 
     <!--    Location List view-->
     <div no-padding *ngIf="!isLoading && locationData.length > 0">
-      <ion-card  class="ion-activatable" padding *ngFor="let location of locationData" (click)="viewLocation(location?.id, 'tabs/home')">
+      <ion-card  class="ion-activatable" padding *ngFor="let location of searchedLocationData" (click)="viewLocation(location?.id, 'tabs/home')">
         <ion-item class="ion-text-wrap" no-padding no-margin>
           <ion-thumbnail slot="start">
             <img [src]="location?.imgUrl" *ngIf="location?.imgUrl" />
