@@ -21,6 +21,8 @@ export class SensorsService {
         // this.light = 0;
         platform.ready().then(() => {
             this.sensors.enableSensor('LIGHT');
+            this.sensors.enableSensor('TEMPERATURE');
+            this.sensors.enableSensor('PRESSURE');
         });
     }
 
@@ -71,6 +73,52 @@ export class SensorsService {
                 clearInterval(lightPerPeriodCalc);
                 // this.light = lightPerPeriod / time;
                 resolve(this.luxFormatter(lightPerPeriod / time));
+            }, time * 1000);
+        });
+    }
+
+    getTemperatureSensorData(time: any) {
+        let temperaturePerPeriod = 0;
+
+        this.sensors.enableSensor(TYPE_SENSOR.TEMPERATURE);
+        return new Promise(resolve => {
+            // repeat with the interval of period seconds
+            const temperaturePerPeriodCalc = setInterval(() => {
+                this.sensors.getState().then((values) => {
+                    // console.log(values);
+                    temperaturePerPeriod += values[0];
+                });
+            }, 1000);
+
+            // after given seconds stop
+            setTimeout(() => {
+
+                clearInterval(temperaturePerPeriodCalc);
+                // this.light = lightPerPeriod / time;
+                resolve(temperaturePerPeriod / time);
+            }, time * 1000);
+        });
+    }
+
+    getPressureSensorData(time: any) {
+        let pressurePerPeriod = 0;
+
+        this.sensors.enableSensor(TYPE_SENSOR.PRESSURE);
+        return new Promise(resolve => {
+            // repeat with the interval of period seconds
+            const pressurePerPeriodCalc = setInterval(() => {
+                this.sensors.getState().then((values) => {
+                    // console.log(values);
+                    pressurePerPeriod += values[0];
+                });
+            }, 1000);
+
+            // after given seconds stop
+            setTimeout(() => {
+
+                clearInterval(pressurePerPeriodCalc);
+                // this.light = lightPerPeriod / time;
+                resolve(pressurePerPeriod / time);
             }, time * 1000);
         });
     }
