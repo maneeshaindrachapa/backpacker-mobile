@@ -17,6 +17,16 @@ As a solution to this problem, we developed a mobile application that helps trav
 - Share New Location Data with a Review about that place
 
 ## Registering Users to the Application
+
+- A new user can register to the application with a valid email, username, password ,age and address.
+- Login
+- Forget password
+
+## Search Location
+ **1. List view**
+ **2. Map view**
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MTI3ODY2NDVdfQ==
+eyJoaXN0b3J5IjpbMjEzNTU1NzczOF19
 -->
