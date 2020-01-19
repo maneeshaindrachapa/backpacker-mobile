@@ -46,11 +46,20 @@ A registered user need to follow four steps to share the location with data,
 4. Add Recommendation
 
 ## Technologies
-Ionic 4 Framework
-Google Firebase API
-Ionic Native Plugins
-Google Maps API
-Google Locations API
+- Ionic 4 Framework
+- Google Firebase API
+- Ionic Native Plugins
+- Google Maps API
+- Google Locations API
+## Challenges
+- Ionic 4 has a different approach rather than Ionic 3
+- Accessing sensor hardware using Ionic Framework
+- Debugging and Testing
+
+## Further Improvements
+- Categorizing same location details and photos into one
+- Use Current data and timestamp details to create a predictive model which can predict the weather of a location
+- If person has a poor connectivity, save data in a local storage and push it to server when person connects with the internet
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI3NzEzMTQwN119
+eyJoaXN0b3J5IjpbLTIxNDQ1Mzk3NDVdfQ==
 -->
