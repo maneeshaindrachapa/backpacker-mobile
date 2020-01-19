@@ -1,6 +1,6 @@
-<h1 align="center">BackPacker<br>
+<h1>BackPacker<br>
 </h1>
-<center>A Travel Location Recomendation System</center>
+A Travel Location Recomendation System
 
 ![Log In](https://github.com/maneeshaindrachapa/backpacker-mobile/blob/master/Readme%20Assets/intro.gif?raw=true)
 
@@ -66,6 +66,6 @@ A registered user need to follow four steps to share the location with data,
 - Use Current data and timestamp details to create a predictive model which can predict the weather of a location
 - If person has a poor connectivity, save data in a local storage and push it to server when person connects with the internet
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjg5MDI0MzkwLDI3NDgxNDE2MCwtMjE0ND
-UzOTc0NV19
+eyJoaXN0b3J5IjpbMjA2OTEyNjM5MCwyNzQ4MTQxNjAsLTIxND
+Q1Mzk3NDVdfQ==
 -->
