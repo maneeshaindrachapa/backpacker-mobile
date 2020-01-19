@@ -39,16 +39,18 @@ A registered user need to follow four steps to share the location with data,
 2. Take a photo of the Location
 
 3. Capture the environment status
+	 - [x] Noise Level
+	 - [x] Luminosity
+	 - [x] Temperature
+	 - [x] Pressure
+4. Add Recommendation
 
- - [ ] a. Noise Level
-
-b.Luminosity
-
-c.Temperature
-
-d.Pressure
-
-4.Add Recommendation
+## Technologies
+Ionic 4 Framework
+Google Firebase API
+Ionic Native Plugins
+Google Maps API
+Google Locations API
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NzE4NjE2MzBdfQ==
+eyJoaXN0b3J5IjpbLTI3NzEzMTQwN119
 -->
