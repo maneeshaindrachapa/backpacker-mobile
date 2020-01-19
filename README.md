@@ -1,6 +1,8 @@
-<h1 align="center">BackPacker<br>
+<h1>BackPacker<br>
 </h1>
-<center>A Travel Location Recomendation System</center>
+A Travel Location Recomendation System
+
+![Log In](https://im6.ezgif.com/tmp/ezgif-6-a397507ba59b.gif)
 
 ## Introduction
 Travelling is a major thing that people used to reduce stresses with their busy schedules.
@@ -10,7 +12,7 @@ Selecting a proper location to travel is one of the major problems where people 
 As a solution to this problem, we developed a mobile application that helps travellers to get an idea about locations around the world through this project.
 
 ## Proposed Solution
-
+![System Architecture](https://github.com/maneeshaindrachapa/backpacker-mobile/blob/master/Readme%20Assets/MC%20Project%20Arci.png?raw=true)
 ## Functionalities
 
 - Register Users to the Application
@@ -64,5 +66,6 @@ A registered user need to follow four steps to share the location with data,
 - Use Current data and timestamp details to create a predictive model which can predict the weather of a location
 - If person has a poor connectivity, save data in a local storage and push it to server when person connects with the internet
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjc0ODE0MTYwLC0yMTQ0NTM5NzQ1XX0=
+eyJoaXN0b3J5IjpbMTg1MDQ1NDY4MywyNzQ4MTQxNjAsLTIxND
+Q1Mzk3NDVdfQ==
 -->
