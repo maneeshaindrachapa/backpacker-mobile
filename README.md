@@ -24,9 +24,10 @@ As a solution to this problem, we developed a mobile application that helps trav
 
 ## Search Location
  **1. List view**
+ A Registered user can search and find the details of the required locations.
  **2. Map view**
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEzNTU1NzczOF19
+eyJoaXN0b3J5IjpbMTczNzAyMjQwNF19
 -->
