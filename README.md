@@ -48,7 +48,7 @@ A Registered user can view the details of the location
 ## Share New Location Data
 A registered user need to follow four steps to share the location with data,
 
-![Share Location Data](https://github.com/maneeshaindrachapa/backpacker-mobile/blob/master/Readme%20Assets/view.gif?raw=true)
+![Share Location Data](https://github.com/maneeshaindrachapa/backpacker-mobile/blob/master/Readme%20Assets/share.gif?raw=true)
 
 1. Share the Location
 
@@ -77,6 +77,6 @@ A registered user need to follow four steps to share the location with data,
 - Use Current data and timestamp details to create a predictive model which can predict the weather of a location
 - If person has a poor connectivity, save data in a local storage and push it to server when person connects with the internet
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDA1MjI0OTc0LDE4NTA0NTQ2ODMsMjc0OD
-E0MTYwLC0yMTQ0NTM5NzQ1XX0=
+eyJoaXN0b3J5IjpbLTE4OTk3MzAzNzIsMTg1MDQ1NDY4MywyNz
+Q4MTQxNjAsLTIxNDQ1Mzk3NDVdfQ==
 -->
