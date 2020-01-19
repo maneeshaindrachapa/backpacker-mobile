@@ -10,7 +10,7 @@ Selecting a proper location to travel is one of the major problems where people 
 As a solution to this problem, we developed a mobile application that helps travellers to get an idea about locations around the world through this project.
 
 ## Proposed Solution
-
+![System Architecture](https://github.com/maneeshaindrachapa/FYP/blob/master/WorkInProgress/Docs/images/FYP_Archi.png?raw=true)
 ## Functionalities
 
 - Register Users to the Application
@@ -64,5 +64,6 @@ A registered user need to follow four steps to share the location with data,
 - Use Current data and timestamp details to create a predictive model which can predict the weather of a location
 - If person has a poor connectivity, save data in a local storage and push it to server when person connects with the internet
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjc0ODE0MTYwLC0yMTQ0NTM5NzQ1XX0=
+eyJoaXN0b3J5IjpbLTYyNjk2Mjg2OCwyNzQ4MTQxNjAsLTIxND
+Q1Mzk3NDVdfQ==
 -->
