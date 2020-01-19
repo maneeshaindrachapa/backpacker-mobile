@@ -1,6 +1,6 @@
 <h1 align="center">BackPacker<br>
 </h1>
-
+<center>A Travel Location Recomendation System</center>
 
 ## Introduction
 Travelling is a major thing that people used to reduce stresses with their busy schedules.
@@ -64,6 +64,5 @@ A registered user need to follow four steps to share the location with data,
 - Use Current data and timestamp details to create a predictive model which can predict the weather of a location
 - If person has a poor connectivity, save data in a local storage and push it to server when person connects with the internet
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NTkzNTM5NTIsLTIxNDQ1Mzk3NDVdfQ
-==
+eyJoaXN0b3J5IjpbMjc0ODE0MTYwLC0yMTQ0NTM5NzQ1XX0=
 -->
