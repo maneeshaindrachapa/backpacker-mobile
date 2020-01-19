@@ -33,16 +33,22 @@ As a solution to this problem, we developed a mobile application that helps trav
  **1. List view**
  A Registered user can search and find the details of the required locations.
 
-![List Search](https://github.com/maneeshaindrachapa/backpacker-mobile/blob/master/Readme%20Assets/reg.gif?raw=true)
+![List Search](https://github.com/maneeshaindrachapa/backpacker-mobile/blob/master/Readme%20Assets/search_1.gif?raw=true)
 
  **2. Map view**
  A Registered user can search and view required locations in the map.
+
+![Map Search](https://github.com/maneeshaindrachapa/backpacker-mobile/blob/master/Readme%20Assets/search_2.gif?raw=true)
  
 ## View Location Data
 A Registered user can view the details of the location
 
+![View Location Data](https://github.com/maneeshaindrachapa/backpacker-mobile/blob/master/Readme%20Assets/view.gif?raw=true)
+
 ## Share New Location Data
 A registered user need to follow four steps to share the location with data,
+
+![Share Location Data](https://github.com/maneeshaindrachapa/backpacker-mobile/blob/master/Readme%20Assets/view.gif?raw=true)
 
 1. Share the Location
 
@@ -71,6 +77,6 @@ A registered user need to follow four steps to share the location with data,
 - Use Current data and timestamp details to create a predictive model which can predict the weather of a location
 - If person has a poor connectivity, save data in a local storage and push it to server when person connects with the internet
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAyMTUxNTM4OCwxODUwNDU0NjgzLDI3ND
-gxNDE2MCwtMjE0NDUzOTc0NV19
+eyJoaXN0b3J5IjpbNDA1MjI0OTc0LDE4NTA0NTQ2ODMsMjc0OD
+E0MTYwLC0yMTQ0NTM5NzQ1XX0=
 -->
